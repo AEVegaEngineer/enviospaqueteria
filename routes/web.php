@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('tipousuario', 'TipoUsuarioController');
+
+// Log Controller
+Route::resource('log','LogController');
+Route::get('/login',['as' => 'log.index','uses' => 'LogController@index']);
+Route::post('/authLogin',[ 'as' => 'log.login','uses' => 'LogController@login']);
+Route::get('logout', 'LogController@logout');

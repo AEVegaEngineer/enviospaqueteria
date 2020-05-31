@@ -15,16 +15,18 @@ class CreateUsuariosTable extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id('usuId');
-            $table->string('usuUsuario')->unique();
             $table->string('usuEmail')->unique();
             $table->string('usuContrasena');
-            $table->string('usuNombre');
+            $table->string('usuNombres');
+            $table->string('usuApellidos');
             $table->string('usuDni')->unique();
             $table->string('usuDireccion');
-            $table->string('usuObraSocial');
-            $table->string('usuTipoUsuario');            
+            $table->boolean('usuActivo'); 
+            $table->unsignedBigInteger('usuTipoUsuario');
+
             $table->rememberToken();
             $table->timestamps();
+            
         });
     }
 
