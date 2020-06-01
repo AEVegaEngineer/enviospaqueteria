@@ -134,7 +134,7 @@
         <div class="row">
 
           <div class="col-lg-6 video-box align-self-baseline" data-aos="fade-right" data-aos-delay="100">
-            <img src="assets/img/about-video.jpg" class="img-fluid" alt="">
+            <img src="/img/front/about-video.jpg" class="img-fluid" alt="">
             <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
           </div>
 
@@ -169,27 +169,33 @@
         <div class="row">
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center" data-aos="zoom-in">
-            <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
+            <img src="/img/front/clients/client-1.png" class="img-fluid" alt="">
+            <!--<img src="assets/img/clients/client-1.png" class="img-fluid" alt="">-->
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center" data-aos="zoom-in">
-            <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
+            <img src="/img/front/clients/client-2.png" class="img-fluid" alt="">
+            <!--<img src="assets/img/clients/client-2.png" class="img-fluid" alt="">-->
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center" data-aos="zoom-in">
-            <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
+            <img src="/img/front/clients/client-3.png" class="img-fluid" alt="">
+            <!--<img src="assets/img/clients/client-3.png" class="img-fluid" alt="">-->
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center" data-aos="zoom-in">
-            <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
+            <img src="/img/front/clients/client-4.png" class="img-fluid" alt="">
+            <!--<img src="assets/img/clients/client-4.png" class="img-fluid" alt="">-->
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center" data-aos="zoom-in">
-            <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
+            <img src="/img/front/clients/client-5.png" class="img-fluid" alt="">
+            <!--<img src="assets/img/clients/client-5.png" class="img-fluid" alt="">-->
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center" data-aos="zoom-in">
-            <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
+            <img src="/img/front/clients/client-6.png" class="img-fluid" alt="">
+            <!--<img src="assets/img/clients/client-6.png" class="img-fluid" alt="">-->
           </div>
 
         </div>
@@ -214,7 +220,8 @@
               Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+            <img src="/img/front/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+            <!--<img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">-->
             <h3>Saul Goodman</h3>
             <h4>Ceo &amp; Founder</h4>
           </div>
@@ -225,7 +232,8 @@
               Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+            <img src="/img/front/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+            <!--<img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">-->
             <h3>Sara Wilsson</h3>
             <h4>Designer</h4>
           </div>
@@ -236,7 +244,9 @@
               Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+            <img src="/img/front/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+            <!--
+            <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">-->
             <h3>Jena Karlis</h3>
             <h4>Store Owner</h4>
           </div>
@@ -247,7 +257,8 @@
               Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+            <img src="/img/front/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+            <!--<img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">-->
             <h3>Matt Brandon</h3>
             <h4>Freelancer</h4>
           </div>
@@ -258,7 +269,8 @@
               Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+            <img src="/img/front/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+            <!--<img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">-->
             <h3>John Larson</h3>
             <h4>Entrepreneur</h4>
           </div>
@@ -396,7 +408,8 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+              <img src="/img/front/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+              <!--<img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">-->
               <div class="portfolio-info">
                 <h4>App 1</h4>
                 <p>App</p>
@@ -410,7 +423,8 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+              <img src="/img/front/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+              <!--<img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">-->
               <div class="portfolio-info">
                 <h4>Web 3</h4>
                 <p>Web</p>
@@ -424,7 +438,9 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+              <img src="/img/front/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+              <!--
+              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">-->
               <div class="portfolio-info">
                 <h4>App 2</h4>
                 <p>App</p>
@@ -438,7 +454,8 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+              <img src="/img/front/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+              <!--<img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">-->
               <div class="portfolio-info">
                 <h4>Card 2</h4>
                 <p>Card</p>
@@ -452,7 +469,8 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+              <img src="/img/front/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+              <!--<img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">-->
               <div class="portfolio-info">
                 <h4>Web 2</h4>
                 <p>Web</p>
@@ -466,7 +484,9 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+              <img src="/img/front/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+              <!--
+              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">-->
               <div class="portfolio-info">
                 <h4>App 3</h4>
                 <p>App</p>
@@ -480,7 +500,9 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
+              <img src="/img/front/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
+              <!--
+              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">-->
               <div class="portfolio-info">
                 <h4>Card 1</h4>
                 <p>Card</p>
@@ -494,7 +516,8 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+              <img src="/img/front/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+              <!--<img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">-->
               <div class="portfolio-info">
                 <h4>Card 3</h4>
                 <p>Card</p>
@@ -508,7 +531,8 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
+              <img src="/img/front/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
+              <!--<img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">-->
               <div class="portfolio-info">
                 <h4>Web 3</h4>
                 <p>Web</p>
@@ -539,7 +563,8 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="member">
               <div class="member-img">
-                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                <img src="/img/front/team/team-1.jpg" class="img-fluid" alt="">
+                <!--<img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">-->
                 <div class="social">
                   <a href=""><i class="icofont-twitter"></i></a>
                   <a href=""><i class="icofont-facebook"></i></a>
@@ -557,7 +582,8 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
             <div class="member">
               <div class="member-img">
-                <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
+                <img src="/img/front/team/team-2.jpg" class="img-fluid" alt="">
+                <!--<img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">-->
                 <div class="social">
                   <a href=""><i class="icofont-twitter"></i></a>
                   <a href=""><i class="icofont-facebook"></i></a>
@@ -575,7 +601,8 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
             <div class="member">
               <div class="member-img">
-                <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
+                <img src="/img/front/team/team-3.jpg" class="img-fluid" alt="">
+                <!--<img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">-->             
                 <div class="social">
                   <a href=""><i class="icofont-twitter"></i></a>
                   <a href=""><i class="icofont-facebook"></i></a>
@@ -593,7 +620,8 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
             <div class="member">
               <div class="member-img">
-                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                <img src="/img/front/team/team-4.jpg" class="img-fluid" alt="">
+                <!--<img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">-->
                 <div class="social">
                   <a href=""><i class="icofont-twitter"></i></a>
                   <a href=""><i class="icofont-facebook"></i></a>
@@ -818,5 +846,5 @@
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
-
+  
 @endsection
