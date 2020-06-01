@@ -2,10 +2,16 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Usuario extends Model
+//use Illuminate\Database\Eloquent\Model;
+
+class Usuario extends Authenticatable
 {
+    use Notifiable;
+
 	/**
      * The attributes that are mass assignable.
      *
@@ -19,7 +25,7 @@ class Usuario extends Model
     	'usuDireccion',
     	'usuActivo',
     	'usuTipoUsuario',
-
+        'usuContrasena', 
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -27,7 +33,7 @@ class Usuario extends Model
      * @var array
      */
     protected $hidden = [
-        'usuContrasena', 
+        
         'remember_token',
     ];
 
@@ -41,4 +47,15 @@ class Usuario extends Model
         'email_verified_at' => 'datetime',
     ];
     */
+    /*
+    public function setPasswordAttribute($valor){
+        if(!empty($valor)){
+            $this->attributes['usuContrasena'] = \Hash::make($valor);
+        }
+    }
+    */
+    public function getAuthPassword()
+    {
+        return $this->usuContrasena;
+    }
 }

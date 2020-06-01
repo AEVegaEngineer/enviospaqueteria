@@ -24,8 +24,15 @@ class LogRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required',
-            'password' => 'required',
+            'usuEmail' => 'required',
+            'usuContrasena' => 'required',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'usuEmail.required' => 'El email del usuario es requerido',
+            'usuContrasena.required' => 'La contrasena de usuario es requerida',
         ];
     }
 }

@@ -26,10 +26,10 @@ class UsuarioCreateRequest extends FormRequest
         return [            
             'usuEmail' => 'required|unique:usuarios',
             'usuDni' => 'required|unique:usuarios',
-            'usuNombres' => 'required',
-            'usuApellidos' => 'required',       
-            'usuDireccion' => 'required',    
-            'usuTipoUsuario' => 'required',       
+            'usuNombre' => 'required',
+            'usuApellido' => 'required',       
+            'usuDireccion' => 'required',       
+            'usuContrasena' => 'required',  
         ];
     }
     public function messages()
@@ -41,13 +41,13 @@ class UsuarioCreateRequest extends FormRequest
             'usuDni.required' => 'El DNI del usuario es requerido',
             'usuDni.unique' => 'El dni del usuario ya se encuentra registrado',
 
-            'usuNombres.required' => 'Los nombres del usuario son requeridos',
+            'usuNombre.required' => 'Los nombres del usuario son requeridos',
 
-            'usuApellidos.required' => 'Los apellidos del usuario son requeridos',
+            'usuApellido.required' => 'Los apellidos del usuario son requeridos',
 
             'usuDireccion.required' => 'La dirección del usuario es requerida',
 
-            'usuTipoUsuario.required' => 'El tipo de usuario es requerido',
+            'usuContrasena.required' => 'La contrasena de usuario es requerida',
         ];
     }
 }

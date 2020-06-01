@@ -14,12 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front');
 });
 Route::resource('tipousuario', 'TipoUsuarioController');
+Route::resource('usuario', 'UsuarioController');
 
 // Log Controller
-Route::resource('log','LogController');
-Route::get('/login',['as' => 'log.index','uses' => 'LogController@index']);
-Route::post('/authLogin',[ 'as' => 'log.login','uses' => 'LogController@login']);
-Route::get('logout', 'LogController@logout');
+/*
+Route::resource('auth','AuthController');
+
+Route::get('/register', ['as' => 'auth.register','uses' => 'AuthController@register']);
+
+Route::get('/logout', 'AuthController@logout');
+*/
+Route::get('/login', 'AuthController@index');
+Route::post('/authLogin',[ 'as' => 'auth.login','uses' => 'AuthController@login']);
+Route::get('/register', 'AuthController@register');
+Route::post('/authStore',[ 'as' => 'auth.store','uses' => 'AuthController@store']);
+
+//Route::get('/home', 'HomeController@index')->name('home');
