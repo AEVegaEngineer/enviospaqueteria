@@ -10,22 +10,23 @@
   <meta content="web,paquetería,servicio,envios" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{ asset('img/front/favicon.png') }}" rel="icon">
-  <link href="{{ asset('img/front/apple-touch-icon.png') }}" rel="apple-touch-icon">
+  <link href="{{ asset('img/favicon.png') }}" rel="icon">
+  <link href="{{ asset('img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="{{ asset('css/front/aos.css') }}" rel="stylesheet" type="text/css" />
-  <link href="{{ asset('css/front/app.css') }}" rel="stylesheet" type="text/css" />
-  <link href="{{ asset('css/front/boxicons.min.css') }}" rel="stylesheet" type="text/css" />
-  <link href="{{ asset('css/front/icofont.min.css') }}" rel="stylesheet" type="text/css" />
-  <link href="{{ asset('css/front/owl.carousel.min.css') }}" rel="stylesheet" type="text/css" />
-  <link href="{{ asset('css/front/remixicon.css') }}" rel="stylesheet" type="text/css" />  
-  <link href="{{ asset('css/front/venobox.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ asset('css/aos.css') }}" rel="stylesheet" type="text/css" />
+  <!--<link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />-->
+  <link href="{{ asset('css/boxicons.min.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ asset('css/icofont.min.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ asset('css/remixicon.css') }}" rel="stylesheet" type="text/css" />  
+  <link href="{{ asset('css/venobox.css') }}" rel="stylesheet" type="text/css" />
   <!-- Template Main CSS File -->
-  <link href="{{ asset('css/front/style.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
   <!--
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
@@ -173,17 +174,17 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <!--<link href="{{ asset('js/front/app.js') }}" rel="stylesheet" type="text/css" />-->
-  <script src="{{ asset('js/front/jquery.min.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/front/bootstrap.bundle.min.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/front/jquery.easing.min.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/front/validate.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/front/jquery.waypoints.min.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/front/counterup.min.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/front/venobox.min.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/front/owl.carousel.min.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/front/isotope.pkgd.min.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/front/aos.js') }}" type="text/js"></script>
+  <!--<link href="{{ asset('js/app.js') }}" rel="stylesheet" type="text/css" />-->
+  <script src="{{ asset('js/jquery.min.js') }}" type="text/js"></script>
+  <script src="{{ asset('js/bootstrap.bundle.min.js') }}" type="text/js"></script>
+  <script src="{{ asset('js/jquery.easing.min.js') }}" type="text/js"></script>
+  <script src="{{ asset('js/validate.js') }}" type="text/js"></script>
+  <script src="{{ asset('js/jquery.waypoints.min.js') }}" type="text/js"></script>
+  <script src="{{ asset('js/counterup.min.js') }}" type="text/js"></script>
+  <script src="{{ asset('js/venobox.min.js') }}" type="text/js"></script>
+  <script src="{{ asset('js/owl.carousel.min.js') }}" type="text/js"></script>
+  <script src="{{ asset('js/isotope.pkgd.min.js') }}" type="text/js"></script>
+  <script src="{{ asset('js/aos.js') }}" type="text/js"></script>
 
   <!--
   <script src="assets/vendor/jquery/jquery.min.js"></script>
@@ -199,7 +200,7 @@
   -->
 
   <!-- Template Main JS File -->
-  <script src="{{ asset('js/front/main.js') }}" type="text/js"></script>
+  <script src="{{ asset('js/main.js') }}" type="text/js"></script>
   <!--<script src="assets/js/main.js"></script>-->
 
 
