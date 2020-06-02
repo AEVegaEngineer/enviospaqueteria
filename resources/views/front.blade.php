@@ -6,48 +6,41 @@
   
   <section id="hero" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
-      <div class="row justify-content-center">
+      <div class="row justify-content-center mt-4">
         <div class="col-xl-7 col-lg-9 text-center">
-          <h1>One Page Bootstrap Website Template</h1>
-          <h2>We are team of talanted designers</h2>
+          <h1>EnviosYa</h1>
+          <h2>Tu delivery a tiempos inmejorables y calidad premium</h2>
         </div>
       </div>
       <div class="text-center">
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+        <a href="#about" class="btn-get-started scrollto">Obtené tu cotización ahora!</a>
       </div>
 
       <div class="row icon-boxes">
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
+        <div class="col-md-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
           <div class="icon-box">
             <div class="icon"><i class="ri-stack-line"></i></div>
-            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+            <h4 class="title"><a href="">Servicio para Personas</a></h4>
             <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="300">
+        <div class="col-md-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="300">
           <div class="icon-box">
-            <div class="icon"><i class="ri-palette-line"></i></div>
-            <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
+            <div class="icon"><i class="ri-stack-line"></i></div>
+            <h4 class="title"><a href="">Servicio para Comercios</a></h4>
             <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
+        <div class="col-md-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
           <div class="icon-box">
-            <div class="icon"><i class="ri-command-line"></i></div>
-            <h4 class="title"><a href="">Magni Dolores</a></h4>
+            <div class="icon"><i class="ri-stack-line"></i></div>
+            <h4 class="title"><a href="">Servicio para Shoppings</a></h4>
             <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="500">
-          <div class="icon-box">
-            <div class="icon"><i class="ri-fingerprint-line"></i></div>
-            <h4 class="title"><a href="">Nemo Enim</a></h4>
-            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-          </div>
-        </div>
 
       </div>
     </div>
@@ -63,8 +56,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>About Us</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. </p>
+          <h2>Sobre Nosotros</h2>
+          <p>Excelencia en traslados de mercancía y paquetería</p>
         </div>
 
         <div class="row content">
@@ -102,31 +95,24 @@
 
         <div class="row justify-content-end">
 
-          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+          <div class="col-lg-4 col-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <span data-toggle="counter-up">65</span>
-              <p>Happy Clients</p>
+              <p>Envíos realizados hasta ahora</p>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+          <div class="col-lg-4 col-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <span data-toggle="counter-up">85</span>
-              <p>Projects</p>
+              <p>Empresas registradas</p>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+          <div class="col-lg-4 col-6 offset-md-3 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <span data-toggle="counter-up">12</span>
-              <p>Years of experience</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <span data-toggle="counter-up">15</span>
-              <p>Awards</p>
+              <p>Particulares registrados</p>
             </div>
           </div>
 
