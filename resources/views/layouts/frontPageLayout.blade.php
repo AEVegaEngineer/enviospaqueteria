@@ -14,31 +14,23 @@
   <link href="{{ asset('img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
+  
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
+  
+  <!-- Template Main CSS File -->
+  
+  <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
+  
   <!-- Vendor CSS Files -->
+  
   <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-  <link href="{{ asset('css/aos.css') }}" rel="stylesheet" type="text/css" />
-  <!--<link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />-->
+  <link href="{{ asset('css/aos.css') }}" rel="stylesheet" type="text/css" /> 
   <link href="{{ asset('css/boxicons.min.css') }}" rel="stylesheet" type="text/css" />
   <link href="{{ asset('css/icofont.min.css') }}" rel="stylesheet" type="text/css" />
   <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css" />
   <link href="{{ asset('css/remixicon.css') }}" rel="stylesheet" type="text/css" />  
   <link href="{{ asset('css/venobox.css') }}" rel="stylesheet" type="text/css" />
-  <!-- Template Main CSS File -->
-  <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
-  <!--
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  -->
-  <!-- Template Main CSS File 
-  <link href="assets/css/style.css" rel="stylesheet">
-  -->
+  
   <!-- =======================================================
   * Template Name: OnePage - v2.0.0
   * Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
@@ -173,18 +165,25 @@
   <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
   <div id="preloader"></div>
 
+  <!-- Template Main JS File -->
+  <script type="text/javascript">
+    console.log("comenzando a cargar js");
+  </script>
+  
+
   <!-- Vendor JS Files -->
   <!--<link href="{{ asset('js/app.js') }}" rel="stylesheet" type="text/css" />-->
-  <script src="{{ asset('js/jquery.min.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/bootstrap.bundle.min.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/jquery.easing.min.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/validate.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/jquery.waypoints.min.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/counterup.min.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/venobox.min.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/owl.carousel.min.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/isotope.pkgd.min.js') }}" type="text/js"></script>
-  <script src="{{ asset('js/aos.js') }}" type="text/js"></script>
+  <script src="{{ asset('/js/jquery.min.js') }}" ></script>
+  <script src="{{ asset('/js/bootstrap.bundle.min.js') }}" ></script>
+  <script src="{{ asset('/js/jquery.easing.min.js') }}" ></script>
+  <script src="{{ asset('/js/validate.js') }}" ></script>
+  <script src="{{ asset('/js/jquery.waypoints.min.js') }}" ></script>
+  <script src="{{ asset('/js/counterup.min.js') }}" ></script>
+  <script src="{{ asset('/js/venobox.min.js') }}" ></script>
+  <script src="{{ asset('/js/owl.carousel.min.js') }}" ></script>
+  <script src="{{ asset('/js/isotope.pkgd.min.js') }}" ></script>
+  <script src="{{ asset('/js/aos.js') }}" ></script>
+  <script src="{{ asset('/js/main.js') }}"></script>
 
   <!--
   <script src="assets/vendor/jquery/jquery.min.js"></script>
@@ -199,8 +198,7 @@
   <script src="assets/vendor/aos/aos.js"></script>
   -->
 
-  <!-- Template Main JS File -->
-  <script src="{{ asset('js/main.js') }}" type="text/js"></script>
+  
   <!--<script src="assets/js/main.js"></script>-->
 
 
