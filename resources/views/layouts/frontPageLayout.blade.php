@@ -45,13 +45,13 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="index.html">EnviosYa</a></h1>
+      <h1 class="logo mr-auto"><a href="/">EnviosYa</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.html">Inicio</a></li>
+          <li class="active"><a href="#banner-inicio">Inicio</a></li>
           <li><a href="#about">Sobre Nosotros</a></li>
           <li><a href="#services">Servicios</a></li>
           <!--<li><a href="#portfolio">Portfolio</a></li>-->
@@ -80,8 +80,9 @@
 
         </ul>
       </nav><!-- .nav-menu -->
-
-      <a href="#about" class="get-started-btn scrollto">Comienza ya!</a>
+      <button type="button" class="get-started-btn scrollto" data-toggle="modal" data-target="#loginModal">
+        Comienza ya!
+      </button>
 
     </div>
   </header><!-- End Header -->
@@ -166,9 +167,6 @@
   <div id="preloader"></div>
 
   <!-- Template Main JS File -->
-  <script type="text/javascript">
-    console.log("comenzando a cargar js");
-  </script>
   
 
   <!-- Vendor JS Files -->
@@ -184,6 +182,7 @@
   <script src="{{ asset('/js/isotope.pkgd.min.js') }}" ></script>
   <script src="{{ asset('/js/aos.js') }}" ></script>
   <script src="{{ asset('/js/main.js') }}"></script>
+  <script src="{{ asset('/js/front.js') }}"></script>
 
   <!--
   <script src="assets/vendor/jquery/jquery.min.js"></script>

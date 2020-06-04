@@ -6,23 +6,25 @@
   
   <section id="hero" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
-      <div class="row justify-content-center mt-4">
+      <div class="row justify-content-center mt-4" id="banner-inicio">
         <div class="col-xl-7 col-lg-9 text-center">
           <h1>EnviosYa</h1>
           <h2>Tu delivery a tiempos inmejorables y calidad premium</h2>
         </div>
       </div>
       <div class="text-center">
-        <a href="#about" class="btn-get-started scrollto">Obtené tu cotización ahora!</a>
+        <a href="#" class="btn-get-started scrollto">Obtené tu cotización ahora!</a>
       </div>
 
       <div class="row icon-boxes">
         <div class="col-md-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
-          <div class="icon-box">
-            <div class="icon"><i class="ri-stack-line"></i></div>
-            <h4 class="title"><a href="">Servicio para Personas</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-          </div>
+          <a href="#">
+            <div class="icon-box">
+              <div class="icon"><i class="ri-stack-line"></i></div>
+              <h4 class="title">Servicio para Personas</h4>
+              <p class="description">Servicio de paquetería y mensajería a domicilio para personas naturales</p>
+            </div>
+          </a>
         </div>
 
         <div class="col-md-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="300">
@@ -95,21 +97,21 @@
 
         <div class="row justify-content-end">
 
-          <div class="col-lg-4 col-6 d-md-flex align-items-md-stretch">
+          <div class="col-md-4 col-12 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <span data-toggle="counter-up">65</span>
               <p>Envíos realizados hasta ahora</p>
             </div>
           </div>
 
-          <div class="col-lg-4 col-6 d-md-flex align-items-md-stretch">
+          <div class="col-md-4 col-12 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <span data-toggle="counter-up">85</span>
               <p>Empresas registradas</p>
             </div>
           </div>
 
-          <div class="col-lg-4 col-6 offset-md-3 d-md-flex align-items-md-stretch">
+          <div class="col-md-4 col-12 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <span data-toggle="counter-up">12</span>
               <p>Particulares registrados</p>
@@ -865,5 +867,26 @@
     <!-- End Contact Section -->
 
   </main><!-- End #main -->
+  <!-- Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Iniciar Sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   
 @endsection
