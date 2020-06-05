@@ -183,6 +183,7 @@
   <script src="{{ asset('/js/aos.js') }}" ></script>
   <script src="{{ asset('/js/main.js') }}"></script>
   <script src="{{ asset('/js/front.js') }}"></script>
+  <script src="{{ asset('/js/login-register.js') }}"></script>
 
   <!--
   <script src="assets/vendor/jquery/jquery.min.js"></script>
