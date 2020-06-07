@@ -2,6 +2,24 @@
 
 @section('content')
 
+<!-- ======= Alertas ======= -->
+@if ($errors->any())
+  <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times</span></button>
+    <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+  </div>
+@endif
+@if(Session::has('message'))
+  <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times</span></button>
+    {{Session::get('message')}}
+  </div>
+@endif
+
 <!-- ======= Hero Section ======= -->
 
 <section id="hero" class="d-flex align-items-center">
@@ -868,167 +886,7 @@
 
 </main><!-- End #main -->
 <!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Registro</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-                <div class="form-group">
-          <label for="usuTipoUsuario">Tipo de usuario:</label><br>
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary">
-            <input type="radio" name="usuTipoUsuario" id="personaRadio" autocomplete="off" value="0">
-            Persona
-            </label>
-            <label class="btn btn-warning">
-            <input type="radio" name="usuTipoUsuario" id="comercioRadio" autocomplete="off" value="1"> Comercio
-            </label>
-            <label class="btn btn-success">
-            <input type="radio" name="usuTipoUsuario" id="shoppingRadio" autocomplete="off" value="2"> Shopping
-            </label>
-          </div>
-        </div>
-        <div id="registerFormPersonas">
-          <form method="post" action="{{ route('auth.store') }}">
-            
-            <div class="form-group">
-              @csrf
-              <label for="usuEmail">Correo Electrónico:</label>
-              <input type="email" class="form-control" name="usuEmail" id="usuEmail"/>
-            </div>
-            <div class="form-group">
-              <label for="usuContrasena">Contraseña:</label>
-              <input type="password" class="form-control" name="usuContrasena" id="usuContrasena"/>
-            </div>
-
-            <div class="form-group">
-              <label for="usuContrasenaConfirm">Confirme Contraseña:</label>
-              <input type="password" class="form-control" name="usuContrasenaConfirm" id="usuContrasenaConfirm"/>
-            </div>
-
-            <div class="form-group">
-              <label for="usuNombre">Nombres:</label>
-              <input type="text" class="form-control" name="usuNombre" id="usuNombre"/>
-            </div>
-
-            <div class="form-group">
-              <label for="usuApellido">Apellidos:</label>
-              <input type="text" class="form-control" name="usuApellido" id="usuApellido"/>
-            </div>
-
-            <div class="form-group">
-              <label for="usuDni">DNI:</label>
-              <input type="text" class="form-control" name="usuDni" id="usuDni"/>
-            </div>
-
-            <div class="form-group">
-              <label for="usuDireccion">Dirección:</label>
-              <input type="text" class="form-control" name="usuDireccion" id="usuDireccion"/>
-            </div>
-
-            <div class="form-group">
-              <label for="usuTelefono">Teléfono:</label>
-              <input type="text" class="form-control" name="usuTelefono" id="usuTelefono"/>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Crear Usuario</button>
-          </form>
-        </div>
-        <div id="registerFormComercios">
-          <form method="post" action="{{ route('auth.store') }}">
-            
-            <div class="form-group">
-              @csrf
-              <label for="usuEmail">Correo Electrónico:</label>
-              <input type="email" class="form-control" name="usuEmail" id="usuEmail"/>
-            </div>
-            <div class="form-group">
-              <label for="usuContrasena">Contraseña:</label>
-              <input type="password" class="form-control" name="usuContrasena" id="usuContrasena"/>
-            </div>
-
-            <div class="form-group">
-              <label for="usuContrasenaConfirm">Confirme Contraseña:</label>
-              <input type="password" class="form-control" name="usuContrasenaConfirm" id="usuContrasenaConfirm"/>
-            </div>
-
-            <div class="form-group">
-              <label for="comCuit">CUIT del Comercio:</label>
-              <input type="text" class="form-control" name="comCuit" id="comCuit"/>
-            </div>
-
-            <div class="form-group">
-              <label for="comNombre">Nombre del Comercio:</label>
-              <input type="text" class="form-control" name="comNombre" id="comNombre"/>
-            </div>
-
-            <div class="form-group">
-              <label for="usuDireccion">Dirección:</label>
-              <input type="text" class="form-control" name="usuDireccion" id="usuDireccion"/>
-            </div>
-
-            <div class="form-group">
-              <label for="usuTelefono">Teléfono:</label>
-              <input type="text" class="form-control" name="usuTelefono" id="usuTelefono"/>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Crear Usuario</button>
-          </form>
-        </div>
-        <div id="registerFormShoppings">
-          <form method="post" action="{{ route('auth.store') }}">
-            
-            <div class="form-group">
-              @csrf
-              <label for="usuEmail">Correo Electrónico:</label>
-              <input type="email" class="form-control" name="usuEmail" id="usuEmail"/>
-            </div>
-            <div class="form-group">
-              <label for="usuContrasena">Contraseña:</label>
-              <input type="password" class="form-control" name="usuContrasena" id="usuContrasena"/>
-            </div>
-
-            <div class="form-group">
-              <label for="usuContrasenaConfirm">Confirme Contraseña:</label>
-              <input type="password" class="form-control" name="usuContrasenaConfirm" id="usuContrasenaConfirm"/>
-            </div>
-
-            <div class="form-group">
-              <label for="shopNombre">Nombre del Shopping:</label>
-              <input type="text" class="form-control" name="shopNombre" id="shopNombre"/>
-            </div>
-
-            <div class="form-group">
-              <label for="shopNombre">CUIT del Shopping:</label>
-              <input type="text" class="form-control" name="shopNombre" id="shopNombre"/>
-            </div>
-
-            <div class="form-group">
-              <label for="usuDireccion">Dirección:</label>
-              <input type="text" class="form-control" name="usuDireccion" id="usuDireccion"/>
-            </div>
-
-            <div class="form-group">
-              <label for="usuTelefono">Teléfono:</label>
-              <input type="text" class="form-control" name="usuTelefono" id="usuTelefono"/>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Crear Usuario</button>
-          </form>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Iniciar Sesión</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+@include('auth.register')
+@include('auth.login')
 
 @endsection

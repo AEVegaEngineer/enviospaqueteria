@@ -24,12 +24,10 @@ class UsuarioCreateRequest extends FormRequest
     public function rules()
     {
         return [            
-            'usuEmail' => 'required|unique:usuarios',
-            'usuDni' => 'required|unique:usuarios',
-            'usuNombre' => 'required',
-            'usuApellido' => 'required',       
+            'usuEmail' => 'required|unique:usuarios',            
+            'usuTelefono' => 'required',            
             'usuDireccion' => 'required',       
-            'usuContrasena' => 'required',  
+            'usuContrasena' => 'required',
         ];
     }
     public function messages()
@@ -38,12 +36,7 @@ class UsuarioCreateRequest extends FormRequest
             'usuEmail.required' => 'El email del usuario es requerido',
             'usuEmail.unique' => 'El email del usuario ya se encuentra registrado',
 
-            'usuDni.required' => 'El DNI del usuario es requerido',
-            'usuDni.unique' => 'El dni del usuario ya se encuentra registrado',
-
-            'usuNombre.required' => 'Los nombres del usuario son requeridos',
-
-            'usuApellido.required' => 'Los apellidos del usuario son requeridos',
+            'usuTelefono.required' => 'El teléfono del usuario es requeridos',
 
             'usuDireccion.required' => 'La dirección del usuario es requerida',
 

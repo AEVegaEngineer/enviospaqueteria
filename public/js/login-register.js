@@ -5,28 +5,28 @@ jQuery(function($){
     //$('[data-toggle="tooltip"]').tooltip();
 
     $('#personaRadio').click(function(){
-        if($('#shoppingRadio').is(":visible")){
+        if($('#registerFormShoppings').is(":visible")){
             $('#registerFormPersonas').slideToggle();
             $("#registerFormShoppings").slideToggle();
-        } else if($('#comercioRadio').is(":visible")){
+        } else if($('#registerFormComercios').is(":visible")){
             $('#registerFormComercios').slideToggle();
             $('#registerFormPersonas').slideToggle();
         }
     });
     $('#comercioRadio').click(function(){
-        if($('#personaRadio').is(":visible")){
+        if($('#registerFormPersonas').is(":visible")){
             $('#registerFormComercios').slideToggle();
             $("#registerFormPersonas").slideToggle();
-        } else if($('#shoppingRadio').is(":visible")){
+        } else if($('#registerFormShoppings').is(":visible")){
             $('#registerFormShoppings').slideToggle();
             $('#registerFormComercios').slideToggle();
         }
     });
     $('#shoppingRadio').click(function(){
-        if($('#personaRadio').is(":visible")){
+        if($('#registerFormPersonas').is(":visible")){
             $('#registerFormPersonas').slideToggle();
             $("#registerFormShoppings").slideToggle();
-        } else if($('#comercioRadio').is(":visible")){
+        } else if($('#registerFormComercios').is(":visible")){
             $('#registerFormShoppings').slideToggle();
             $('#registerFormComercios').slideToggle();
         }

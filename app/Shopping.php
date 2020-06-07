@@ -14,6 +14,6 @@ class Shopping extends Model
     protected $fillable = [    	
     	'shopNombre', 
     	'shopCuit',
-    	'shopDireccion',
+    	'shopUsuarioId'
     ];
 }

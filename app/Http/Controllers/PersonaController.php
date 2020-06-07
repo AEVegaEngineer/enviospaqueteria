@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-use App\Http\Requests\UsuarioCreateRequest;
+use App\Http\Requests\PersonaCreateRequest;
+use App\Persona;
 use App\Usuario;
+use Auth;
+use Mail;
+use Session;
+use Redirect;
 
-class UsuarioController extends Controller
+class PersonaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +22,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuario::all();
-        return view('usuario.index', compact('usuarios'));
+        //
     }
 
     /**
@@ -27,8 +32,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
-        //return "cosas";
+        //
     }
 
     /**
@@ -37,26 +41,41 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UsuarioCreateRequest $request)
-    {
-        return $request;
-        /*         
-        Usuario::create([            
+    public function store(PersonaCreateRequest $request)
+    {  
+        //return $request;        
+        
+        $hashedPass = Hash::make($request['usuContrasena']);
+        
+        $usuarioRegistrado = Usuario::create([            
             'usuEmail' => $request['usuEmail'],
-            'usuNombre' => $request['usuNombre'],
-            'usuApellido' => $request['usuApellido'],
-            'usuActivo' => $request['usuActivo'],
-            'usuDni' => $request['usuDni'],
+            'usuActivo' => 1,
+            'usuTelefono' => $request['usuTelefono'],
             'usuDireccion' => $request['usuDireccion'],
-            'usuActivo' => $request['usuActivo'],
-            'usuTipoUsuario' => $request['usuTipoUsuario'],
-            'usuContrasena' => $request['usuContrasena'],
-            
-            ]);
-        */
-        //$show = Usuario::create($request);   
-        //return redirect('/usuario')->with('success', 'El usuario ha sido creado correctamente!');
-        //return redirect('/');
+            'usuContrasena' => $hashedPass,
+            'usuTipoUsuario' => 1,
+        ]);        
+        
+        $personaRegistrada = Persona::create([
+            'perNombres' => $request['perNombre'],
+            'perApellidos' => $request['perApellido'],
+            'perDni' => $request['perDni'],
+            'perUsuarioId' => $usuarioRegistrado->id,
+        ]);
+        //con Auth::attempt siempre es necesario pasarle 'password' y 
+        //poner un getter en el modelo del usuario
+        if(Auth::attempt([
+            'usuEmail' => $request['usuEmail'], 
+            'password'=>$request['usuContrasena']
+        ])){
+            Session::flash('messsage','Usted ha iniciado sesión correctamente!');                   
+        } 
+        else
+        {
+            Session::flash('messsage','Ha ocurrido un error con el registro!');                 
+        } 
+        return view('front'); 
+        
     }
 
     /**
@@ -67,9 +86,7 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        return $user;
-        //return view('usuario.edit',['user'=>$user]);
+        //
     }
 
     /**

@@ -1,39 +1,33 @@
-@extends('layouts.frontLayout')
-
-@section('content')
-<style>
-  .uper {
-    margin-top: 40px;
-  }
-</style>
-<div class="card uper">
-  <div class="card-header">
-    Login
-  </div>
-  <div class="card-body">
-    @if ($errors->any())
-      <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-      </div><br />
-    @endif
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Iniciar Sesión</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
       <form method="post" action="{{ route('auth.login') }}">
+        <div class="modal-body">
           <div class="form-group">
-              @csrf
-              <label for="usuEmail">Correo Electrónico:</label>
-              <input type="email" class="form-control" name="usuEmail" id="usuEmail"/>
-          </div>
-
-          <div class="form-group">
-              <label for="usuContrasena">Contraseña:</label>
-              <input type="password" class="form-control" name="usuContrasena" id="usuContrasena"/>
-          </div>
-
-          <button type="submit" class="btn btn-primary">Inicia Sesión</button>
-      </form>
+            @csrf          
+            <div class="row">
+              <div class="col-md-12">
+                <label for="usuEmail">Email:</label>
+                <input type="email" class="form-control" name="usuEmail" id="usuEmail"/>
+              </div>
+              <div class="col-md-12">
+                <label for="usuContrasena">Contraseña:</label>
+                <input type="password" class="form-control" name="usuContrasena" id="usuContrasena"/>
+              </div>            
+            </div> 
+          </div>         
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Entrar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        </div>
+      </form>      
+    </div>
   </div>
 </div>
-@endsection

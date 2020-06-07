@@ -77,11 +77,22 @@
           </li>
           -->
           <li><a href="#contact">Contácto</a></li>
+          <?php if (Auth::user() !== null){ ?>
+          <li class="drop-down"><a href="">Mi Perfil</a>
+            <ul>
+              <li><a href="#" class="btn btn-info">Ver Perfil</a></li>
+              <li><a href="#" class="btn btn-secondary">Cerrar Sesión</a></li>
+            </ul>
+          </li>
+          <?php } ?>
 
         </ul>
       </nav><!-- .nav-menu -->
-      <button type="button" class="get-started-btn scrollto" data-toggle="modal" data-target="#loginModal">
+      <button type="button" class="get-started-btn scrollto" data-toggle="modal" data-target="#registerModal">
         Comienza ya!
+      </button>
+      <button type="button" class="get-started-btn" data-toggle="modal" data-target="#loginModal">
+        Iniciar Sesión
       </button>
 
     </div>

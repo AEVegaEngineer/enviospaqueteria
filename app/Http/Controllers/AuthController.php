@@ -41,7 +41,8 @@ class AuthController extends Controller
         ])){
             //return Redirect::to('admin');
             Session::flash('status','Usted ha iniciado sesión correctamente!');
-            return view('welcome');
+            return "logged";
+            //return view('welcome');
         
         }/*else if(Auth::attempt(['name' => $request['email'], 'password'=>$request['password']])){
             return Redirect::to('admin');

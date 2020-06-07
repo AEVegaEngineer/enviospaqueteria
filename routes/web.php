@@ -16,8 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('front');
 });
+
 Route::resource('tipousuario', 'TipoUsuarioController');
 Route::resource('usuario', 'UsuarioController');
+Route::resource('persona', 'PersonaController');
+Route::resource('comercio', 'ComercioController');
+Route::resource('shopping', 'ShoppingController');
 
 // Log Controller
 /*
@@ -27,9 +31,6 @@ Route::get('/register', ['as' => 'auth.register','uses' => 'AuthController@regis
 
 Route::get('/logout', 'AuthController@logout');
 */
-Route::get('/login', 'AuthController@index');
-Route::post('/authLogin',[ 'as' => 'auth.login','uses' => 'AuthController@login']);
-Route::get('/register', 'AuthController@register');
-Route::post('/authStore',[ 'as' => 'auth.store','uses' => 'AuthController@store']);
+Route::post('/autenticacion',[ 'as' => 'auth.login','uses' => 'AuthController@login']);
 
 //Route::get('/home', 'HomeController@index')->name('home');

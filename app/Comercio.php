@@ -14,6 +14,6 @@ class Comercio extends Model
     protected $fillable = [    	
     	'comNombre', 
     	'comCuit',
-    	'comDireccion',
+    	'comUsuarioId'
     ];
 }
