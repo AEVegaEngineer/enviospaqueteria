@@ -68,13 +68,13 @@ class PersonaController extends Controller
             'usuEmail' => $request['usuEmail'], 
             'password'=>$request['usuContrasena']
         ])){
-            Session::flash('messsage','Usted ha iniciado sesión correctamente!');                   
+            Session::flash('messsage-success','Usted se ha registrado correctamente!');                   
         } 
         else
         {
-            Session::flash('messsage','Ha ocurrido un error con el registro!');                 
+            Session::flash('messsage-error','Ha ocurrido un error con el registro!');                 
         } 
-        return view('front'); 
+        return view('dashboard'); 
         
     }
 

@@ -33,4 +33,8 @@ Route::get('/logout', 'AuthController@logout');
 */
 Route::post('/autenticacion',[ 'as' => 'auth.login','uses' => 'AuthController@login']);
 
+Route::get('dashboard', 'FrontController@dashboard');
+
+Route::get('logout', 'LogController@logout');
+
 //Route::get('/home', 'HomeController@index')->name('home');

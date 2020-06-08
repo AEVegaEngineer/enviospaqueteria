@@ -40,26 +40,12 @@ class AuthController extends Controller
             'password'=>$request['usuContrasena']
         ])){
             //return Redirect::to('admin');
-            Session::flash('status','Usted ha iniciado sesión correctamente!');
-            return "logged";
-            //return view('welcome');
+            Session::flash('message-success','Usted ha iniciado sesión correctamente!');           
+            return view('dashboard');
         
-        }/*else if(Auth::attempt(['name' => $request['email'], 'password'=>$request['password']])){
-            return Redirect::to('admin');
-
-        }*/
-        /*
-        $errors = array();
-        $errors = ["errors" => ["Los datos ingresados son incorrectos"]];
-        array_push($errors, );
-        return view('auth.login')->with($errors);
-        */
-        return 'Los datos ingresados son incorrectos';
-        /*
+        }
         Session::flash('message-error','Los datos ingresados son incorrectos');
-        return Redirect::to('/');
-        */
-        //return redirect('/tipousuario');
+        return view('front');        
     }
 
     /**

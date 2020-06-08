@@ -3,6 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
+use App\Http\Requests\ShoppingCreateRequest;
+use App\Shopping;
+use App\Usuario;
+use Auth;
+use Mail;
+use Session;
+use Redirect;
 
 class ShoppingController extends Controller
 {
@@ -32,9 +41,37 @@ class ShoppingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ShoppingCreateRequest $request)
     {
-        //
+        $hashedPass = Hash::make($request['usuContrasena']);
+        
+        $usuarioRegistrado = Usuario::create([            
+            'usuEmail' => $request['usuEmail'],
+            'usuActivo' => 1,
+            'usuTelefono' => $request['usuTelefono'],
+            'usuDireccion' => $request['usuDireccion'],
+            'usuContrasena' => $hashedPass,
+            'usuTipoUsuario' => 1,
+        ]);        
+        
+        $shoppingRegistrada = Shopping::create([
+            'shopNombres' => $request['shopNombres'],
+            'shopCuil' => $request['shopCuil'],
+            'shopUsuarioId' => $usuarioRegistrado->id,
+        ]);
+        //con Auth::attempt siempre es necesario pasarle 'password' y 
+        //poner un getter en el modelo del usuario
+        if(Auth::attempt([
+            'usuEmail' => $request['usuEmail'], 
+            'password'=>$request['usuContrasena']
+        ])){
+            Session::flash('messsage-success','Usted se ha registrado correctamente!');
+        } 
+        else
+        {
+            Session::flash('messsage-error','Ha ocurrido un error con el registro!');
+        } 
+        return view('dashboard'); 
     }
 
     /**
