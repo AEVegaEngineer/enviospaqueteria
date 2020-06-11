@@ -30,7 +30,7 @@
             {{Session::get('message-error')}}
           </div>
         @endif
-          <form method="post" action="{{ route('auth.login') }}">
+          <form method="post" action="{{ route('auth.login') }}" class="php-email-form">
               <div class="form-group">
                   @csrf              
                   <label for="usuEmail">Email:</label>

@@ -32,14 +32,14 @@ jQuery(function($){
         }
     });
 });
-$(document).ready(function(){
+$(document).ready(function(){    
     validarInputPassword();
     
 });
 function validarInputPassword()
 {
-    var password = document.getElementById("password")
-      , confirm_password = document.getElementById("confirm");
+    var password = document.getElementById("usuContrasena")
+      , confirm_password = document.getElementById("usuContrasenaConfirm");
 
     function validatePassword(){
       if(password.value != confirm_password.value) {

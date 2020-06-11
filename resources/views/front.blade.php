@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="text-center">
-      <a href="#" class="btn-get-started scrollto">Obtené tu cotización ahora!</a>
+      <a href="#" class="btn-get-started scrollto text-decoration-none">Obtené tu cotización ahora!</a>
     </div>
 
     <div class="row icon-boxes">
@@ -886,7 +886,4 @@
 
 </main><!-- End #main -->
 <!-- Modal -->
-@include('auth.register')
-@include('auth.login')
-
 @endsection

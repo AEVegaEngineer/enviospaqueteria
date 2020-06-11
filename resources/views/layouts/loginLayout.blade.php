@@ -12,6 +12,7 @@
     @yield('content')
   </div>
   <script src="{{ asset('js/app.js') }}" type="text/js"></script>
+  <script src="{{ asset('/js/jquery.min.js') }}" ></script>
   <script src="{{ asset('js/login-register.js') }}"></script>
 </body>
 </html>

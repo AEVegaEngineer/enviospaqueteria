@@ -51,12 +51,12 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="#banner-inicio">Inicio</a></li>          
-          <li><a href="#">Contratar</a></li>
-          <li><a href="#">Mis Envíos</a></li>          
-          <li><a href="#">Contácto</a></li>
+          <li class="active text-decoration-none"><a href="#banner-inicio">Inicio</a></li>          
+          <li class="text-decoration-none"><a href="#">Contratar</a></li>
+          <li class="text-decoration-none"><a href="#">Mis Envíos</a></li>          
+          <li class="text-decoration-none"><a href="#">Contácto</a></li>
           <?php if (Auth::user() !== null){ ?>
-          <li class="drop-down"><a href="">Mi Perfil</a>
+          <li class="drop-down text-decoration-none"><a href="">Mi Perfil</a>
             <ul>
               <li><a href="#">Ver Perfil</a></li>
               <li><a href="{{ route('auth.logout') }}">Cerrar Sesión</a></li>

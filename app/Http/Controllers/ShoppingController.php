@@ -55,7 +55,7 @@ class ShoppingController extends Controller
         ]);        
         
         $shoppingRegistrada = Shopping::create([
-            'shopNombres' => $request['shopNombres'],
+            'shopNombre' => $request['shopNombre'],
             'shopCuil' => $request['shopCuil'],
             'shopUsuarioId' => $usuarioRegistrado->id,
         ]);
@@ -69,9 +69,10 @@ class ShoppingController extends Controller
         } 
         else
         {
+            $request->flash();
             Session::flash('messsage-error','Ha ocurrido un error con el registro!');
         } 
-        return view('dashboard'); 
+        return view('dashboards.shopping'); 
     }
 
     /**

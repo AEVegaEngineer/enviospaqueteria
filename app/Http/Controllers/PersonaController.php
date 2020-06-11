@@ -72,9 +72,10 @@ class PersonaController extends Controller
         } 
         else
         {
+            $request->flash();
             Session::flash('messsage-error','Ha ocurrido un error con el registro!');                 
         } 
-        return view('dashboard'); 
+        return view('dashboards.persona'); 
         
     }
 

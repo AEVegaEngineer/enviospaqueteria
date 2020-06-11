@@ -54,9 +54,9 @@ class ComercioController extends Controller
             'usuTipoUsuario' => 1,
         ]);        
         
-        $shoppingRegistrada = Comercio::create([
-            'comNombres' => $request['comNombres'],
-            'comCuil' => $request['comCuil'],
+        $comercioRegistrado = Comercio::create([
+            'comNombre' => $request['comNombre'],
+            'comCuit' => $request['comCuit'],
             'comUsuarioId' => $usuarioRegistrado->id,
         ]);
         //con Auth::attempt siempre es necesario pasarle 'password' y 
@@ -69,9 +69,10 @@ class ComercioController extends Controller
         } 
         else
         {
+            $request->flash();
             Session::flash('messsage-error','Ha ocurrido un error con el registro!');
         } 
-        return view('dashboard'); 
+        return view('dashboards.comercio'); 
     }
 
     /**

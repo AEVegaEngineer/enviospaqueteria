@@ -35,14 +35,14 @@
             <label for="usuTipoUsuario">Seleccione el tipo de usuario:</label><br>
             <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">            
               <label class="btn btn-primary">
-              <input type="radio" id="personaRadio" autocomplete="off" value="0">
+              <input required="" type="radio" id="personaRadio" autocomplete="off" value="0">
               Persona
               </label>
               <label class="btn btn-warning">
-              <input type="radio" id="comercioRadio" autocomplete="off" value="1"> Comercio
+              <input required="" type="radio" id="comercioRadio" autocomplete="off" value="1"> Comercio
               </label>
               <label class="btn btn-success">
-              <input type="radio" id="shoppingRadio" autocomplete="off" value="2"> Shopping
+              <input required="" type="radio" id="shoppingRadio" autocomplete="off" value="2"> Shopping
               </label>
             </div>
           </div>
@@ -54,43 +54,45 @@
               <div class="row">
                 <div class="col-md-12">
                   <label for="usuEmail">Correo Electrónico:</label>
-                  <input type="email" class="form-control" name="usuEmail" id="usuEmail"/>
+                  <input required="" type="email" class="form-control" name="usuEmail" id="usuEmail" pattern="([a-zA-Z0-9]){2,}@([a-zA-Z0-9]){2,}\.([a-zA-Z]){2,}" >
+                  <!--oninvalid="this.setCustomValidity('Se requiere formato de correo electrónico válido')"
+       onvalid="this.setCustomValidity('')"-->
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <label for="usuContrasena">Contraseña:</label>
-                  <input type="password" class="form-control" name="usuContrasena" id="usuContrasena"/>
+                  <input required="" type="password" class="form-control" name="usuContrasena" id="usuContrasena"/>
                 </div>
                 <div class="col-md-6">
                   <label for="usuContrasenaConfirm">Confirme Contraseña:</label>
-                  <input type="password" class="form-control" name="usuContrasenaConfirm" id="usuContrasenaConfirm"/>
+                  <input required="" type="password" class="form-control" name="usuContrasenaConfirm" id="usuContrasenaConfirm"/>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <label for="perNombre">Nombres:</label>
-                  <input type="text" class="form-control" name="perNombre" id="perNombre"/>
+                  <input required="" type="text" class="form-control" name="perNombre" id="perNombre"/>
                 </div>
                 <div class="col-md-6">
                   <label for="perApellido">Apellidos:</label>
-                  <input type="text" class="form-control" name="perApellido" id="perApellido"/>
+                  <input required="" type="text" class="form-control" name="perApellido" id="perApellido"/>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <label for="perDni">DNI:</label>
-                  <input type="text" class="form-control" name="perDni" id="perDni"/>
+                  <input required="" type="number" class="form-control" name="perDni" id="perDni"/>
                 </div>
                 <div class="col-md-6">
                   <label for="usuTelefono">Teléfono:</label>
-                  <input type="text" class="form-control" name="usuTelefono" id="usuTelefono"/>
+                  <input required="" type="number" class="form-control" name="usuTelefono" id="usuTelefono"/>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
                   <label for="usuDireccion">Dirección:</label>
-                  <input type="text" class="form-control" name="usuDireccion" id="usuDireccion"/>
+                  <input required="" type="text" class="form-control" name="usuDireccion" id="usuDireccion"/>
                 </div>
               </div>
             </div>
@@ -104,33 +106,33 @@
               <div class="row">
                 <div class="col-md-12">
                   <label for="usuEmail">Correo Electrónico:</label>
-                  <input type="email" class="form-control" name="usuEmail" id="usuEmail"/>
+                  <input required="" type="email" class="form-control" name="usuEmail" id="usuEmail" pattern="([a-zA-Z0-9]){2,}@([a-zA-Z0-9]){2,}\.([a-zA-Z]){2,}" >
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <label for="usuContrasena">Contraseña:</label>
-                  <input type="password" class="form-control" name="usuContrasena" id="usuContrasena"/>
+                  <input required="" type="password" class="form-control" name="usuContrasena" id="usuContrasena"/>
                 </div>
                 <div class="col-md-6">
                   <label for="usuContrasenaConfirm">Confirme Contraseña:</label> 
-                  <input type="password" class="form-control" name="usuContrasenaConfirm" id="usuContrasenaConfirm"/>             
+                  <input required="" type="password" class="form-control" name="usuContrasenaConfirm" id="usuContrasenaConfirm"/>             
                 </div>
               </div>              
               <div class="row">
                 <div class="col-md-6">
                   <label for="comCuit">CUIT del Comercio:</label> 
-                  <input type="text" class="form-control" name="comCuit" id="comCuit"/>            
+                  <input required="" type="number" class="form-control" name="comCuit" id="comCuit" value="{{old('comCuit')}}" />            
                 </div>
                 <div class="col-md-6">
                   <label for="comNombre">Nombre del Comercio:</label>
-                  <input type="text" class="form-control" name="comNombre" id="comNombre"/>
+                  <input required="" type="text" class="form-control" name="comNombre" id="comNombre"/>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <label for="usuTelefono">Teléfono:</label>              
-                  <input type="text" class="form-control" name="usuTelefono" id="usuTelefono"/>
+                  <input required="" type="number" class="form-control" name="usuTelefono" id="usuTelefono"/>
                 </div>
                 <div class="col-md-6">
                   
@@ -139,7 +141,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <label for="usuDireccion">Dirección:</label>
-                  <input type="text" class="form-control" name="usuDireccion" id="usuDireccion"/>
+                  <input required="" type="text" class="form-control" name="usuDireccion" id="usuDireccion"/>
                 </div>
               </div>              
             </div>           
@@ -154,33 +156,33 @@
               <div class="row">
                 <div class="col-md-12">
                   <label for="usuEmail">Correo Electrónico:</label>
-                  <input type="email" class="form-control" name="usuEmail" id="usuEmail"/>
+                  <input required="" type="email" class="form-control" name="usuEmail" id="usuEmail" pattern="([a-zA-Z0-9]){2,}@([a-zA-Z0-9]){2,}\.([a-zA-Z]){2,}" >
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <label for="usuContrasena">Contraseña:</label>
-                  <input type="password" class="form-control" name="usuContrasena" id="usuContrasena"/>
+                  <input required="" type="password" class="form-control" name="usuContrasena" id="usuContrasena"/>
                 </div>
                 <div class="col-md-6">
                   <label for="usuContrasenaConfirm">Confirme Contraseña:</label>   
-                  <input type="password" class="form-control" name="usuContrasenaConfirm" id="usuContrasenaConfirm"/>           
+                  <input required="" type="password" class="form-control" name="usuContrasenaConfirm" id="usuContrasenaConfirm"/>           
                 </div>
               </div>              
               <div class="row">
                 <div class="col-md-6">
                   <label for="shopCuit">CUIT del Shopping:</label> 
-                  <input type="text" class="form-control" name="shopCuit" id="shopCuit"/>
+                  <input required="" type="number" class="form-control" name="shopCuit" id="shopCuit"/>
                 </div>
                 <div class="col-md-6">
                   <label for="shopNombre">Nombre del Shopping:</label>
-                  <input type="text" class="form-control" name="shopNombre" id="shopNombre"/>
+                  <input required="" type="text" class="form-control" name="shopNombre" id="shopNombre"/>
                 </div>
               </div>              
               <div class="row">
                 <div class="col-md-6">
                   <label for="usuTelefono">Teléfono:</label>   
-                  <input type="text" class="form-control" name="usuTelefono" id="usuTelefono"/>
+                  <input required="" type="number" class="form-control" name="usuTelefono" id="usuTelefono"/>
                 </div>
                 <div class="col-md-6">
                   
@@ -189,7 +191,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <label for="usuDireccion">Dirección:</label>
-                  <input type="text" class="form-control" name="usuDireccion" id="usuDireccion"/>
+                  <input required="" type="text" class="form-control" name="usuDireccion" id="usuDireccion"/>
                 </div>
               </div>              
             </div>
