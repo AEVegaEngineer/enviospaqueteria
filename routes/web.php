@@ -31,10 +31,13 @@ Route::get('/register', ['as' => 'auth.register','uses' => 'AuthController@regis
 
 Route::get('/logout', 'AuthController@logout');
 */
-Route::post('/autenticacion',[ 'as' => 'auth.login','uses' => 'AuthController@login']);
 
-Route::get('dashboard', 'FrontController@dashboard');
-
-Route::get('logout', 'LogController@logout');
-
-//Route::get('/home', 'HomeController@index')->name('home');
+/* Métodos para autenticación */
+Route::get('/loginForm',[ 'as' => 'auth.index', 'uses' => 'AuthController@index']);
+Route::post('/autenticado',[ 'as' => 'auth.login', 'uses' => 'AuthController@login']);
+Route::get('/logout',[ 'as' => 'auth.logout', 'uses' => 'AuthController@logout']);
+Route::get('/registerForm', ['as' => 'auth.registerForm','uses' => 'AuthController@registerForm']);
+Route::get('/register', ['as' => 'auth.register','uses' => 'AuthController@register']);
+Route::get('/comDashboard', ['as' => 'front.comDashboard','uses' => 'FrontController@comDashboard']);
+Route::get('/shopDashboard', ['as' => 'front.shopDashboard','uses' => 'FrontController@shopDashboard']);
+Route::get('/perDashboard', ['as' => 'front.perDashboard','uses' => 'FrontController@perDashboard']);

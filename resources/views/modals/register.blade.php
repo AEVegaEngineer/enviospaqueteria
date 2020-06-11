@@ -1,38 +1,16 @@
-@extends('layouts.loginLayout')
-
-@section('content')
-<style>
-  .uper {
-    margin-top: 40px;
-  }
-</style>
-<div class="row">
-  <div class="col-md-6 offset-md-3">
-    
-  
-    <div class="card uper">
-      <div class="card-header">
-        Registro
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Registro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <div class="card-body">
-        @if ($errors->any())
-          <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-          </div><br />
-        @endif
-        @if(Session::has('message-error'))
-          <div class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times</span></button>
-            {{Session::get('message-error')}}
-          </div>
-        @endif
-          <div class="row">
+      <div class="modal-body">
+        <div class="row">
           <div class="col-md-12">
-            <label for="usuTipoUsuario">Seleccione el tipo de usuario:</label><br>
+            <label for="usuTipoUsuario">Seleccione el tipo de usuario a registrar:</label><br>
             <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">            
               <label class="btn btn-primary">
               <input type="radio" id="personaRadio" autocomplete="off" value="0">
@@ -197,7 +175,10 @@
           </form>
         </div>
       </div>
+      <div class="modal-footer">
+        <button type="button" id="btnMostrarLoginForm" class="btn btn-default">¿Ya estas registrado? Iniciá sesión aquí</button>
+        <button type="button" class="btn btn-danger btn-small" data-dismiss="modal">Cancelar</button>        
+      </div>
     </div>
   </div>
 </div>
-@endsection

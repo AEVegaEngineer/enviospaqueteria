@@ -87,17 +87,17 @@
           <?php } ?>
 
         </ul>
-      </nav><!-- .nav-menu -->
-      <button type="button" class="get-started-btn scrollto" data-toggle="modal" data-target="#registerModal">
-        Comienza ya!
-      </button>
+      </nav><!-- .nav-menu -->      
+      <a href="{{ route('auth.registerForm') }}" class="get-started-btn">Registro</a>
+      <a href="{{ route('auth.index') }}" class="get-started-btn">Iniciar Sesión</a>
+      <!--
       <button type="button" class="get-started-btn" data-toggle="modal" data-target="#loginModal">
         Iniciar Sesión
       </button>
-
+      -->
     </div>
   </header><!-- End Header -->
-  @yield('content')
+  @yield('contenidoFront')
   <!-- ======= Footer ======= -->
   <footer id="footer">
 

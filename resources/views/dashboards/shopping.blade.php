@@ -1,4 +1,4 @@
-@extends('layouts.dashboardLayout')
+@extends('layouts.dashboardShoppingLayout')
 
 @section('content')
 
@@ -10,7 +10,7 @@
 <section id="cta" class="cta">
   <div class="container" data-aos="zoom-in">
     <div class="text-center">
-      <h3>Cotiza tu envío</h3>
+      <h3>Shopping Cotiza tu envío</h3>
       <p>No esperes más, hacé clic aquí para comenzar a gestionar tu envío</p>
       <a class="cta-btn" href="#">Comenzar</a>
     </div>

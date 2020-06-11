@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UsuarioCreateRequest;
 use App\Http\Requests\LogRequest;
 use App\Usuario;
+use App\Comercio;
+use App\Shopping;
+use App\Persona;
 use Auth;
 use Mail;
 use Session;
@@ -15,6 +18,10 @@ use Redirect;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -38,14 +45,34 @@ class AuthController extends Controller
         if(Auth::attempt([
             'usuEmail' => $request['usuEmail'], 
             'password'=>$request['usuContrasena']
-        ])){
+        ]))
+        {
             //return Redirect::to('admin');
-            Session::flash('message-success','Usted ha iniciado sesión correctamente!');           
-            return view('dashboard');
-        
+            Session::flash('message-success','Usted ha iniciado sesión correctamente!');
+            $id = Auth::user()->id;
+
+            //el usuario es Comercio
+            if(Comercio::where('comUsuarioId',$id)->first() !== null)
+            {        
+                return view('dashboards.comercio');
+            }
+            //el usuario es Shopping
+            else if(Shopping::where('shopUsuarioId',$id)->first() !== null)
+            {
+                return view('dashboards.shopping');
+            }
+            //el usuario es persona
+            else
+            {
+                return view('dashboards.persona');                
+            }
         }
+        /*
         Session::flash('message-error','Los datos ingresados son incorrectos');
-        return view('front');        
+        return Redirect::to('/');   
+        */
+        Session::flash('message-error','Usuario o contraseña incorrecta.');
+        return view('auth.login');
     }
 
     /**
@@ -56,14 +83,14 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return Redirect::to('/');
+        return view('front');
     }
     /**
      * Registra un usuario
      *
      * @return \Illuminate\Http\Response
      */
-    public function register(Request $request)
+    public function registerForm(Request $request)
     {
         return view('auth.register');
     }
@@ -73,7 +100,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(UsuarioCreateRequest $request)
+    public function register(UsuarioCreateRequest $request)
     {
 
         //$show = Usuario::create($request);

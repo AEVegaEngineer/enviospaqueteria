@@ -59,7 +59,7 @@
           <li class="drop-down"><a href="">Mi Perfil</a>
             <ul>
               <li><a href="#">Ver Perfil</a></li>
-              <li><a href="#">Cerrar Sesión</a></li>
+              <li><a href="{{ route('auth.logout') }}">Cerrar Sesión</a></li>
             </ul>
           </li>
           <?php } ?>

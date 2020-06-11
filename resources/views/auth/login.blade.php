@@ -1,33 +1,52 @@
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Iniciar Sesión</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+@extends('layouts.loginLayout')
+
+@section('content')
+<style>
+  .uper {
+    margin-top: 40px;
+  }
+</style>
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+    
+  
+    <div class="card uper">
+      <div class="card-header">
+        Login
       </div>
-      <form method="post" action="{{ route('auth.login') }}">
-        <div class="modal-body">
-          <div class="form-group">
-            @csrf          
-            <div class="row">
-              <div class="col-md-12">
-                <label for="usuEmail">Email:</label>
-                <input type="email" class="form-control" name="usuEmail" id="usuEmail"/>
+      <div class="card-body">
+        @if ($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+          </div><br />
+        @endif
+        @if(Session::has('message-error'))
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times</span></button>
+            {{Session::get('message-error')}}
+          </div>
+        @endif
+          <form method="post" action="{{ route('auth.login') }}">
+              <div class="form-group">
+                  @csrf              
+                  <label for="usuEmail">Email:</label>
+                  <input type="email" class="form-control text-center" name="usuEmail"/>
+                  <label for="usuContrasena">Contraseña:</label>
+                  <input type="password" class="form-control text-center" name="usuContrasena"/>
               </div>
-              <div class="col-md-12">
-                <label for="usuContrasena">Contraseña:</label>
-                <input type="password" class="form-control" name="usuContrasena" id="usuContrasena"/>
-              </div>            
-            </div> 
-          </div>         
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Entrar</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-        </div>
-      </form>      
+              <button type="submit" class="btn btn-primary center">Inicia Sesión</button>
+              <br>
+              <br>
+              ¿No te has registrado?
+              <br>
+              <a href="{{ route('auth.registerForm') }}" class="btn btn-success">Registrate ahora!</a>
+          </form>
+      </div>
     </div>
   </div>
 </div>
+@endsection

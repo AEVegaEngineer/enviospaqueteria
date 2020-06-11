@@ -1,6 +1,6 @@
 @extends('layouts.frontPageLayout')
 
-@section('content')
+@section('contenidoFront')
 
 <!-- ======= Alertas ======= -->
 @if ($errors->any())
