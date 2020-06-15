@@ -45,7 +45,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="/">EnviosYa</a></h1>
+      <h1 class="logo mr-auto"><a href="{{ url('/home') }}">EnviosYa</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -88,8 +88,11 @@
 
         </ul>
       </nav><!-- .nav-menu -->      
-      <a href="{{ route('auth.registerForm') }}" class="get-started-btn">Registro</a>
-      <a href="{{ route('auth.index') }}" class="get-started-btn">Iniciar Sesión</a>
+      <div class="btn-group ml-5">
+        <a href="{{ route('register') }}" class="btn btn-success">Registro</a>
+        <a href="{{ route('login') }}" class="btn btn-primary">Iniciar Sesión</a>
+      </div>
+      
       <!--
       <button type="button" class="get-started-btn" data-toggle="modal" data-target="#loginModal">
         Iniciar Sesión
