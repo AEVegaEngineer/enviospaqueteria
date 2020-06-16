@@ -93,8 +93,7 @@ class RegisterController extends Controller
             $comercioRegistrado = Comercio::create([
                 'comNombre' => $data['comNombre'],
                 'comCuit' => $data['comCuit'],
-                'comUsuarioId' => $usuario->id,
-                'comShoppingId' => $data['comShoppingId'],
+                'comUsuarioId' => $usuario->id
             ]);
         }
         else if($data['privilegio'] == 'shopping')

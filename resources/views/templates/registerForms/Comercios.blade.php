@@ -88,20 +88,7 @@
                     </span>
                 @enderror
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="comShoppingId" class="col-md-4 col-form-label text-md-right">{{ __('Seleccione si está afiliado a un shopping') }}</label>
-
-            <div class="col-md-6">
-                <input id="comShoppingId" type="text" class="form-control @error('comShoppingId') is-invalid @enderror" name="comShoppingId" value="{{ old('comShoppingId') }}" required autocomplete="comShoppingId" autofocus>
-
-                @error('comShoppingId')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div>
+        </div>        
         <input type="hidden" name="privilegio" value="comercio">  
         <div class="form-group row mb-0">
             <div class="col-md-6 offset-md-4">

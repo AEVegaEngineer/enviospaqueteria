@@ -63,7 +63,15 @@
           </li>          
           <li><a href="#" class="text-decoration-none">Contácto</a></li>
           <?php if (Auth::user() !== null){ ?>
-          <li class="drop-down"><a href="" class="text-decoration-none">{{ Auth::user()->email }}</a>
+          
+          <li class="drop-down">
+            <?php if($userdata->shopNombre != null){ ?>
+              <a href="" class="text-decoration-none">{{ $userdata->shopNombre }}</a>
+            <?php } else if ($userdata->comNombre != null){ ?>
+              <a href="" class="text-decoration-none">{{ $userdata->comNombre }}</a>
+            <?php } else if ($userdata->perNombre != null){ ?>
+              <a href="" class="text-decoration-none">{{ $userdata->perNombre }}</a>
+            <?php } ?>
             <ul>
               <li><a href="#" class="text-decoration-none">Ver Perfil</a></li>
               <li>

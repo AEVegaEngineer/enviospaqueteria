@@ -15,7 +15,7 @@ class AgregarAfiliacionesAComercios extends Migration
     public function up()
     {
     	Schema::table('comercios', function (Blueprint $table) {
-            $table->unsignedBigInteger('comShoppingId');
+            $table->unsignedBigInteger('comShoppingId')->nullable()->default(null);
         }); 
     }
 

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Comercio;
+use App\Persona;
+use App\Shopping;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $userid = Auth::user()->id;
+        $isUserComercio = Comercio::where('comUsuarioId',$userid)->first();
+        $isUserShopping = Shopping::where('shopUsuarioId',$userid)->first();
+        $isUserPersona = Persona::where('perUsuarioId',$userid)->first();
+        $userdata = null;
+        if($isUserComercio)
+            $userdata = $isUserComercio;
+        else if($isUserShopping)
+            $userdata = $isUserShopping;
+        else if($isUserPersona)
+            $userdata = $isUserPersona;
+        return view('dashboard', compact('userdata'));
     }
 }
