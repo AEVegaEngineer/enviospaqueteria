@@ -3,9 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Comercio;
+use App\Persona;
+use App\Shopping;
+use Auth;
 
 class EnvioController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +36,8 @@ class EnvioController extends Controller
      */
     public function create()
     {
-        //
+        $userdata = getUserData();
+        return view('envios.create',compact('userdata'));
     }
 
     /**
@@ -81,4 +95,24 @@ class EnvioController extends Controller
     {
         //
     }
+}
+/*
+*@author Andrés Vega
+*@descripción: función utilitaria que obtiene datos del usuario para mostrar en vista
+*@return userdata: data del usuario
+*/
+
+function getUserData(){
+    $userid = Auth::user()->id;
+    $isUserComercio = Comercio::where('comUsuarioId',$userid)->first();
+    $isUserShopping = Shopping::where('shopUsuarioId',$userid)->first();
+    $isUserPersona = Persona::where('perUsuarioId',$userid)->first();
+    $userdata = null;
+    if($isUserComercio)
+        $userdata = $isUserComercio;
+    else if($isUserShopping)
+        $userdata = $isUserShopping;
+    else if($isUserPersona)
+        $userdata = $isUserPersona;
+    return $userdata;
 }
