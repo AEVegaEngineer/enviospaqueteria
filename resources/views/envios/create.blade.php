@@ -56,7 +56,7 @@
                 Descripción del Paquete
               </div>
             </div>
-            <div class="col-12 col-md-6 form-group">
+            <div class="col-12 col-md-4 form-group">
               <input type="text" name="paqDescripcion" id="paqDescripcion" class="form-control" placeholder="Descripción del paquete" data-rule="minlen:10" data-msg="Por favor, ingresá al menos 10 caracteres" value="Paquete de envío estándar" readonly="" required="" />              
             </div> 
             <div class="col-12 col-md-2">
@@ -65,17 +65,16 @@
               </div>
             </div>
             <div class="col-12 col-md-1 form-group">
-              <input type="number" name="listCantidadPaq" id="listCantidadPaq" class="form-control" placeholder="Cantidad" value="1" required="" />              
+              <input type="number" name="listCantidadPaq" id="listCantidadPaq" class="form-control" placeholder="Cantidad" value="1" required="" min="1" />              
             </div>         
-          </div>
-          <div class="form-row">
+          
             <div class="col-12 col-md-2">
               <div class="info text-right">
                 Costo del Envío
               </div>
             </div>
-            <div class="col-12 col-md-4 form-group">
-              <input type="text" name="envCosto" id="envCosto" class="form-control" placeholder="Costo del Envío" value="" readonly="" />              
+            <div class="col-12 col-md-1 form-group">
+              <input type="text" name="envCosto" id="envCosto" class="form-control" placeholder="Costo del Envío" value="100" readonly="" required="" />              
             </div>                     
           </div>
           <!--          
