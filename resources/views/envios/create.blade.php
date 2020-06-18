@@ -9,63 +9,123 @@
 <section id="envios" class="envios">
   <div class="container" data-aos="fade-up">
 
-    <div class="section-title">
+    <div class="section-title mt-5">
       <h2>Registro de envíos</h2>
       <p>Ingrese los datos del envío</p>
     </div>
 
-    <div class="row mt-5">
-
-      <div class="col-lg-4">
-        <div class="info">
-          <div class="address">
-            <i class="icofont-google-map"></i>
-            <h4>Location:</h4>
-            <p>A108 Adam Street, New York, NY 535022</p>
-          </div>
-
-          <div class="email">
-            <i class="icofont-envelope"></i>
-            <h4>Email:</h4>
-            <p>info@example.com</p>
-          </div>
-
-          <div class="phone">
-            <i class="icofont-phone"></i>
-            <h4>Call:</h4>
-            <p>+1 5589 55488 55s</p>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
     <div class="row mt-5">
       <div class="col-12">
 
         <form action="forms/contact.php" method="post" role="form" class="php-email-form">
           <div class="form-row">
             <div class="col-12 col-md-4">
-              <div class="info">
-                Indique la dirección de origen del envío
+              <div class="info text-right">
+                <i class="icofont-google-map"></i> Indique la dirección de origen del envío
               </div>
             </div>
             <div class="col-12 col-md-8 form-group">
-              <input type="text" name="envOrigen" class="form-control" id="envOrigen" placeholder="Ej. Perito Moreno (N) con Libertador 1820" data-rule="minlen:10" data-msg="Por favor, ingresá al menos 10 caracteres" />
+              <input type="text" name="envOrigen" class="form-control" id="envOrigen" placeholder="Ej. Perito Moreno (N) con Libertador 1820" data-rule="minlen:10" data-msg="Por favor, ingresá al menos 10 caracteres" required=""/>
               <div class="validate"></div>
             </div>
           </div>
           <div class="form-row">
             <div class="col-12 col-md-4">
-              <div class="info">
-                Indique la dirección de destino del envío
+              <div class="info text-right">
+                <i class="icofont-google-map"></i> Indique la dirección de destino del envío
               </div>
             </div>
             <div class="col-12 col-md-8 form-group">
-              <input type="text" name="envOrigen" class="form-control" id="envOrigen" placeholder="Ej. Perito Moreno (N) con Libertador 1820" data-rule="minlen:10" data-msg="Por favor, ingresá al menos 10 caracteres" />
+              <input type="text" name="envOrigen" class="form-control" id="envOrigen" placeholder="Ej. Perito Moreno (N) con Libertador 1820" data-rule="minlen:10" data-msg="Por favor, ingresá al menos 10 caracteres" required=""/>
               <div class="validate"></div>
             </div>
           </div>
+          <!--
+          <div class="form-row">
+            <div class="col-12">
+              <div class="text-center m-5">
+                <button class="btn btn-lg btn-info" id="addPaqueteToListaPaquetes">Agregar Nuevo Paquete al Envío</button>
+              </div>              
+            </div>            
+          </div>
+          -->
+          
+          <div class="form-row">
+            <div class="col-12 col-md-2">
+              <div class="info text-right">
+                Descripción del Paquete
+              </div>
+            </div>
+            <div class="col-12 col-md-6 form-group">
+              <input type="text" name="paqDescripcion" id="paqDescripcion" class="form-control" placeholder="Descripción del paquete" data-rule="minlen:10" data-msg="Por favor, ingresá al menos 10 caracteres" value="Paquete de envío estándar" readonly="" required="" />              
+            </div> 
+            <div class="col-12 col-md-2">
+              <div class="info text-right">
+                Cantidad de Paquetes
+              </div>
+            </div>
+            <div class="col-12 col-md-1 form-group">
+              <input type="number" name="listCantidadPaq" id="listCantidadPaq" class="form-control" placeholder="Cantidad" value="1" required="" />              
+            </div>         
+          </div>
+          <div class="form-row">
+            <div class="col-12 col-md-2">
+              <div class="info text-right">
+                Costo del Envío
+              </div>
+            </div>
+            <div class="col-12 col-md-4 form-group">
+              <input type="text" name="envCosto" id="envCosto" class="form-control" placeholder="Costo del Envío" value="" readonly="" />              
+            </div>                     
+          </div>
+          <!--          
+          <div class="form-row">
+            <div class="col-12 col-md-4">
+              <div class="info text-right">
+                Alto
+              </div>
+            </div>
+            <div class="col-12 col-md-8 form-group">
+              <input type="text" name="paqDescripcion" id="paqDescripcion" class="form-control" placeholder="Descripción del paquete" data-rule="minlen:10" data-msg="Por favor, ingresá al menos 10 caracteres" value="Paquete de envío estándar" />              
+            </div>        
+          </div>
+          
+
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table table-responsive-md">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Descripción del paquete</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          -->
           <!--
           <div class="form-row">
             </div>

@@ -114,7 +114,7 @@
   <script src="{{ asset('/js/isotope.pkgd.min.js') }}" ></script>
   <script src="{{ asset('/js/aos.js') }}" ></script>
   <script src="{{ asset('/js/main.js') }}"></script>
-
+  <script src="{{ asset('/js/envios/create.js') }}"></script>
 
 
 </body>

@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Request\EnvioCreateRequest;
 use App\Comercio;
 use App\Persona;
 use App\Shopping;
+use App\Envio;
+use App\ListaPaquete;
+use App\Paquete;
 use Auth;
 
 class EnvioController extends Controller
@@ -46,9 +50,26 @@ class EnvioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EnvioCreateRequest $request)
     {
-        //
+        $envioRegistrado = Envio::create([
+            'envOrigen' => $request['envOrigen'],
+            'envDestino' => $request['envDestino'],
+            'envCosto' => $request['envCosto'],
+            'envActivo' => 1,
+        ]);
+        $personaRegistrada = ListaPaquete::create([
+            'perNombres' => $request['perNombres'],
+            'perApellidos' => $request['perApellidos'],
+            'perDni' => $request['perDni'],
+            'perUsuarioId' => $usuario->id,
+        ]);
+        $personaRegistrada = Paquete::create([
+            'perNombres' => $request['perNombres'],
+            'perApellidos' => $request['perApellidos'],
+            'perDni' => $request['perDni'],
+            'perUsuarioId' => $usuario->id,
+        ]);
     }
 
     /**
