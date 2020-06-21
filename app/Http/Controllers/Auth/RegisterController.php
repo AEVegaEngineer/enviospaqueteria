@@ -45,6 +45,18 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $comShoppingIds = Shopping::pluck('shopNombre', 'shopId');
+        $comShoppingIds->prepend('No', 0);
+        return view('auth.register', compact('comShoppingIds'));
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -52,14 +64,44 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            //'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'privilegio' => 'in:persona,comercio,shopping', 
-            'usuTelefono' => ['required', 'numeric'],
-            'usuDireccion' => ['required', 'string', 'max:255'],
-        ]);
+        
+        if($data['privilegio'] == 'persona')
+        {
+            return Validator::make($data, [
+                //'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'perNombres' => ['required', 'string', 'max:255'],
+                'perApellidos' => ['required', 'string', 'max:255'],
+                'perDni' => ['required', 'numeric'],
+                'privilegio' => 'in:persona,comercio,shopping', 
+                'usuTelefono' => ['required', 'numeric'],
+                'usuDireccion' => ['required', 'string', 'max:255'],
+            ]);
+        } else if($data['privilegio'] == 'comercio') {
+            return Validator::make($data, [
+                //'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'privilegio' => 'in:persona,comercio,shopping', 
+                'usuTelefono' => ['required', 'numeric'],
+                'usuDireccion' => ['required', 'string', 'max:255'],
+                'comNombre' => ['required', 'string', 'max:255'],
+                'comCuit' => ['required', 'numeric'],
+                'comShoppingId' => ['required', 'numeric'],
+            ]);
+        } else if($data['privilegio'] == 'shopping') {
+            return Validator::make($data, [
+                //'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'privilegio' => 'in:persona,comercio,shopping', 
+                'usuTelefono' => ['required', 'numeric'],
+                'usuDireccion' => ['required', 'string', 'max:255'],
+                'shopNombre' => ['required', 'string', 'max:255'],
+                'shopCuit' => ['required', 'numeric'],
+            ]);
+        }
     }
 
     /**
@@ -70,6 +112,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         $usuario = User::create([
             //'name' => $data['name'],
             'email' => $data['email'],
@@ -90,10 +133,15 @@ class RegisterController extends Controller
         }
         else if($data['privilegio'] == 'comercio')
         {   
+            if ($data['comShoppingId'] == 0)
+            {
+                $data['comShoppingId'] = null;
+            }
             $comercioRegistrado = Comercio::create([
                 'comNombre' => $data['comNombre'],
                 'comCuit' => $data['comCuit'],
-                'comUsuarioId' => $usuario->id
+                'comUsuarioId' => $usuario->id,
+                'comShoppingId' => $data['comShoppingId'],
             ]);
         }
         else if($data['privilegio'] == 'shopping')

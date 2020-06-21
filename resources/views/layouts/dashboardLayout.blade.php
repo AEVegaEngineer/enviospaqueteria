@@ -51,8 +51,11 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="#banner-inicio" class="text-decoration-none">Inicio</a></li>          
+          <li class="active"><a href="/home" class="text-decoration-none">Inicio</a></li> 
+          <li><a href="/envio/list" class="text-decoration-none">Enviar</a></li>         
+          <?php if (Auth::user()->privilegio == "shopping"){ ?>
           <li><a href="#" class="text-decoration-none">Comercios Asociados</a></li>
+          <?php } ?>
           <li class="drop-down"><a href="" class="text-decoration-none">Informes</a>
             <ul>
               <?php if (Auth::user()->privilegio != "comercio" || (Auth::user()->privilegio == "comercio" && Auth::user()->comShoppingId == null)){ ?>

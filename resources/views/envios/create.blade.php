@@ -16,8 +16,8 @@
 
     <div class="row mt-5">
       <div class="col-12">
-
-        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+        <form method="POST" action="{{ route('envio.store') }}" role="form" class="php-email-form">
+          @csrf
           <div class="form-row">
             <div class="col-12 col-md-4">
               <div class="info text-right">
@@ -27,6 +27,11 @@
             <div class="col-12 col-md-8 form-group">
               <input type="text" name="envOrigen" class="form-control" id="envOrigen" placeholder="Ej. Perito Moreno (N) con Libertador 1820" data-rule="minlen:10" data-msg="Por favor, ingresá al menos 10 caracteres" required=""/>
               <div class="validate"></div>
+              @error('envOrigen')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
             </div>
           </div>
           <div class="form-row">
@@ -36,8 +41,13 @@
               </div>
             </div>
             <div class="col-12 col-md-8 form-group">
-              <input type="text" name="envOrigen" class="form-control" id="envOrigen" placeholder="Ej. Perito Moreno (N) con Libertador 1820" data-rule="minlen:10" data-msg="Por favor, ingresá al menos 10 caracteres" required=""/>
+              <input type="text" name="envDestino" class="form-control" id="envDestino" placeholder="Ej. Perito Moreno (N) con Libertador 1820" data-rule="minlen:10" data-msg="Por favor, ingresá al menos 10 caracteres" required=""/>
               <div class="validate"></div>
+              @error('envDestino')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
             </div>
           </div>
           <!--
@@ -57,7 +67,12 @@
               </div>
             </div>
             <div class="col-12 col-md-4 form-group">
-              <input type="text" name="paqDescripcion" id="paqDescripcion" class="form-control" placeholder="Descripción del paquete" data-rule="minlen:10" data-msg="Por favor, ingresá al menos 10 caracteres" value="Paquete de envío estándar" readonly="" required="" />              
+              <input type="text" name="paqDescripcion" id="paqDescripcion" class="form-control" placeholder="Descripción del paquete" data-rule="minlen:10" data-msg="Por favor, ingresá al menos 10 caracteres" value="Paquete de envío estándar" readonly="" required="" />
+              @error('paqDescripcion')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
             </div> 
             <div class="col-12 col-md-2">
               <div class="info text-right">
@@ -65,7 +80,11 @@
               </div>
             </div>
             <div class="col-12 col-md-1 form-group">
-              <input type="number" name="listCantidadPaq" id="listCantidadPaq" class="form-control" placeholder="Cantidad" value="1" required="" min="1" />              
+              <input type="number" name="listCantidadPaq" id="listCantidadPaq" class="form-control" placeholder="Cantidad" value="1" required="" min="1" />@error('listCantidadPaq')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
             </div>         
           
             <div class="col-12 col-md-2">
@@ -74,7 +93,11 @@
               </div>
             </div>
             <div class="col-12 col-md-1 form-group">
-              <input type="text" name="envCosto" id="envCosto" class="form-control" placeholder="Costo del Envío" value="100" readonly="" required="" />              
+              <input type="text" name="envCosto" id="envCosto" class="form-control" placeholder="Costo del Envío" value="100" readonly="" required="" />@error('envCosto')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
             </div>                     
           </div>
           <!--          

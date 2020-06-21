@@ -26,8 +26,9 @@ class EnvioCreateRequest extends FormRequest
         return [
             'envOrigen' => ['required', 'string', 'min:10'],
             'envDestino' => ['required', 'string', 'min:10'],
-            'paqDescripcion' => ['required', 'string', 'min:10'],
-            'listCantidadPaq' => ['required', 'numeric', 'min:1']
+            'envCosto' => ['required', 'numeric', 'min:1'],
+            'listCantidadPaq' => ['required', 'numeric', 'min:1'],
+
         ];
     }
 }
