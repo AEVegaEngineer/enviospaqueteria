@@ -62,7 +62,7 @@ class ListaPaqueteController extends Controller
         $usuarioValidado = Envio::where('envId',$id)->where('envCreatedBy',$userid)->first();        
         if($usuarioValidado)
         {
-            $listapaquetes = Listapaquete::join('paquetes', 'paquetes.paqId', '=', 'listapaquete.listPaqueteId')
+            $listapaquetes = Listapaquete::join('paquetes', 'paquetes.paqId', '=', 'listapaquetes.listPaqueteId')
                 ->where('listapaquetes.listEnvioId',$id)->get();
             return $listapaquetes;
         }

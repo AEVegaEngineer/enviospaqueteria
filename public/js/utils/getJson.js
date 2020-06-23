@@ -4,10 +4,18 @@ $('[id^=paqueteDeEnvio]').click(function(){
   var idpaquete = $(this).attr('id').replace("paqueteDeEnvio", "");
   var url = Servidor+"listapaquete/"+idpaquete;
   getJson(url, null, null, popularTablaListaPaquetes)
-  //tablaListaPaquetes
+  //
   function popularTablaListaPaquetes(listapaquete){
-    $.each(listapaquete, function( index, value ) {
-      alert( index + ": " + value );
+    $.each(listapaquete, function( index, paquete ) {
+      $('#tablaListaPaquetes').append('<tr>'+
+        '<td>'+paquete.paqDescripcion+'</td>'+
+        '<td>'+paquete.listCantidadPaq+'</td>'+
+        '<td>'+paquete.paqDimensionAlto+' '+paquete.paqDimensionUnidad+'</td>'+
+        '<td>'+paquete.paqDimensionAncho+' '+paquete.paqDimensionUnidad+'</td>'+
+        '<td>'+paquete.paqDimensionLargo+' '+paquete.paqDimensionUnidad+'</td>'+
+        '<td>'+paquete.paqPeso+' '+paquete.paqPesoUnidad+'</td>'+
+        '</tr>');
+
     });
   }
   $('#modalListaPaquetes').modal('show');
