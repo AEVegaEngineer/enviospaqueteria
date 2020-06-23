@@ -13,6 +13,7 @@ class Listapaquete extends Model
      */
     protected $fillable = [    	
     	'listCantidadPaq', 
-    	'listPaqueteId'
+    	'listPaqueteId',
+    	'listEnvioId'
     ];
 }

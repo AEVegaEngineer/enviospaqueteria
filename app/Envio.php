@@ -18,7 +18,6 @@ class Envio extends Model
     	'envDestinatarioId',
     	'envDestino',
     	'envEstadoEnvio',
-    	'envListaPaqueteId',
     	'envOrigen',
         'envEntregadoEn',
         'envEntregadoA'

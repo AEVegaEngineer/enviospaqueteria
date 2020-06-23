@@ -72,20 +72,20 @@ class EnvioController extends Controller
         ]);
         */
         $userid = Auth::user()->id;
-        $ListapaqueteRegistrada = Listapaquete::create([
-            'listPaqueteId' => 1,
-            'listCantidadPaq' => $request['listCantidadPaq'],
-            
-        ]);
+        
         //return $ListapaqueteRegistrada->id;
         $EnvioRegistrado = Envio::create([
             'envOrigen' => $request['envOrigen'],
             'envDestino' => $request['envDestino'],
             'envCosto' => $request['envCosto'],
-            'envActivo' => 1,
-            'envListaPaqueteId' => $ListapaqueteRegistrada->id,
+            'envActivo' => 1,            
             'envCreatedBy' => $userid,
             'envEstadoEnvio' => 1,
+        ]);
+        $ListapaqueteRegistrada = Listapaquete::create([
+            'listPaqueteId' => 1,
+            'listCantidadPaq' => $request['listCantidadPaq'],
+            'listEnvioId' => $EnvioRegistrado->id,
         ]);
         return redirect('/envio')->with('message-success', 'El envío ha sido registrado exitosamente');
     }

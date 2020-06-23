@@ -52,7 +52,7 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="/home" class="text-decoration-none">Inicio</a></li> 
-          <li><a href="/envio/list" class="text-decoration-none">Enviar</a></li>         
+          <li><a href="/envio/create" class="text-decoration-none">Enviar</a></li>         
           <?php if (Auth::user()->privilegio == "shopping"){ ?>
           <li><a href="#" class="text-decoration-none">Comercios Asociados</a></li>
           <?php } ?>

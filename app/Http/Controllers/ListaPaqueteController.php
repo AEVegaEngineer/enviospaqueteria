@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Listapaquete;
+use App\Paquete;
 use App\Envio;
 use Auth;
 
@@ -58,10 +59,11 @@ class ListaPaqueteController extends Controller
     public function show($id)
     {
         $userid = Auth::user()->id;
-        $usuarioValidado = Envio::where('envListaPaqueteId',$id)->where('envCreatedBy',$userid)->first();        
+        $usuarioValidado = Envio::where('envId',$id)->where('envCreatedBy',$userid)->first();        
         if($usuarioValidado)
         {
-            $listapaquetes = Listapaquete::where('listPaqueteId',$id)->get();
+            $listapaquetes = Listapaquete::join('paquetes', 'paquetes.paqId', '=', 'listapaquete.listPaqueteId')
+                ->where('listapaquetes.listEnvioId',$id)->get();
             return $listapaquetes;
         }
         return null;
