@@ -30,7 +30,10 @@ class EnvioController extends Controller
      */
     public function index()
     {
-        //
+        $userid = Auth::user()->id;
+        $userdata = getUserData();        
+        $envios = Envio::orderBy('envId', 'desc')->where('envCreatedBy',$userid)->paginate(15);        
+        return view('dashboard',compact('userdata','envios'));
     }
 
     /**
@@ -84,7 +87,7 @@ class EnvioController extends Controller
             'envCreatedBy' => $userid,
             'envEstadoEnvio' => 1,
         ]);
-        return redirect('/envio/'.$userid)->with('message-success', 'El envío ha sido registrado exitosamente');
+        return redirect('/envio')->with('message-success', 'El envío ha sido registrado exitosamente');
     }
 
     /**
@@ -95,15 +98,7 @@ class EnvioController extends Controller
      */
     public function show($id)
     {
-        $userid = Auth::user()->id;
-        $userdata = getUserData();
-        if ($userid != $id)
-        {
-            return "Credenciales falsas su IP ha sido registrado y remitido al sector IT, si ha incurrido en faltas informáticas, será rastreado, cargos penales serán aplicados.";
-        }
-
-        $envios = Envio::orderBy('envId', 'desc')->where('envCreatedBy',$id)->paginate(15);
-        return view('envios.show',compact('userdata','envios'));
+        
         
     }
 

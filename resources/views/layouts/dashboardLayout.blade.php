@@ -118,7 +118,7 @@
   <script src="{{ asset('/js/aos.js') }}" ></script>
   <script src="{{ asset('/js/main.js') }}"></script>
   <script src="{{ asset('/js/envios/create.js') }}"></script>
-
+  <script src="{{ asset('js/utils/getJson.js') }}"></script>
 
 </body>
 

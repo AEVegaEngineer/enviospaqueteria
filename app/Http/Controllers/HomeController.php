@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Comercio;
 use App\Persona;
 use App\Shopping;
+use App\Envio;
 use Auth;
 
 class HomeController extends Controller
@@ -38,6 +39,7 @@ class HomeController extends Controller
             $userdata = $isUserShopping;
         else if($isUserPersona)
             $userdata = $isUserPersona;
-        return view('dashboard', compact('userdata'));
+        $envios = Envio::orderBy('envId', 'desc')->where('envCreatedBy',$userid)->paginate(15);
+        return view('dashboard', compact('userdata','envios'));
     }
 }

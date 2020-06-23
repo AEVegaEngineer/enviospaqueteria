@@ -3,9 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Listapaquete;
+use App\Envio;
+use Auth;
 
 class ListaPaqueteController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +57,15 @@ class ListaPaqueteController extends Controller
      */
     public function show($id)
     {
-        //
+        $userid = Auth::user()->id;
+        $usuarioValidado = Envio::where('envListaPaqueteId',$id)->where('envCreatedBy',$userid)->first();        
+        if($usuarioValidado)
+        {
+            $listapaquetes = Listapaquete::where('listPaqueteId',$id)->get();
+            return $listapaquetes;
+        }
+        return null;
+        
     }
 
     /**
