@@ -18,7 +18,15 @@
           <td>{{$envio->created_at}}</td>
           <td>{{$envio->envOrigen}}</td>
           <td>{{$envio->envDestino}}</td>
-          <td>{{$envio->envEstadoEnvio}}</td>
+          <?php if($envio->envEstadoEnvio == 1) { ?>
+            <td>En Espera</td>
+          <?php } elseif ($envio->envEstadoEnvio == 2) { ?>
+            <td>Entregado a Logística</td>
+          <?php } elseif ($envio->envEstadoEnvio == 3) { ?>
+            <td>En Tránsito a Destino</td>
+          <?php } elseif ($envio->envEstadoEnvio == 4) { ?>
+            <td>Entregado en Destino</td>
+          <?php } ?>
           <td>{{ number_format ( $envio->envCosto , $decimals = 2 , "," , "." ) }}</td>
           <td>{{$envio->envEntregadoEn}}</td>
           <td>{{$envio->envEntregadoA}}</td>

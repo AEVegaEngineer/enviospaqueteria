@@ -3,10 +3,12 @@ var Servidor = "http://localhost:8000/";
 $('[id^=paqueteDeEnvio]').click(function(){
   var idpaquete = $(this).attr('id').replace("paqueteDeEnvio", "");
   var url = Servidor+"listapaquete/"+idpaquete;
-  getJson(url, null, null, popularTablaListaPaquetes)
-  //
+  $('#tablaListaPaquetes').html('');
+  getJson(url, null, null, popularTablaListaPaquetes);
+  
   function popularTablaListaPaquetes(listapaquete){
     $.each(listapaquete, function( index, paquete ) {
+      
       $('#tablaListaPaquetes').append('<tr>'+
         '<td>'+paquete.paqDescripcion+'</td>'+
         '<td>'+paquete.listCantidadPaq+'</td>'+
@@ -15,11 +17,16 @@ $('[id^=paqueteDeEnvio]').click(function(){
         '<td>'+paquete.paqDimensionLargo+' '+paquete.paqDimensionUnidad+'</td>'+
         '<td>'+paquete.paqPeso+' '+paquete.paqPesoUnidad+'</td>'+
         '</tr>');
-
     });
   }
   $('#modalListaPaquetes').modal('show');
 });
+function beforeObtenerListaPaquetes(){
+
+}
+function successObtenerListaPaquetes(){
+
+}
 
 function getJson(url, parametros, loadingScrn, callback){
   $.ajax({
@@ -41,9 +48,11 @@ function getJson(url, parametros, loadingScrn, callback){
         $("#modalProcessing").css("z-index","1051");
       }
       */
+      $('#preloaderConsultas').delay(100).fadeIn('fast');
     },
     success: function (response)
     {
+      $('#preloaderConsultas').delay(100).fadeOut('fast');
       setTimeout(function() {
         /*
         if(loadingScrn==true){

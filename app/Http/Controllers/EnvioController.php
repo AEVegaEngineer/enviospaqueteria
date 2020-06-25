@@ -32,7 +32,7 @@ class EnvioController extends Controller
     {
         $userid = Auth::user()->id;
         $userdata = getUserData();        
-        $envios = Envio::orderBy('envId', 'desc')->where('envCreatedBy',$userid)->paginate(15);        
+        $envios = Envio::orderBy('envCreatedBy', 'desc')->where('envCreatedBy',$userid)->paginate(15);        
         return view('dashboard',compact('userdata','envios'));
     }
 
