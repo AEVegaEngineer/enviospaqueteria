@@ -14,8 +14,7 @@
                         <div class="col-md-6">
                             <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">            
                               <label class="btn btn-primary">
-                              <input required="" type="radio" name="privilegio" id="personaRadio" autocomplete="off" value="persona">
-                              Persona
+                              <input required="" type="radio" name="privilegio" id="personaRadio" autocomplete="off" value="persona"> Persona
                               </label>
                               <label class="btn btn-warning">
                               <input required="" type="radio" name="privilegio" id="comercioRadio" autocomplete="off" value="comercio"> Comercio

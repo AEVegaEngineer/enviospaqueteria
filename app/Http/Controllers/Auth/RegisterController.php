@@ -64,8 +64,8 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        
-        if($data['privilegio'] == 'persona')
+        //print_r($data);
+        if($data['privilegio'] == 1)
         {
             return Validator::make($data, [
                 //'name' => ['required', 'string', 'max:255'],
@@ -74,28 +74,28 @@ class RegisterController extends Controller
                 'perNombres' => ['required', 'string', 'max:255'],
                 'perApellidos' => ['required', 'string', 'max:255'],
                 'perDni' => ['required', 'numeric'],
-                'privilegio' => 'in:persona,comercio,shopping', 
+                'privilegio' => ['required', 'numeric'],
                 'usuTelefono' => ['required', 'numeric'],
                 'usuDireccion' => ['required', 'string', 'max:255'],
             ]);
-        } else if($data['privilegio'] == 'comercio') {
+        } else if($data['privilegio'] == 2) {
             return Validator::make($data, [
                 //'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
-                'privilegio' => 'in:persona,comercio,shopping', 
+                'privilegio' => ['required', 'numeric'],
                 'usuTelefono' => ['required', 'numeric'],
                 'usuDireccion' => ['required', 'string', 'max:255'],
                 'comNombre' => ['required', 'string', 'max:255'],
                 'comCuit' => ['required', 'numeric'],
                 'comShoppingId' => ['required', 'numeric'],
             ]);
-        } else if($data['privilegio'] == 'shopping') {
+        } else if($data['privilegio'] == 3) {
             return Validator::make($data, [
                 //'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
-                'privilegio' => 'in:persona,comercio,shopping', 
+                'privilegio' => ['required', 'numeric'],
                 'usuTelefono' => ['required', 'numeric'],
                 'usuDireccion' => ['required', 'string', 'max:255'],
                 'shopNombre' => ['required', 'string', 'max:255'],
@@ -122,7 +122,7 @@ class RegisterController extends Controller
             'usuDireccion' => $data['usuDireccion'],
         ]);
         
-        if($data['privilegio'] == 'persona')
+        if($data['privilegio'] == 1)
         {
             $personaRegistrada = Persona::create([
                 'perNombres' => $data['perNombres'],
@@ -131,7 +131,7 @@ class RegisterController extends Controller
                 'perUsuarioId' => $usuario->id,
             ]);
         }
-        else if($data['privilegio'] == 'comercio')
+        else if($data['privilegio'] == 2)
         {   
             if ($data['comShoppingId'] == 0)
             {
@@ -144,7 +144,7 @@ class RegisterController extends Controller
                 'comShoppingId' => $data['comShoppingId'],
             ]);
         }
-        else if($data['privilegio'] == 'shopping')
+        else if($data['privilegio'] == 3)
         {
             $shoppingRegistrada = Shopping::create([
                 'shopNombre' => $data['shopNombre'],

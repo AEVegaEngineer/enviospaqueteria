@@ -80,7 +80,27 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $userid = Auth::user()->id;
+        $privs = Auth::user()->privilegio;
+        $user;
+        if($privs == 1)
+        {
+            $user = User::Join('personas', 'users.id', '=', 'personas.perUsuarioId')
+                ->where('users.id',$userid)
+                ->first();
+        }
+        else if($privs == 2)
+        {
+            $user = User::Join('comercios', 'users.id', '=', 'comercios.comUsuarioId')
+                ->where('users.id',$userid)
+                ->first();
+        }
+        else if($privs == 3)
+        {
+            //shopping
+        }
+        return $user;
+        //return view('users.edit',compact('user'));
     }
 
     /**

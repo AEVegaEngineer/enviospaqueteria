@@ -40,6 +40,7 @@ class HomeController extends Controller
         else if($isUserPersona)
             $userdata = $isUserPersona;
         $envios = Envio::orderBy('envId', 'desc')->where('envCreatedBy',$userid)->paginate(15);
+        //return $userdata;
         return view('dashboard', compact('userdata','envios'));
     }
 }
