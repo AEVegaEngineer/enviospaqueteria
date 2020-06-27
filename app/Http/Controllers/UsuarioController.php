@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\UsuarioCreateRequest;
-use App\Usuario;
+use App\User;
+use App\Shopping;
+use Auth;
 
 class UsuarioController extends Controller
 {
@@ -16,7 +18,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuario::all();
+        $usuarios = User::all();
         return view('usuario.index', compact('usuarios'));
     }
 
@@ -82,25 +84,29 @@ class UsuarioController extends Controller
     {
         $userid = Auth::user()->id;
         $privs = Auth::user()->privilegio;
-        $user;
+        $userdata;
+        $comShoppingIds = Shopping::pluck('shopNombre', 'shopId');
+        $comShoppingIds->prepend('No', 0);
         if($privs == 1)
         {
-            $user = User::Join('personas', 'users.id', '=', 'personas.perUsuarioId')
+            $userdata = User::Join('personas', 'users.id', '=', 'personas.perUsuarioId')
                 ->where('users.id',$userid)
                 ->first();
         }
         else if($privs == 2)
         {
-            $user = User::Join('comercios', 'users.id', '=', 'comercios.comUsuarioId')
+            $userdata = User::Join('comercios', 'users.id', '=', 'comercios.comUsuarioId')
                 ->where('users.id',$userid)
                 ->first();
         }
         else if($privs == 3)
         {
-            //shopping
+            $userdata = User::Join('shoppings', 'users.id', '=', 'shoppings.comUsuarioId')
+                ->where('users.id',$userid)
+                ->first();
         }
-        return $user;
-        //return view('users.edit',compact('user'));
+        //return $user;
+        return view('users.edit',compact('userdata','comShoppingIds'));
     }
 
     /**

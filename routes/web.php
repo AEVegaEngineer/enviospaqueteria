@@ -23,4 +23,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
 Route::resource('envio','EnvioController');
+Route::resource('usuario','UsuarioController');
 Route::resource('listapaquete','ListaPaqueteController');
