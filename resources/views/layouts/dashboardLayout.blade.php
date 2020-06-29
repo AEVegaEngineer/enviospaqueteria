@@ -61,7 +61,7 @@
               <?php if (Auth::user()->privilegio != "comercio" || (Auth::user()->privilegio == "comercio" && Auth::user()->comShoppingId == null)){ ?>
                 <li><a href="#" class="text-decoration-none">Pagos</a></li>
               <?php } ?>              
-              <li><a href="#" class="text-decoration-none">Envíos</a></li>
+              <li><a href="/envioinforme" class="text-decoration-none">Envíos</a></li>
             </ul>
           </li>          
           <li><a href="#" class="text-decoration-none">Contácto</a></li>
