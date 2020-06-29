@@ -4,13 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests\UsuarioCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\User;
+use App\Persona;
+use App\Comercio;
 use App\Shopping;
 use Auth;
 
-class UsuarioController extends Controller
+class UserController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,9 +50,9 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UsuarioCreateRequest $request)
+    public function store(Request $request)
     {
-        return $request;
+        return "user.store";
         /*         
         Usuario::create([            
             'usuEmail' => $request['usuEmail'],
@@ -70,7 +81,8 @@ class UsuarioController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return $user;
+        //return $user;
+        return "usuario.show";
         //return view('usuario.edit',['user'=>$user]);
     }
 
@@ -116,9 +128,57 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
-        //
+    	//
+    	$user = User::find($id);
+    	$successMessage;
+        // si no se recibe password, setea la misma password que ya tiene
+        if($request->password == null)        	
+        	$request->password = $user->password;
+        $user->update(
+        	[
+        		'email' => $request->email,
+        		'usuTelefono' => $request->usuTelefono,
+        		'usuDireccion' => $request->usuDireccion,        		
+        	]
+        );
+        if($request->privilegio == 1)
+        {
+        	//persona
+        	Persona::where('perUsuarioId',$id)->update(
+        		[
+        			'perNombres' => $request->perNombres,
+        			'perApellidos' => $request->perApellidos,
+        			'perDni' => $request->perDni,
+        		]
+        	);
+        	$successMessage = "Datos del usuario actualizados exitosamente";
+        } else if ($request->privilegio == 2) {
+        	//comercio
+        	//si no se ha seleccionado shopping, escribe null en db
+        	if($request->comShoppingId == 0)
+        		$request->comShoppingId = null;
+        	Comercio::where('comUsuarioId',$id)->update(
+        		[
+        			'comNombre' => $request->comNombre,
+        			'comShoppingId' => $request->comShoppingId,
+        			'comCuit' => $request->comCuit,
+        		]
+        	);
+        	$successMessage = "Datos del comercio actualizados exitosamente";
+        } else if ($request->privilegio == 3) {
+        	//Shopping
+        	Shopping::where('shopUsuarioId',$id)->update(
+        		[
+        			'shopNombre' => $request->shopNombre,
+        			'shopCuit' => $request->shopCuit,
+        		]
+        	);
+        	$successMessage = "Datos del shopping actualizados exitosamente";
+        }
+        
+        return redirect('/home')->with('message-success',$successMessage);
     }
 
     /**

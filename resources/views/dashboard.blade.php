@@ -2,14 +2,19 @@
 
 @section('content')
 
-<!-- ======= Alertas ======= -->
-@include('alerts.alerts')
 
 <div class="mt-5"></div>
 
 @if (!isset($envios) || $envios->isEmpty())
 <!-- ======= Cta Section ======= -->
   <section id="cta" class="cta">
+    <!-- ======= Alertas ======= -->
+    <div class="row">
+      <div class="col-12 col-md-4 offset-md-4">
+        @include('alerts.alerts')
+      </div>
+    </div>
+    
     <div class="container" data-aos="zoom-in">
       <div class="text-center">
       	@if (Auth::user()->privilegio == 1)
@@ -26,7 +31,7 @@
           @if ($userdata->comShoppingId == null)
             <h3>¿Tu comercio se encuentra afiliado con un shopping?</h3>
             <p>Establecé aquí tu afiliación con tu shopping huesped</p>
-            <a class="btn btn-outline-light" href="#">Establecer Afiliación</a>
+            <a class="btn btn-outline-light" href="/usuario/{{Auth::user()->id}}/edit">Establecer Afiliación</a>
             <p class="pt-5">O podés comenzar ya a gestionar tus envíos</p>
             <a class="btn btn-outline-light" href="/envio/create">Gestionar Envío</a>
           @else

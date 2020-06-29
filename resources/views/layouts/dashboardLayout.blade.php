@@ -76,7 +76,7 @@
               <a href="" class="text-decoration-none">{{ $userdata->perNombre }}</a>
             <?php } ?>
             <ul>
-              <li><a href="#" class="text-decoration-none">Ver Perfil</a></li>
+              <li><a href="/usuario/{{Auth::user()->id}}/edit" class="text-decoration-none">Ver Perfil</a></li>
               <li>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
