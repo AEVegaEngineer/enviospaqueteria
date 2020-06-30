@@ -54,7 +54,7 @@
             <label for="comCuit" class="col-md-6 col-form-label text-md-right">{{ __('CUIT del Comercio') }}</label>
 
             <div class="col-md-6">
-                <input id="comCuit" type="text" class="form-control @error('comCuit') is-invalid @enderror" name="comCuit" value="{{ old('comCuit') }}" required autocomplete="comCuit" autofocus>
+                <input id="comCuit" type="number" class="form-control @error('comCuit') is-invalid @enderror" name="comCuit" value="{{ old('comCuit') }}" required autocomplete="comCuit" autofocus>
 
                 @error('comCuit')
                     <span class="invalid-feedback" role="alert">

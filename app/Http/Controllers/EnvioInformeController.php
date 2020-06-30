@@ -14,6 +14,15 @@ use Auth;
 class EnvioInformeController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -23,20 +32,23 @@ class EnvioInformeController extends Controller
         $userid = Auth::user()->id;
         $userdata = getUserData();   
         $envios;
-        if($userdata->privilegio == 3)
+        if(Auth::user()->privilegio == 3)
         {
             //shopping
-            $envios = Envio::join('comercios', 'envios.envCreatedBy', '=', 'comercios.comId')
+            $envios = Envio::join('comercios', 'envios.envCreatedBy', '=', 'comercios.comUsuarioId')
                 ->join('shoppings', 'shoppings.shopId', '=', 'comercios.comShoppingId')
-                ->where('shoppings.shopUsuarioId',$id)
+                ->where('shoppings.shopUsuarioId',$userid)
+                //->get();
                 ->paginate(15);
         }     
         else
         {
             //persona o comercio
-            $envios = Envio::orderBy('envCreatedBy', 'desc')->where('envCreatedBy',$userid)->paginate(15); 
+            $envios = Envio::orderBy('envCreatedBy', 'desc')->where('envCreatedBy',$userid)
+                //->get();
+                ->paginate(15); 
         }
-               
+        //return $envios;
         return view('envioinforme.index',compact('userdata','envios'));
     }
 

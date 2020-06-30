@@ -9,8 +9,22 @@
   <div class="row">
     <div class="col-md-10 offset-md-1 col-sm-12">
       <h2 class="form-signin-heading text-center" style="display: inline-block; margin-right: 50px;">Lista de Envios</h2>
+      <div class="row">
+      	<div class="col-12 col-md-4">
+      		
+      	</div>
+      	<div class="col-12 col-md-4">
+      		
+      	</div>
+      	<div class="col-12 col-md-4">
+      		
+      	</div>
+      </div>
       <table class="table table-responsive-md">
         <thead>
+        	@if(Auth::user()->privilegio == 3)
+        	<th>Comercio</th>
+        	@endif
           <th>Fecha de Registro</th>
           <th>Orígen</th>
           <th>Destino</th>
@@ -22,6 +36,9 @@
         </thead>
         @foreach($envios as $envio)
         <tr>
+        	@if(Auth::user()->privilegio == 3)
+        	<td>{{$envio->comNombre}}</td>
+        	@endif
           <td>{{$envio->created_at}}</td>
           <td>{{$envio->envOrigen}}</td>
           <td>{{$envio->envDestino}}</td>
