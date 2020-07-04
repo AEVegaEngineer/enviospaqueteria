@@ -31,8 +31,25 @@ class EnvioController extends Controller
     public function index()
     {
         $userid = Auth::user()->id;
-        $userdata = getUserData();        
-        $envios = Envio::orderBy('envCreatedBy', 'desc')->where('envCreatedBy',$userid)->paginate(15);        
+        $userdata = getUserData();   
+        $envios;
+        if(Auth::user()->privilegio == 3)
+        {
+            //shopping
+            $a = Shopping::select('envios.*')
+                ->join('comercios', 'shoppings.shopId', '=', 'comercios.comShoppingId')
+                ->join('envios', 'envios.envCreatedBy', '=', 'comercios.comUsuarioId')
+                ->where('shoppings.shopUsuarioId',$userid);
+            $b = Envio::where('envios.envCreatedBy',$userid);
+            $envios = $a->union($b)->paginate(15);
+        }     
+        else
+        {
+            //persona o comercio
+            $envios = Envio::where('envCreatedBy',$userid)->orderBy('created_at', 'desc')
+                ->paginate(15); 
+        }
+        //return $envios;
         return view('dashboard',compact('userdata','envios'));
     }
 

@@ -113,7 +113,7 @@ class UserController extends Controller
         }
         else if($privs == 3)
         {
-            $userdata = User::Join('shoppings', 'users.id', '=', 'shoppings.comUsuarioId')
+            $userdata = User::Join('shoppings', 'users.id', '=', 'shoppings.shopUsuarioId')
                 ->where('users.id',$userid)
                 ->first();
         }

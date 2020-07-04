@@ -68,11 +68,11 @@
           <?php if (Auth::user() !== null){ ?>
           
           <li class="drop-down">
-            <?php if($userdata->shopNombre != null){ ?>
+            <?php if(isset($userdata->shopNombre) and $userdata->shopNombre != null){ ?>
               <a href="" class="text-decoration-none">{{ $userdata->shopNombre }}</a>
-            <?php } else if ($userdata->comNombre != null){ ?>
+            <?php } else if (isset($userdata->comNombre) and $userdata->comNombre != null){ ?>
               <a href="" class="text-decoration-none">{{ $userdata->comNombre }}</a>
-            <?php } else if ($userdata->perNombre != null){ ?>
+            <?php } else if (isset($userdata->shopNombre) and $userdata->perNombre != null){ ?>
               <a href="" class="text-decoration-none">{{ $userdata->perNombre }}</a>
             <?php } ?>
             <ul>
