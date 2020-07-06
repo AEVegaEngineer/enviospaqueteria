@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use PDF;
 use Carbon\Carbon;
 use App\Envio;
+use Storage;
 
 class ComprobanteController extends Controller
 {
@@ -50,11 +51,22 @@ class ComprobanteController extends Controller
     {
         //return "Comprobante con ID:".$id;
         $envio = Envio::where('envId',$id)->first();
-        $pdf = PDF::loadView('comprobante.envio', compact('envio'));  
+        $pdf = PDF::loadView('comprobante.envio2', compact('envio'));  
+        
         $fecha_envio = Carbon::createFromFormat('Y-m-d H:i:s', $envio->created_at);
+        /*
+        //$pdf->save(storage_path('comprobantes\comprobante-envio-'.$id.'-'.$fecha_envio.'.pdf'));
+        Storage::put('public/comprobantes/comprobante-envio-'.$id.'-'.$fecha_envio.'.pdf', $pdf->output());
         //$hoy = Carbon::today()->toDateString();
-
         return $pdf->download('comprobante-envio-'.$id.'-'.$fecha_envio.'.pdf');
+        
+
+        $pdf = PDF::loadView('cardex.reporte-cardex', compact('cardexs','existencia','mes_long','fecha_formateada'));   
+        */      
+        $pdf->save(storage_path('comprobantes/comprobante-envio-'.$id.'.pdf'));
+        return $pdf->stream('comprobante-envio-'.$id.'.pdf');
+        //return view('comprobante.envio2', compact('envio'));
+        
         
     }
 
