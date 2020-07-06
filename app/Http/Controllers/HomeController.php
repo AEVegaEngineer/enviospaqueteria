@@ -39,8 +39,16 @@ class HomeController extends Controller
             $userdata = $isUserShopping;
         else if($isUserPersona)
             $userdata = $isUserPersona;
+        // Los administradores deben poder saber si existen envios en espera para los que no se hayan impreso sus comprobantes (envios estancados en espera)
+        $priv = Auth::user()->privilegio;
+        $enviosEnEspera = null;
+        if($priv == 5)
+        {
+            $enviosEnEspera = Envio::where('envComprobanteImpreso',0)->first();
+        }
+        
         $envios = Envio::orderBy('envId', 'desc')->where('envCreatedBy',$userid)->paginate(15);
         //return $userdata;
-        return view('dashboard', compact('userdata','envios'));
+        return view('dashboard', compact('userdata','envios','enviosEnEspera'));
     }
 }

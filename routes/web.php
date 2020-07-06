@@ -26,3 +26,4 @@ Route::resource('envio','EnvioController');
 Route::resource('usuario','UserController');
 Route::resource('envioinforme','EnvioInformeController');
 Route::resource('listapaquete','ListaPaqueteController');
+Route::resource('comprobante','ComprobanteController');

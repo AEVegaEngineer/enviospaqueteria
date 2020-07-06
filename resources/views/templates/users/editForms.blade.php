@@ -19,12 +19,15 @@
                 @if (Auth::user()->privilegio == 3)
                   Shopping
                 @endif
+                @if (Auth::user()->privilegio == 5)
+                  Administrador
+                @endif
               </h3>
               @csrf
               <div class="form-group row">
                 <p class="col-md-8 text-md-right">{{ __('Correo Electrónico') }}</p>                  
                 <div class="col-md-4">
-                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $userdata->email }}" required autocomplete="email" readonly="">
+                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Auth::user()->email }}" required autocomplete="email" readonly="">
 
                   @error('email')
                     <span class="invalid-feedback" role="alert">
@@ -165,7 +168,7 @@
                 <p class="col-md-8 text-md-right">{{ __('Teléfono') }}</p>
 
                 <div class="col-md-4">
-                  <input id="usuTelefono" type="number" class="form-control @error('usuTelefono') is-invalid @enderror" name="usuTelefono" value="{{ $userdata->usuTelefono }}" required autocomplete="usuTelefono" autofocus>
+                  <input id="usuTelefono" type="number" class="form-control @error('usuTelefono') is-invalid @enderror" name="usuTelefono" value="{{ Auth::user()->usuTelefono }}" required autocomplete="usuTelefono" autofocus>
 
                   @error('usuTelefono')
                     <span class="invalid-feedback" role="alert">
@@ -178,7 +181,7 @@
                 <p class="col-md-8 text-md-right">{{ __('Dirección') }}</p>
 
                 <div class="col-md-4">
-                  <input id="usuDireccion" type="text" class="form-control @error('usuDireccion') is-invalid @enderror" name="usuDireccion" value="{{ $userdata->usuDireccion }}" required autocomplete="usuDireccion" autofocus>
+                  <input id="usuDireccion" type="text" class="form-control @error('usuDireccion') is-invalid @enderror" name="usuDireccion" value="{{ Auth::user()->usuDireccion }}" required autocomplete="usuDireccion" autofocus>
 
                   @error('usuDireccion')
                     <span class="invalid-feedback" role="alert">
@@ -194,8 +197,8 @@
                   </button>
                 </div>
               </div>
-              <input type="hidden" name="privilegio" value="{{ $userdata->privilegio }}">                
-              <input type="hidden" name="id" value="{{ $userdata->id }}">
+              <input type="hidden" name="privilegio" value="{{ Auth::user()->privilegio }}">                
+              <input type="hidden" name="id" value="{{ Auth::user()->id }}">
             </div>
           </div>
         {!!Form::close()!!}

@@ -1,5 +1,5 @@
 <section id="listaEnvios">
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-md-10 offset-md-1 col-sm-12">
       <h2 class="form-signin-heading text-center" style="display: inline-block; margin-right: 50px;">Lista de Envios</h2>
       <table class="table table-responsive-md">
@@ -10,7 +10,7 @@
           <th>Estado</th>
           <th>Costo</th>
           <th>Fecha de Recibido</th>
-          <th>Recibido por</th>
+          <th>Recibido por</th>          
           <th width="170px">Operaciones</th>
         </thead>
         @foreach($envios as $envio)
@@ -33,6 +33,9 @@
           <td>          
             <div class="btn-group">
               <button type="button" id="paqueteDeEnvio{{$envio->envId}}" class="btn btn-sm btn-info">Ver Paquetes</button>
+              @if(Auth::user()->privilegio == 5)
+                <a href="/comprobante/{{$envio->envId}}" class="btn btn-sm btn-warning">Ver Comprobante</a>
+              @endif
             </div>
           </td>
         </tr>

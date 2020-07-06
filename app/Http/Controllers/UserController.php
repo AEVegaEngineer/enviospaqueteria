@@ -96,7 +96,7 @@ class UserController extends Controller
     {
         $userid = Auth::user()->id;
         $privs = Auth::user()->privilegio;
-        $userdata;
+        $userdata = null;
         $comShoppingIds = Shopping::pluck('shopNombre', 'shopId');
         $comShoppingIds->prepend('No', 0);
         if($privs == 1)

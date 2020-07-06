@@ -51,44 +51,67 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="/home" class="text-decoration-none">Inicio</a></li> 
-          <li><a href="/envio/create" class="text-decoration-none">Enviar</a></li>         
-          <?php if (Auth::user()->privilegio == "shopping"){ ?>
+          <li class="active"><a href="/home" class="text-decoration-none">Inicio</a></li>
+          <?php if(Auth::user()->privilegio != 5){ ?>   
+          <li><a href="/envio/create" class="text-decoration-none">Enviar</a></li> 
+          <?php } ?>        
+          <?php if (Auth::user()->privilegio == 3){ ?>
           <li><a href="#" class="text-decoration-none">Comercios Asociados</a></li>
           <?php } ?>
           <li class="drop-down"><a href="" class="text-decoration-none">Informes</a>
             <ul>
-              <?php if (Auth::user()->privilegio != "comercio" || (Auth::user()->privilegio == "comercio" && Auth::user()->comShoppingId == null)){ ?>
+              <?php if (Auth::user()->privilegio != 2 || (Auth::user()->privilegio == 2 && $userdata->comShoppingId == null)){ ?>
                 <li><a href="#" class="text-decoration-none">Pagos</a></li>
-              <?php } ?>              
-              <li><a href="/envioinforme" class="text-decoration-none">Envíos</a></li>
+              <?php } ?>  
+            
+              <li><a href="/envio" class="text-decoration-none">Envíos</a></li>
+              
             </ul>
-          </li>          
-          <li><a href="#" class="text-decoration-none">Contácto</a></li>
-          <?php if (Auth::user() !== null){ ?>
-          
-          <li class="drop-down">
-            <?php if(isset($userdata->shopNombre) and $userdata->shopNombre != null){ ?>
-              <a href="" class="text-decoration-none">{{ $userdata->shopNombre }}</a>
-            <?php } else if (isset($userdata->comNombre) and $userdata->comNombre != null){ ?>
-              <a href="" class="text-decoration-none">{{ $userdata->comNombre }}</a>
-            <?php } else if (isset($userdata->shopNombre) and $userdata->perNombre != null){ ?>
-              <a href="" class="text-decoration-none">{{ $userdata->perNombre }}</a>
-            <?php } ?>
-            <ul>
-              <li><a href="/usuario/{{Auth::user()->id}}/edit" class="text-decoration-none">Ver Perfil</a></li>
-              <li>
-                <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Cerrar Sesión') }}
-                                    </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-              </li>
-            </ul>
-          </li>
+          </li>    
+          <?php if(Auth::user()->privilegio != 5){ ?>       
+            <li><a href="#" class="text-decoration-none">Contácto</a></li>
+          <?php } ?>
+          <?php if(Auth::user()->privilegio == 5){ ?>   
+            <li class="drop-down">
+              <a href="" class="text-decoration-none">Usuarios</a>
+              <ul>
+                <li><a href="/usuario/{{Auth::user()->id}}/edit" class="text-decoration-none">Registrar Usuarios</a></li>
+                <li><a href="/usuario/{{Auth::user()->id}}/edit" class="text-decoration-none">Lista de Usuarios</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/usuario/{{Auth::user()->id}}/edit" class="text-decoration-none">Clientes</a>
+            </li>
+            <li>
+              <a href="/usuario/{{Auth::user()->id}}/edit" class="text-decoration-none">Constancias y Comprobantes</a>
+            </li>
+          <?php } ?>    
+
+          <?php if (Auth::user() !== null){ ?>          
+            <li class="drop-down">
+              <?php if(isset($userdata->shopNombre) and $userdata->shopNombre != null){ ?>
+                <a href="" class="text-decoration-none">{{ $userdata->shopNombre }}</a>
+              <?php } else if (isset($userdata->comNombre) and $userdata->comNombre != null){ ?>
+                <a href="" class="text-decoration-none">{{ $userdata->comNombre }}</a>
+              <?php } else if (isset($userdata->shopNombre) and $userdata->perNombre != null){ ?>
+                <a href="" class="text-decoration-none">{{ $userdata->perNombre }}</a>
+              <?php } else {?>
+                <a href="" class="text-decoration-none">{{ Auth::user()->email }}</a>
+              <?php } ?>
+              <ul>
+                <li><a href="/usuario/{{Auth::user()->id}}/edit" class="text-decoration-none">Ver Perfil</a></li>
+                <li>
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                                         onclick="event.preventDefault();
+                                                       document.getElementById('logout-form').submit();">
+                                          {{ __('Cerrar Sesión') }}
+                                      </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
+                </li>
+              </ul>
+            </li>
           <?php } ?>
 
         </ul>

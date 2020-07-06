@@ -43,14 +43,19 @@ class EnvioController extends Controller
             $b = Envio::where('envios.envCreatedBy',$userid);
             $envios = $a->union($b)->paginate(15);
         }     
-        else
+        else if (Auth::user()->privilegio == 1 || Auth::user()->privilegio == 2)
         {
             //persona o comercio
             $envios = Envio::where('envCreatedBy',$userid)->orderBy('created_at', 'desc')
                 ->paginate(15); 
         }
+        else if(Auth::user()->privilegio == 5)
+        {
+            $envios = Envio::orderBy('created_at', 'desc')
+                ->paginate(15);
+        }
         //return $envios;
-        return view('dashboard',compact('userdata','envios'));
+        return view('envios.index',compact('userdata','envios'));
     }
 
     /**
@@ -106,7 +111,16 @@ class EnvioController extends Controller
         ]);
         return redirect('/envio')->with('message-success', 'El envío ha sido registrado exitosamente');
     }
-
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showEnEsperaSinComprobante($id)
+    {
+                
+    }
     /**
      * Display the specified resource.
      *

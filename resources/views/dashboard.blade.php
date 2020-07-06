@@ -5,10 +5,23 @@
 
 <div class="mt-5"></div>
 @if (Auth::user()->privilegio == 5)
-  <h3>Bienvenido al Panel Administrativo del Sistema de Envíos</h3>
-  <p>Seleccione una opción del menú superior para continuar</p>
+
+  <section id="cta" class="cta">
+    <div class="container" data-aos="zoom-in">
+      <div class="text-center">
+        <h3>Bienvenido al Panel Administrativo del Sistema de Envíos</h3>
+        @if (isset($enviosEnEspera))
+          <p>Se han detectado envíos para los que no se han impreso sus comprobantes y siguen en espera</p>
+          <a class="btn btn-outline-light" href="/envio/create">Ver envíos en espera</a>
+        @else
+          <p>Seleccione una opción del menú superior para continuar</p>
+        @endif
+        
+      </div>
+    </div>
+  </section>
 @else
-  @if (!isset($envios) || $envios->isEmpty())
+  
   <!-- ======= Cta Section ======= -->
     <section id="cta" class="cta">
       <!-- ======= Alertas ======= -->
@@ -43,17 +56,15 @@
               <a class="btn btn-outline-light" href="/envio/create">Comenzar</a>
             @endif
           @endif
-          
+          @if (isset($envios) && !$envios->isEmpty())
+            <p class="mt-3">Para ver tus envíos haz clic aquí</p>
+            <a class="btn btn-outline-light" href="/envio">Ver envíos</a>
+          @endif
         </div>
       </div>
     </section>
   <!-- End Cta Section -->
-  @else
-    @include('templates.envios.listaenvios')
-  @endif
 @endif
-
-
 </main><!-- End #main -->
 
 @endsection

@@ -20,6 +20,7 @@ class Envio extends Model
     	'envEstadoEnvio',
     	'envOrigen',
         'envEntregadoEn',
-        'envEntregadoA'
+        'envEntregadoA',
+        'envComprobanteImpreso'
     ];
 }
