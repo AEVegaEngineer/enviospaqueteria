@@ -32,9 +32,9 @@
           <td>{{$envio->envEntregadoA}}</td>
           <td>          
             <div class="btn-group">
-              <button type="button" id="paqueteDeEnvio{{$envio->envId}}" class="btn btn-sm btn-info">Ver Paquetes</button>
+              <button type="button" id="paqueteDeEnvio{{$envio->envId}}" class="btn btn-info btn-sm">Ver Paquetes</button>
               @if(Auth::user()->privilegio == 5)
-                <a href="/comprobante/{{$envio->envId}}" class="btn btn-sm btn-warning">Ver Comprobante</a>
+                <a href="/comprobante/{{$envio->envId}}" target="_blank" class="btn btn-warning btn-sm">Ver Comprobante</a>
               @endif
             </div>
           </td>

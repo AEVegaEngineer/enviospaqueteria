@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use PDF;
 use Carbon\Carbon;
 use App\Envio;
+use App\Persona;
+use App\Comercio;
+use App\Shopping;
+use App\Listapaquete;
 use Storage;
 
 class ComprobanteController extends Controller
@@ -50,8 +54,31 @@ class ComprobanteController extends Controller
     public function show($id)
     {
         //return "Comprobante con ID:".$id;
-        $envio = Envio::where('envId',$id)->first();
-        $pdf = PDF::loadView('comprobante.envio2', compact('envio'));  
+        $envio = Envio::join('users','users.id','=','envios.envCreatedBy')
+            ->where('envId',$id)
+            ->first();
+        $listapaquetes = Listapaquete::join('envios','envios.envId','=','listapaquetes.listEnvioId')
+            ->join('paquetes','paquetes.paqId','=','listapaquetes.listPaqueteId')
+            ->where('envId',$id)
+            ->get();
+        $datosRemitente;
+        switch ($envio->privilegio) {
+            case 1:
+                //persona
+                $datosRemitente = Persona::where('perUsuarioId',$envio->id)->first(); //paso parametro id del usuario que envió
+                break;
+            case 2:
+                //comercio
+                $datosRemitente = Comercio::where('comUsuarioId',$envio->id)->first(); //paso parametro id del usuario que envió
+                break;
+            case 3:
+                //shopping
+                $datosRemitente = Shopping::where('shopUsuarioId',$envio->id)->first(); //paso parametro id del usuario que envió
+                break;
+            default:
+                break;
+        }
+        $pdf = PDF::loadView('comprobante.envio2', compact('envio','datosRemitente','listapaquetes'));  
         
         $fecha_envio = Carbon::createFromFormat('Y-m-d H:i:s', $envio->created_at);
         /*
