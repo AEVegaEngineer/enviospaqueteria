@@ -118,17 +118,3 @@ class EnvioInformeController extends Controller
         //
     }
 }
-function getUserData(){
-    $userid = Auth::user()->id;
-    $isUserComercio = Comercio::where('comUsuarioId',$userid)->first();
-    $isUserShopping = Shopping::where('shopUsuarioId',$userid)->first();
-    $isUserPersona = Persona::where('perUsuarioId',$userid)->first();
-    $userdata = null;
-    if($isUserComercio)
-        $userdata = $isUserComercio;
-    else if($isUserShopping)
-        $userdata = $isUserShopping;
-    else if($isUserPersona)
-        $userdata = $isUserPersona;
-    return $userdata;
-}

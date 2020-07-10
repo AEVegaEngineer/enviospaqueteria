@@ -29,6 +29,7 @@
   <link href="{{ asset('css/icofont.min.css') }}" rel="stylesheet" type="text/css" />
   <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css" />
   <link href="{{ asset('css/remixicon.css') }}" rel="stylesheet" type="text/css" />  
+  <link href="{{ asset('css/estilosPersonalizados.css') }}" rel="stylesheet" type="text/css" />  
   
   
   <!-- =======================================================
@@ -61,7 +62,7 @@
           <li class="drop-down"><a href="" class="text-decoration-none">Informes</a>
             <ul>
               <?php if (Auth::user()->privilegio != 2 || (Auth::user()->privilegio == 2 && $userdata->comShoppingId == null)){ ?>
-                <li><a href="#" class="text-decoration-none">Pagos</a></li>
+                <!--<li><a href="#" class="text-decoration-none">Pagos</a></li>-->
               <?php } ?>  
             
               <li><a href="/envio" class="text-decoration-none">Envíos</a></li>
@@ -75,8 +76,8 @@
             <li class="drop-down">
               <a href="" class="text-decoration-none">Usuarios</a>
               <ul>
-                <li><a href="/usuario/{{Auth::user()->id}}/edit" class="text-decoration-none">Registrar Usuarios</a></li>
-                <li><a href="/usuario/{{Auth::user()->id}}/edit" class="text-decoration-none">Lista de Usuarios</a></li>
+                <li><a href="/usuario/create" class="text-decoration-none">Registrar Usuarios</a></li>
+                <li><a href="/usuario" class="text-decoration-none">Lista de Usuarios</a></li>
               </ul>
             </li>
             <li>
@@ -142,8 +143,12 @@
   <script src="{{ asset('/js/aos.js') }}" ></script>
   <script src="{{ asset('/js/main.js') }}"></script>
   <script src="{{ asset('/js/envios/create.js') }}"></script>
+  <!-- Script solo usado en lista de envios -->
   <script src="{{ asset('js/utils/getJson.js') }}"></script>
-
+  <!-- Script solo usado en lista de usuarios -->
+  <script src="{{ asset('js/users/detalleUsuarios.js') }}"></script>
+  <!-- Script solo usado en ambos registros de usuarios -->
+  <script src="{{ asset('js/login-register.js') }}"></script>
 </body>
 
 </html>

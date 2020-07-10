@@ -29,8 +29,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        $usuarios = User::all();
-        return view('usuario.index', compact('usuarios'));
+        $userdata = getUserData();
+
+        $usuarios = User::leftjoin('comercios','users.id','=','comercios.comUsuarioId')
+            ->leftjoin('shoppings','users.id','=','shoppings.shopUsuarioId')
+            ->leftjoin('personas','users.id','=','personas.perUsuarioId')
+            ->orderBy('users.created_at', 'desc')            
+            ->paginate(15);
+        //return $usuarios;
+        return view('users.index', compact('usuarios','userdata'));
     }
 
     /**
@@ -40,8 +47,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
-        //return "cosas";
+        $comShoppingIds = Shopping::pluck('shopNombre', 'shopId');
+        $comShoppingIds->prepend('No', 0);
+        $userdata = getUserData();
+        return view('users.create',compact('userdata','comShoppingIds'));
     }
 
     /**
@@ -80,9 +89,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        //return $user;
-        return "usuario.show";
+        //$user = User::find($id);
+        $userdata = getUserData($id);
+        return $userdata;
         //return view('usuario.edit',['user'=>$user]);
     }
 
@@ -192,3 +201,4 @@ class UserController extends Controller
         //
     }
 }
+

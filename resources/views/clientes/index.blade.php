@@ -1,8 +1,17 @@
-<section id="listaEnvios">
+@extends('layouts.dashboardLayout')
+
+@section('content')
+
+<!-- ======= Alertas ======= -->
+@include('alerts.alerts')
+
+<!-- ======= Cta Section ======= -->
+  
+<section id="listaClientes">
   <div class="row mt-3">
     <div class="col-md-10 offset-md-1 col-sm-12">
-      <h2 class="form-signin-heading text-center" style="display: inline-block; margin-right: 50px;">Lista de Envios</h2>
-      <table class="table table-responsive-md" style="font-size: 14px;">
+      <h2 class="form-signin-heading text-center" style="display: inline-block; margin-right: 50px;">Lista de Clientes</h2>
+      <table class="table table-responsive-md">
         <thead>
           <th>Fecha de Registro</th>
           <th>Orígen</th>
@@ -11,7 +20,7 @@
           <th>Costo</th>
           <th>Fecha de Recibido</th>
           <th>Recibido por</th>          
-          <th width="260px">Operaciones</th>
+          <th width="170px">Operaciones</th>
         </thead>
         @foreach($envios as $envio)
         <tr>
@@ -76,3 +85,10 @@
 
   </div>
 </div>
+
+<!-- End Cta Section -->
+
+
+</main><!-- End #main -->
+
+@endsection
