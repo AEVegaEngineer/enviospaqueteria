@@ -11,7 +11,7 @@
           <th>Costo</th>
           <th>Fecha de Recibido</th>
           <th>Recibido por</th>          
-          <th width="260px">Operaciones</th>
+          <th width="200px">Operaciones</th>
         </thead>
         @foreach($envios as $envio)
         <tr>
@@ -32,9 +32,9 @@
           <td>{{$envio->envEntregadoA}}</td>
           <td>          
             <div class="btn-group">
-              <button type="button" id="paqueteDeEnvio{{$envio->envId}}" class="btn btn-info btn-sm">Ver Paquetes</button>
+              <button type="button" id="paqueteDeEnvio{{$envio->envId}}" class="btn btn-info btn-sm">Paquetes</button>
               @if(Auth::user()->privilegio == 5)
-                <a href="/comprobante/{{$envio->envId}}" target="_blank" class="btn btn-warning btn-sm">Ver Comprobante</a>
+                <a href="/comprobante/{{$envio->envId}}" target="_blank" class="btn btn-warning btn-sm">Comprobante</a>
               @endif
             </div>
           </td>

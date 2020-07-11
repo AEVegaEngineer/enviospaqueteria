@@ -10,6 +10,8 @@ use App\Persona;
 use App\Comercio;
 use App\Shopping;
 use Auth;
+use Redirect;
+use Hash;
 
 class UserController extends Controller
 {
@@ -61,23 +63,43 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return "user.store";
-        /*         
-        Usuario::create([            
-            'usuEmail' => $request['usuEmail'],
-            'usuNombre' => $request['usuNombre'],
-            'usuApellido' => $request['usuApellido'],
-            'usuActivo' => $request['usuActivo'],
-            'usuDni' => $request['usuDni'],
+        //return $request;
+                 
+        $usuario = User::create([            
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'usuTelefono' => $request['usuTelefono'],
             'usuDireccion' => $request['usuDireccion'],
-            'usuActivo' => $request['usuActivo'],
-            'usuTipoUsuario' => $request['usuTipoUsuario'],
-            'usuContrasena' => $request['usuContrasena'],
-            
+            'privilegio' => $request['privilegio']            
+        ]);
+        if($request['privilegio'] == 1){
+            //persona
+            Persona::create([            
+                'perNombres' => $request['perNombres'],
+                'perApellidos' => $request['perApellidos'],
+                'perDni' => $request['perDni'],
+                'perUsuarioId' => $usuario->id         
             ]);
-        */
+        } else if($request['privilegio'] == 2) {
+            //comercio
+            $shopping = ($request['comShoppingId'] == 0 ? null : $request['comShoppingId']);
+            Comercio::create([            
+                'comNombre' => $request['comNombre'],
+                'comCuit' => $request['comCuit'],
+                'comShoppingId' => $shopping,
+                'comUsuarioId' => $usuario->id          
+            ]);
+        } else if($request['privilegio'] == 3) {
+            //shopping
+            Shopping::create([            
+                'shopNombre' => $request['shopNombre'],
+                'shopCuit' => $request['shopCuit'],
+                'shopUsuarioId' => $request['shopUsuarioId']       
+            ]);
+        }
+        
         //$show = Usuario::create($request);   
-        //return redirect('/usuario')->with('success', 'El usuario ha sido creado correctamente!');
+        return redirect('/usuario')->with('success', 'El usuario ha sido creado correctamente!');
         //return redirect('/');
     }
 

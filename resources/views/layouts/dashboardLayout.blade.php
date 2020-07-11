@@ -80,6 +80,22 @@
                 <li><a href="/usuario" class="text-decoration-none">Lista de Usuarios</a></li>
               </ul>
             </li>
+            <li class="drop-down"><a href="">Usuarios</a>
+              <ul>
+                <li class="drop-down"><a href="#">Lista de Usuarios</a>
+                  <ul>
+                    <li><a href="#">Deep Drop Down 1</a></li>
+                    <li><a href="#">Deep Drop Down 2</a></li>
+                    <li><a href="#">Deep Drop Down 3</a></li>
+                    <li><a href="#">Deep Drop Down 4</a></li>
+                    <li><a href="#">Deep Drop Down 5</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Drop Down 2</a></li>
+                <li><a href="#">Drop Down 3</a></li>
+                <li><a href="#">Drop Down 4</a></li>
+              </ul>
+            </li>
             <li>
               <a href="/usuario/{{Auth::user()->id}}/edit" class="text-decoration-none">Clientes</a>
             </li>
@@ -147,8 +163,8 @@
   <script src="{{ asset('js/utils/getJson.js') }}"></script>
   <!-- Script solo usado en lista de usuarios -->
   <script src="{{ asset('js/users/detalleUsuarios.js') }}"></script>
-  <!-- Script solo usado en ambos registros de usuarios -->
-  <script src="{{ asset('js/login-register.js') }}"></script>
+  <!-- Script solo usado registros de usuarios por el admin -->
+  <script src="{{ asset('js/users/usuario-register.js') }}"></script>
 </body>
 
 </html>

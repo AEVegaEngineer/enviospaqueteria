@@ -11,7 +11,7 @@
   <div class="row mt-3">
     <div class="col-md-10 offset-md-1 col-sm-12">
       <h2 class="form-signin-heading text-center" style="display: inline-block; margin-right: 50px;">Lista de Usuarios</h2>
-      <table class="table table-responsive-md">
+      <table class="table table-responsive-md" style="font-size: 14px;">
         <thead>
           <th>Email</th>
           <th>Nombre</th>
