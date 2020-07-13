@@ -10,6 +10,7 @@ use App\Shopping;
 use App\Envio;
 use App\Listapaquete;
 use App\Paquete;
+use App\CambioEstado;
 use Auth;
 
 class EnvioController extends Controller
@@ -54,8 +55,8 @@ class EnvioController extends Controller
             $envios = Envio::orderBy('created_at', 'desc')
                 ->paginate(15);
         }
-        //return $envios;
-        return view('envios.index',compact('userdata','envios'));
+        $status = 1;
+        return view('envios.index',compact('userdata','envios','status'));
     }
 
     /**
@@ -104,6 +105,11 @@ class EnvioController extends Controller
             'envCreatedBy' => $userid,
             'envEstadoEnvio' => 1,
         ]);
+        CambioEstado::create([
+            'cambEnvioId' => $EnvioRegistrado->id, 
+            'cambEstado' => 1,
+            'cambCreatedBy' => $userid,
+        ]);
         $ListapaqueteRegistrada = Listapaquete::create([
             'listPaqueteId' => 1,
             'listCantidadPaq' => $request['listCantidadPaq'],
@@ -117,9 +123,9 @@ class EnvioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showEnEsperaSinComprobante($id)
+    public function showEnEspera()
     {
-                
+        return envioXStatus(1);
     }
     /**
      * Display the specified resource.
@@ -127,10 +133,39 @@ class EnvioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function showEnLogistica()
+    {
+        return envioXStatus(2);
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showEnTransito()
+    {
+        return envioXStatus(3);
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showEntregado()
+    {
+        return envioXStatus(4);
+    }
+    /**
+     * Muesta envíos según estado
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
-        
-        
+                
     }
 
     /**
@@ -153,7 +188,18 @@ class EnvioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $userid = Auth::user()->id;
+        $envio = Envio::where('envId', $id)->first();
+        $estadoActual = $envio->envEstadoEnvio;
+        $nuevoEstado = $estadoActual + 1;
+        Envio::where('envId', '=', $id)
+            ->update(['envEstadoEnvio' => $nuevoEstado]);
+        CambioEstado::create([
+            'cambEnvioId' => $id, 
+            'cambEstado' => $nuevoEstado,
+            'cambCreatedBy' => $userid,
+        ]);
+        return redirectByStatus($nuevoEstado);
     }
 
     /**
@@ -167,4 +213,33 @@ class EnvioController extends Controller
         //
     }
 }
-
+function envioXStatus($status)
+{
+    $userdata = getUserData();   
+    $envios = Envio::orderBy('created_at', 'desc')
+        ->where('envEstadoEnvio',$status)
+        ->paginate(15);
+    
+    //return $envios;
+    return view('envios.index',compact('userdata','envios','status'));
+}
+function redirectByStatus($status){
+    switch ($status) {
+        case 1:
+            return redirect('/en-espera')->with('message-success', 'El envío ahora está en espera');
+            break;
+        case 2:
+            return redirect('/en-logistica')->with('message-success', 'El envío ahora está en logística');
+            break;
+        case 3:
+            return redirect('/en-transito')->with('message-success', 'El envío ahora está en tránsito a destino');
+            break;
+        case 4:
+            return redirect('/entregado')->with('message-success', 'El envío ha sido entregado a destino');
+            break;
+        
+        default:
+            break;
+    }
+    
+}

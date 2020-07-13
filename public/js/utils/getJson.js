@@ -18,8 +18,9 @@ $('[id^=paqueteDeEnvio]').click(function(){
         '<td>'+paquete.paqPeso+' '+paquete.paqPesoUnidad+'</td>'+
         '</tr>');
     });
+    $('#modalListaPaquetes').modal('show');
   }
-  $('#modalListaPaquetes').modal('show');
+  
 });
 function beforeObtenerListaPaquetes(){
 

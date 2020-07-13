@@ -2,9 +2,6 @@
 
 @section('content')
 
-<!-- ======= Alertas ======= -->
-@include('alerts.alerts')
-
 <!-- ======= Cta Section ======= -->
   
 @include('templates.envios.listaenvios')

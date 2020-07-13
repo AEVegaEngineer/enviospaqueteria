@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-
-use App\Http\Requests\ComercioCreateRequest;
-use App\Comercio;
 use App\User;
-use Auth;
-use Mail;
-use Session;
-use Redirect;
 
-class ComercioController extends Controller
+class AdminController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -23,8 +24,7 @@ class ComercioController extends Controller
     public function index()
     {
         $userdata = getUserData();
-
-        $usuarios = User::where('privilegio',2)
+        $usuarios = User::where('privilegio',5)
             ->orderBy('users.created_at', 'desc')            
             ->paginate(15);
         //return $usuarios;
@@ -47,39 +47,9 @@ class ComercioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ComercioCreateRequest $request)
+    public function store(Request $request)
     {
-        $hashedPass = Hash::make($request['usuContrasena']);
-        
-        $usuarioRegistrado = Usuario::create([            
-            'usuEmail' => $request['usuEmail'],
-            'usuActivo' => 1,
-            'usuTelefono' => $request['usuTelefono'],
-            'usuDireccion' => $request['usuDireccion'],
-            'usuContrasena' => $hashedPass,
-            'usuTipoUsuario' => 2,
-        ]);        
-        
-        $comercioRegistrado = Comercio::create([
-            'comNombre' => $request['comNombre'],
-            'comCuit' => $request['comCuit'],
-            'comUsuarioId' => $usuarioRegistrado->id,
-        ]);
-        //con Auth::attempt siempre es necesario pasarle 'password' y 
-        //poner un getter en el modelo del usuario
-        if(Auth::attempt([
-            'usuEmail' => $request['usuEmail'], 
-            'password'=>$request['usuContrasena']
-        ])){
-            Session::flash('messsage-success','Usted se ha registrado correctamente!');
-        } 
-        else
-        {
-            $request->flash();
-            Session::flash('messsage-error','Ha ocurrido un error con el registro!');
-        } 
-        return Redirect::to('/login');
-        //return view('dashboards.comercio'); 
+        //
     }
 
     /**

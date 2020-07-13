@@ -67,7 +67,7 @@
           
           <td>
           	<div class="btn-group" role="group" aria-label="Operaciones de Usuarios">
-						  <button type="button" class="btn btn-info btn-sm">Detalles</button>
+						  <!--<button type="button" class="btn btn-info btn-sm">Detalles</button>-->
 						  <button type="button" class="btn btn-primary btn-sm">Editar</button>
 						  <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
 						</div>   

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests\PersonaCreateRequest;
 use App\Persona;
-use App\Usuario;
+use App\User;
 use Auth;
 use Mail;
 use Session;
@@ -31,7 +31,13 @@ class PersonaController extends Controller
      */
     public function index()
     {
-        return view('dashboards.persona');
+        $userdata = getUserData();
+
+        $usuarios = User::where('privilegio',1)
+            ->orderBy('users.created_at', 'desc')            
+            ->paginate(15);
+        //return $usuarios;
+        return view('users.index', compact('usuarios','userdata'));
     }
 
     /**

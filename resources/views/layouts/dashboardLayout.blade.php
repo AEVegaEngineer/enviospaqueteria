@@ -65,43 +65,41 @@
                 <!--<li><a href="#" class="text-decoration-none">Pagos</a></li>-->
               <?php } ?>  
             
-              <li><a href="/envio" class="text-decoration-none">Envíos</a></li>
-              
+              <li class="drop-down"><a href="#" class="text-decoration-none">Envíos</a>
+                  <ul>
+                    <li><a href="/envio" class="text-decoration-none">Todos</a></li>
+                    <li><a href="/en-espera" class="text-decoration-none">En Espera</a></li>
+                    <li><a href="/en-logistica" class="text-decoration-none">Entregado a Logística</a></li>
+                    <li><a href="/en-transito" class="text-decoration-none">En Tránsito a Destino</a></li>
+                    <li><a href="/entregado" class="text-decoration-none">Entregado en Destino</a></li>
+                  </ul>
+                </li>
             </ul>
           </li>    
           <?php if(Auth::user()->privilegio != 5){ ?>       
             <li><a href="#" class="text-decoration-none">Contácto</a></li>
           <?php } ?>
-          <?php if(Auth::user()->privilegio == 5){ ?>   
-            <li class="drop-down">
-              <a href="" class="text-decoration-none">Usuarios</a>
+          <?php if(Auth::user()->privilegio == 5){ ?>               
+            <li class="drop-down"><a href="" class="text-decoration-none">Usuarios</a>
               <ul>
                 <li><a href="/usuario/create" class="text-decoration-none">Registrar Usuarios</a></li>
-                <li><a href="/usuario" class="text-decoration-none">Lista de Usuarios</a></li>
-              </ul>
-            </li>
-            <li class="drop-down"><a href="">Usuarios</a>
-              <ul>
-                <li class="drop-down"><a href="#">Lista de Usuarios</a>
+                <li class="drop-down"><a href="#" class="text-decoration-none">Lista de Usuarios</a>
                   <ul>
-                    <li><a href="#">Deep Drop Down 1</a></li>
-                    <li><a href="#">Deep Drop Down 2</a></li>
-                    <li><a href="#">Deep Drop Down 3</a></li>
-                    <li><a href="#">Deep Drop Down 4</a></li>
-                    <li><a href="#">Deep Drop Down 5</a></li>
+                    <li><a href="/usuario" class="text-decoration-none">Todos</a></li>
+                    <li><a href="/persona" class="text-decoration-none">Personas</a></li>
+                    <li><a href="/comercio" class="text-decoration-none">Comercios</a></li>
+                    <li><a href="/comercio" class="text-decoration-none">Shoppings</a></li>
+                    <li><a href="/usuario/empleado" class="text-decoration-none">Empleados</a></li>
+                    <li><a href="/usuario/admin" class="text-decoration-none">Administradores</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Drop Down 2</a></li>
-                <li><a href="#">Drop Down 3</a></li>
-                <li><a href="#">Drop Down 4</a></li>
               </ul>
             </li>
-            <li>
-              <a href="/usuario/{{Auth::user()->id}}/edit" class="text-decoration-none">Clientes</a>
-            </li>
+            <!--
             <li>
               <a href="/usuario/{{Auth::user()->id}}/edit" class="text-decoration-none">Constancias y Comprobantes</a>
             </li>
+            -->
           <?php } ?>    
 
           <?php if (Auth::user() !== null){ ?>          
@@ -159,12 +157,16 @@
   <script src="{{ asset('/js/aos.js') }}" ></script>
   <script src="{{ asset('/js/main.js') }}"></script>
   <script src="{{ asset('/js/envios/create.js') }}"></script>
+  <script src="{{ asset('js/sweetalert.min.js') }}"></script>
   <!-- Script solo usado en lista de envios -->
   <script src="{{ asset('js/utils/getJson.js') }}"></script>
   <!-- Script solo usado en lista de usuarios -->
   <script src="{{ asset('js/users/detalleUsuarios.js') }}"></script>
   <!-- Script solo usado registros de usuarios por el admin -->
   <script src="{{ asset('js/users/usuario-register.js') }}"></script>
+  <!-- Script solo usado al entregar envíos en destino -->
+  <script src="{{ asset('js/envios/entregaEnDestino.js') }}"></script>
+  
 </body>
 
 </html>

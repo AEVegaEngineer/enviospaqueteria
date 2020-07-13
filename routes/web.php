@@ -27,3 +27,14 @@ Route::resource('usuario','UserController');
 Route::resource('envioinforme','EnvioInformeController');
 Route::resource('listapaquete','ListaPaqueteController');
 Route::resource('comprobante','ComprobanteController');
+
+Route::resource('persona','PersonaController');
+Route::resource('comercio','ComercioController');
+Route::resource('shopping','ShoppingController');
+Route::resource('admin','AdminController');
+Route::resource('empleado','EmpleadoController');
+
+Route::get('/en-espera', 'EnvioController@showEnEspera')->name('showEnEspera');
+Route::get('/en-logistica', 'EnvioController@showEnLogistica')->name('showEnLogistica');
+Route::get('/en-transito', 'EnvioController@showEnTransito')->name('showEnTransito');
+Route::get('/entregado', 'EnvioController@showEntregado')->name('showEntregado');

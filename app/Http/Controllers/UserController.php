@@ -211,9 +211,26 @@ class UserController extends Controller
         
         return redirect('/home')->with('message-success',$successMessage);
     }
-
     /**
-     * Remove the specified resource from storage.
+     * Obtiene Administradores.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getAdmin()
+    {
+
+    }
+    /**
+     * Obtiene Empleados.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getEmpleados()
+    {
+        
+    }
+    /**
+     * Destruye recursos.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

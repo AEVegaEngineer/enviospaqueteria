@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests\ShoppingCreateRequest;
 use App\Shopping;
-use App\Usuario;
+use App\User;
 use Auth;
 use Mail;
 use Session;
@@ -31,18 +31,13 @@ class ShoppingController extends Controller
      */
     public function index()
     {
-        /*
-        if($target == 'materiaprima')
-            $existencia = materiaprima::where('mp_codigo',$id)->first()->mp_cantidad;
-        else if($target == 'producciona')
-            $front_target = 'Producción B';
-        else if($target == 'produccionb')
-            $front_target = 'Producción B';
-        else if($target == 'produccionc')
-            $front_target = 'Producción C';
-        return view('ajustes.inventario',compact('target','id','existencia'));
-        */
-        return view('dashboards.shopping');
+        $userdata = getUserData();
+
+        $usuarios = User::where('privilegio',3)
+            ->orderBy('users.created_at', 'desc')            
+            ->paginate(15);
+        //return $usuarios;
+        return view('users.index', compact('usuarios','userdata'));
     }
 
     /**
