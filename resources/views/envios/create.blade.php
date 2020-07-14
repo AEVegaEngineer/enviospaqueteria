@@ -2,14 +2,17 @@
 
 @section('content')
 
-<!-- ======= Alertas ======= -->
-@include('alerts.alerts')
+
 <!-- Sección de registro de envios -->
   
 <section id="envios" class="envios">
   <div class="container" data-aos="fade-up">
-
+    
     <div class="section-title mt-5">
+      <!-- ======= Alertas ======= -->
+      <div class="col-12 col-md-6 offset-md-3">
+        @include('alerts.alerts')
+      </div>      
       <h2>Registro de envíos</h2>
       <p>Ingrese los datos del envío</p>
     </div>

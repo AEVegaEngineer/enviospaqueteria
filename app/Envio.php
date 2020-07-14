@@ -13,6 +13,7 @@ class Envio extends Model
      */
     protected $fillable = [    	
     	'envActivo', 
+        'envCodigo', 
     	'envCosto',
     	'envCreatedBy',
     	'envDestinatarioId',

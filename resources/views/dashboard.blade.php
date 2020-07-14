@@ -12,7 +12,7 @@
         <h3>Bienvenido al Panel Administrativo del Sistema de Envíos</h3>
         @if (isset($enviosEnEspera))
           <p>Se han detectado envíos para los que no se han impreso sus comprobantes y siguen en espera</p>
-          <a class="btn btn-outline-light" href="/envio/create">Ver envíos en espera</a>
+          <a class="btn btn-outline-light" href="/en-espera">Ver envíos en espera</a>
         @else
           <p>Seleccione una opción del menú superior para continuar</p>
         @endif

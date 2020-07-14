@@ -3,5 +3,5 @@ $('[id^=btnEntregar]').click(function(){
   var url = Servidor+"enviar/"+idenvio;	  
   //getJson(url, null, null, popularTablaListaPaquetes); 
   console.log(url)
-  $('#modalListaPaquetes').modal('show');
+  $('#modalDetallesEntrega').modal('show');
 });

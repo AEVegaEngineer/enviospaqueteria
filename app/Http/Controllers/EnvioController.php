@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\EnvioCreateRequest;
+use Illuminate\Support\Str;
 use App\Comercio;
 use App\Persona;
 use App\Shopping;
@@ -104,6 +105,7 @@ class EnvioController extends Controller
             'envActivo' => 1,            
             'envCreatedBy' => $userid,
             'envEstadoEnvio' => 1,
+            'envCodigo' => Str::random(32),
         ]);
         CambioEstado::create([
             'cambEnvioId' => $EnvioRegistrado->id, 
