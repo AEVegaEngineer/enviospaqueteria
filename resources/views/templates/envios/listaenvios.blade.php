@@ -54,7 +54,7 @@
               @endif
               @if( (Auth::user()->privilegio == 5 || Auth::user()->privilegio == 4) && $status < 4 && $status != 3 )
                 {!!Form::open(['route'=>['envio.update',$envio->envId],'method'=>'PUT'])!!}
-                  {!!Form::submit($estado[$status],['class'=>'btn btn-success btn-sm'])!!} 
+                  <button class="btn btn-success btn-sm" id="btnStatusUpdate{{$envio->envId}}">{{$estado[$status]}}</button>                  
                 {!!Form::close()!!} 
               @elseif( (Auth::user()->privilegio == 5 || Auth::user()->privilegio == 4) && $status == 3 )   
                 <button class="btn btn-success btn-sm" id="btnEntregar{{$envio->envId}}">Entregado</button>
