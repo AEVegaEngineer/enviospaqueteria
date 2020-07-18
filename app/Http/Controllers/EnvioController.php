@@ -56,7 +56,7 @@ class EnvioController extends Controller
             $envios = Envio::orderBy('created_at', 'desc')
                 ->paginate(15);
         }
-        $status = 1;
+        $status = 0;
         return view('envios.index',compact('userdata','envios','status'));
     }
 
@@ -158,6 +158,20 @@ class EnvioController extends Controller
     public function showEntregado()
     {
         return envioXStatus(4);
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function comprobanteImpreso(Request $request)
+    {
+        if ($request->isMethod('post')){            
+            $envId = $request["idenvio"];
+            Envio::where('envId', '=', $envId)
+                ->update(['envComprobanteImpreso' => 1]);            
+        }
     }
     /**
      * Muesta envíos según estado

@@ -38,3 +38,4 @@ Route::get('/en-espera', 'EnvioController@showEnEspera')->name('showEnEspera');
 Route::get('/en-logistica', 'EnvioController@showEnLogistica')->name('showEnLogistica');
 Route::get('/en-transito', 'EnvioController@showEnTransito')->name('showEnTransito');
 Route::get('/entregado', 'EnvioController@showEntregado')->name('showEntregado');
+Route::post('/envio/comprobanteImpreso', 'EnvioController@comprobanteImpreso')->name('comprobanteImpreso');

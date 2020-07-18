@@ -11,7 +11,12 @@
       
       <h2 class="form-signin-heading text-center" style="display: inline-block; margin-right: 50px;">
         <?php $estado = ["En Espera","Entregado a Logística","En Tránsito a Destino","Entregado en Destino"]; ?>
-      Lista de Envios {{$estado[$status-1]}}</h2>
+        Lista de Envios 
+        @if($status != 0)
+          {{$estado[$status-1]}}
+        @endif
+      </h2>
+      <input type="hidden" id="_token" value="{{ csrf_token() }}">
       <table class="table table-responsive-md" style="font-size: 14px;">
         <thead>
           <th>Código</th>
@@ -24,7 +29,7 @@
           <th>Fecha de Recibido</th>
           <th>Recibido por</th>     
           @endif     
-          <th width="200px"  style="text-align: center;">Operaciones</th>
+          <th style="text-align: center;">Operaciones</th>
         </thead>
         @foreach($envios as $envio)
         <tr>
@@ -50,12 +55,18 @@
             <div class="btn-group">
               <button type="button" id="paqueteDeEnvio{{$envio->envId}}" class="btn btn-info btn-sm">Paquetes</button>
               @if(Auth::user()->privilegio == 5)
-                <a href="/comprobante/{{$envio->envId}}" target="_blank" class="btn btn-warning btn-sm">Comprobante</a>                
+                @if($envio->envComprobanteImpreso == 0) 
+                  <a href="/comprobante/{{$envio->envId}}" target="_blank" class="btn btn-danger btn-sm" id="btnImprimirComprobante{{$envio->envId}}">Comprobante</a>                 
+                @else                
+                  <a href="/comprobante/{{$envio->envId}}" target="_blank" class="btn btn-secondary btn-sm" id="btnImprimirComprobante{{$envio->envId}}">Comprobante</a>                
+                @endif
               @endif
               @if( (Auth::user()->privilegio == 5 || Auth::user()->privilegio == 4) && $status < 4 && $status != 3 )
-                {!!Form::open(['route'=>['envio.update',$envio->envId],'method'=>'PUT'])!!}
-                  <button class="btn btn-success btn-sm" id="btnStatusUpdate{{$envio->envId}}">{{$estado[$status]}}</button>                  
+                @if($envio->envEstadoEnvio < 4)
+                {!!Form::open(['route'=>['envio.update',$envio->envId],'method'=>'PUT', 'id' => 'estadoUpdateForm'])!!}   
+                <button class="btn btn-success btn-sm" id="btnStatusUpdate{{$envio->envId}}">{{$estado[$envio->envEstadoEnvio]}}</button>
                 {!!Form::close()!!} 
+                @endif
               @elseif( (Auth::user()->privilegio == 5 || Auth::user()->privilegio == 4) && $status == 3 )   
                 <button class="btn btn-success btn-sm" id="btnEntregar{{$envio->envId}}">Entregado</button>
               @endif
