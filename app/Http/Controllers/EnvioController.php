@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\EnvioCreateRequest;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 use App\Comercio;
 use App\Persona;
 use App\Shopping;
@@ -57,7 +58,11 @@ class EnvioController extends Controller
                 ->paginate(15);
         }
         $status = 0;
-        return view('envios.index',compact('userdata','envios','status'));
+
+        $dt = Carbon::now();
+        $fechaHoy = $dt->format('d/m/yy');
+    
+        return view('envios.index',compact('userdata','envios','status','fechaHoy'));
     }
 
     /**
@@ -217,6 +222,33 @@ class EnvioController extends Controller
         ]);
         return redirectByStatus($nuevoEstado);
     }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function envioEntregado(Request $request)
+    {
+        $path = $request->file('envComprobanteEntrega')->store('comprobantesFirmados');
+        return $path;   
+        
+        /*
+        $userid = Auth::user()->id;
+        $envio = Envio::where('envId', $id)->first();
+        $estadoActual = $envio->envEstadoEnvio;
+        $nuevoEstado = $estadoActual + 1;
+        Envio::where('envId', '=', $id)
+            ->update(['envEstadoEnvio' => $nuevoEstado]);
+        CambioEstado::create([
+            'cambEnvioId' => $id, 
+            'cambEstado' => $nuevoEstado,
+            'cambCreatedBy' => $userid,
+        ]);
+        return redirectByStatus($nuevoEstado);
+        */
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -235,9 +267,11 @@ function envioXStatus($status)
     $envios = Envio::orderBy('created_at', 'desc')
         ->where('envEstadoEnvio',$status)
         ->paginate(15);
+    $dt = Carbon::now();
+    $fechaHoy = $dt->format('d-m-yy');
     
-    //return $envios;
-    return view('envios.index',compact('userdata','envios','status'));
+    //return $fechaHoy;
+    return view('envios.index',compact('userdata','envios','status','fechaHoy'));
 }
 function redirectByStatus($status){
     switch ($status) {

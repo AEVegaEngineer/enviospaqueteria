@@ -46,7 +46,7 @@ class HomeController extends Controller
         {
             $enviosEnEspera = Envio::where('envComprobanteImpreso',0)->first();
         }
-        
+        //return $enviosEnEspera;
         $envios = Envio::orderBy('envId', 'desc')->where('envCreatedBy',$userid)->paginate(15);
         //return $userdata;
         return view('dashboard', compact('userdata','envios','enviosEnEspera'));

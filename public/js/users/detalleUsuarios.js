@@ -13,6 +13,7 @@ $('[id^=detalleUsuario]').click(function(){
 });
 
 function getJson(url, parametros, loadingScrn, callback){
+  console.log("llamando a "+url);
   $.ajax({
     async: true,
     crossDomain: true,
@@ -64,6 +65,7 @@ function getJson(url, parametros, loadingScrn, callback){
     },
     error: function(xhr) { // if error ocurre
       console.log("Servidor no responde");
+      console.log(xhr);
       /*
         if(loadingScrn==true){
           $('#loadingMsg').html("");

@@ -5,7 +5,7 @@
     <head>
         <!--<meta charset="utf-8">-->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Comprobante de Envío</title>
+        <title>Comprobante de Entrega</title>
         
         <script type="text/javascript"></script>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -19,7 +19,7 @@
     <body>
         <img src="img/clients/client-5.png" alt="logo de la empresa" style="display: inline-block; width: 200px;">
         <h3  style="display: inline-block; vertical-align: middle; margin-left: 25px; width: 500px">
-        Comprobante de envío Nº {{$envio->envId}}</h3>
+        Comprobante de Entrega de Mercancía Nº {{$envio->envId}}</h3>
         <p><b>Remitente:</b> 
         @if($envio->privilegio == 1)
             {{$datosRemitente->perNombre}}
@@ -33,7 +33,7 @@
         </p>
         <p><b>Origen:</b> {{$envio->envOrigen}}</p>
         <p><b>Destino:</b> {{$envio->envDestino}}</p>
-       	<h3>Paquetes a enviar: </h3>
+       	<h3>Paquetes recibidos en destino: </h3>
         <table class="table" style="font-size: 12px;">
             <tr>
                 <td><b>Descripción</b></td> 
@@ -67,7 +67,7 @@
         </table>
         <div style="margin-top: 50px;">
             <div style="width: 50%; display: inline-block; text-align: center;">DNI, Firma y aclaración transportista</div>
-            <div style="width: 50%; display: inline-block; text-align: center;">DNI, Firma y aclaración remitente</div>
+            <div style="width: 50%; display: inline-block; text-align: center;">DNI, Firma y aclaración cliente</div>
         </div>
         <div style="margin-top: 50px;">
             <div style="width: 50%; display: inline-block; text-align: center;">__________________________</div>
