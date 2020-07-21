@@ -103,6 +103,26 @@ class ShoppingController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function comerciosAsociados($id)
+    {
+        $userdata = getUserData();
+
+        $usuarios = User::leftjoin('comercios','users.id','=','comercios.comUsuarioId')
+            ->leftjoin('shoppings','users.id','=','shoppings.shopUsuarioId')
+            ->leftjoin('personas','users.id','=','personas.perUsuarioId')
+            ->orderBy('users.created_at', 'desc')  
+            ->where('comercios.comShoppingId',$id)          
+            ->paginate(15);
+        //return $usuarios;
+        return view('users.index', compact('usuarios','userdata'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

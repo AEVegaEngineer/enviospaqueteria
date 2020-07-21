@@ -14,6 +14,7 @@ use App\Listapaquete;
 use App\Paquete;
 use App\CambioEstado;
 use Auth;
+use DB;
 
 class EnvioController extends Controller
 {
@@ -39,7 +40,7 @@ class EnvioController extends Controller
         if(Auth::user()->privilegio == 3)
         {
             //shopping
-            $a = Shopping::select('envios.*')
+            $a = Shopping::select('envios.*','comercios.comNombre')
                 ->join('comercios', 'shoppings.shopId', '=', 'comercios.comShoppingId')
                 ->join('envios', 'envios.envCreatedBy', '=', 'comercios.comUsuarioId')
                 ->where('shoppings.shopUsuarioId',$userid);
@@ -59,9 +60,8 @@ class EnvioController extends Controller
         }
         $status = 0;
 
-        $dt = Carbon::now();
-        $fechaHoy = $dt->format('d/m/yy');
-    
+        $fechaHoy = Carbon::now()->format('yy/m/d');
+        return $envios;
         return view('envios.index',compact('userdata','envios','status','fechaHoy'));
     }
 
@@ -222,33 +222,7 @@ class EnvioController extends Controller
         ]);
         return redirectByStatus($nuevoEstado);
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function envioEntregado(Request $request)
-    {
-        $path = $request->file('envComprobanteEntrega')->store('comprobantesFirmados');
-        return $path;   
-        
-        /*
-        $userid = Auth::user()->id;
-        $envio = Envio::where('envId', $id)->first();
-        $estadoActual = $envio->envEstadoEnvio;
-        $nuevoEstado = $estadoActual + 1;
-        Envio::where('envId', '=', $id)
-            ->update(['envEstadoEnvio' => $nuevoEstado]);
-        CambioEstado::create([
-            'cambEnvioId' => $id, 
-            'cambEstado' => $nuevoEstado,
-            'cambCreatedBy' => $userid,
-        ]);
-        return redirectByStatus($nuevoEstado);
-        */
-    }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -263,14 +237,52 @@ class EnvioController extends Controller
 }
 function envioXStatus($status)
 {
+    $userid = Auth::user()->id;
     $userdata = getUserData();   
+    $envios;
+    if(Auth::user()->privilegio == 3)
+    {
+        //shopping
+        $a = Shopping::select('envios.*','comercios.comNombre')
+            ->join('comercios', 'shoppings.shopId', '=', 'comercios.comShoppingId')
+            ->join('envios', 'envios.envCreatedBy', '=', 'comercios.comUsuarioId')
+            ->where('shoppings.shopUsuarioId',$userid)
+            ->where('envEstadoEnvio',$status);
+        $b = Envio::select('envios.*',DB::raw("''"))
+            ->where('envios.envCreatedBy',$userid);
+
+        $envios = $a->union($b)->paginate(15);
+    }     
+    else if (Auth::user()->privilegio == 1 || Auth::user()->privilegio == 2)
+    {
+        //persona o comercio
+        $envios = Envio::where('envCreatedBy',$userid)->orderBy('created_at', 'desc')
+            ->where('envEstadoEnvio',$status)
+            ->paginate(15); 
+    }
+    else if(Auth::user()->privilegio == 4 || Auth::user()->privilegio == 5)
+    {
+        $envios = Envio::orderBy('created_at', 'desc')
+            ->where('envEstadoEnvio',$status)
+            ->paginate(15);
+    }
+
+    $fechaHoy = Carbon::now()->format('yy/m/d');
+    return view('envios.index',compact('userdata','envios','status','fechaHoy'));
+
+
+
+
+
+
+    $userdata = getUserData();   
+    /*
     $envios = Envio::orderBy('created_at', 'desc')
         ->where('envEstadoEnvio',$status)
         ->paginate(15);
-    $dt = Carbon::now();
-    $fechaHoy = $dt->format('d-m-yy');
+        */
+    $fechaHoy = Carbon::now()->format('yy/m/d');
     
-    //return $fechaHoy;
     return view('envios.index',compact('userdata','envios','status','fechaHoy'));
 }
 function redirectByStatus($status){

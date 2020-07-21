@@ -57,7 +57,7 @@
           <li><a href="/envio/create" class="text-decoration-none">Enviar</a></li> 
           <?php } ?>        
           <?php if (Auth::user()->privilegio == 3){ ?>
-          <li><a href="#" class="text-decoration-none">Comercios Asociados</a></li>
+          <li><a href="/shopping/comercios-asociados/{{$userdata->shopId}}" class="text-decoration-none">Comercios Asociados</a></li>
           <?php } ?>
           <li class="drop-down"><a href="" class="text-decoration-none">Informes</a>
             <ul>

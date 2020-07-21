@@ -7,7 +7,8 @@ $('[id^=btnEntregar]').click(function(){
   $('#modalDetallesEntrega').modal('show');
   //sendJson(url, parametros, null, null);
 });
-$('[id^=btnStatusUpdate]').click(function(){
+$('[id^=btnStatusUpdate]').click(function(e){
+	e.preventDefault();
 	var formId = $('#estadoUpdateForm');
 	var idenvio = $(this).attr('id').replace("btnEntregar", "");
 	swal({
@@ -36,7 +37,8 @@ $('[id^=btnImprimirComprobante]').click(function(){
 	$(this).removeClass('btn-danger').addClass('btn-secondary');
 });
 $('#btnCompletarEntrega').click(function(e){
-	e.preventDeault();
+	console.log('ejecutando');
+	e.preventDefault();
 	swal({
 	  title: "Confirmación Requerida",
 	  text: "¿Desea efectuar la entrega de este envío?",
@@ -49,9 +51,7 @@ $('#btnCompletarEntrega').click(function(e){
 	    swal("Envio Entregado!", {
 	      icon: "success",
 	    });
-	    setTimeout(function () {
-	    	$('#formFinalizarEntrega').submit();
-	  	},1500);
+	    $('#formFinalizarEntrega').submit();
 	  } 
 	});
 });

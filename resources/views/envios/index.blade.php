@@ -26,6 +26,9 @@
       <table class="table table-responsive-md" style="font-size: 14px;">
         <thead>
           <th>Código</th>
+          @if( Auth::user()->privilegio == 3)
+          <th>Comercio</th>
+          @endif
           <th>Fecha de Registro</th>
           <th>Orígen</th>
           <th>Destino</th>
@@ -38,9 +41,17 @@
           <th style="text-align: center;">Operaciones</th>
         </thead>
         @foreach($envios as $envio)
+        <?php
+        //formateando fechas
+        $created_at = new DateTime($envio->created_at);
+        $envEntregadoEn = new DateTime($envio->envEntregadoEn);        
+        ?>
         <tr>
           <td>{{$envio->envCodigo}}</td>
-          <td>{{$envio->created_at}}</td>
+          @if( Auth::user()->privilegio == 3)
+          <td>{{$envio->comNombre}}</td>
+          @endif 
+          <td>{{$created_at->format('d-m-Y H:i:s')}}</td>
           <td>{{$envio->envOrigen}}</td>
           <td>{{$envio->envDestino}}</td>
           <?php if($envio->envEstadoEnvio == 1) { ?>
@@ -54,7 +65,11 @@
           <?php } ?>
           <td>{{ number_format ( $envio->envCosto , $decimals = 2 , "," , "." ) }}</td>
           @if($status == 4)
-          <td>{{$envio->envEntregadoEn}}</td>
+          <td>
+          @if ($envio->envEntregadoEn != null)
+          {{$envEntregadoEn->format('d-m-Y H:i:s')}}
+          @endif
+          </td>
           <td>{{$envio->envEntregadoA}}</td>
           @endif
           <td class="p-1 m-0 text-center">          
@@ -75,10 +90,14 @@
                 @endif
 
               	<!-- Botones para comprobantes de envios a entregar en destino -->
-              	@if($envio->envEstadoEnvio >= 3) 
+              	@if($envio->envEstadoEnvio == 3) 
                   <a href="/comprobanteEntrega/{{$envio->envId}}" target="_blank" class="btn btn-danger btn-sm" id="btnImprimirComprobanteEntrega{{$envio->envId}}" data-toggle="tooltip" title="Comprobante de entrega en destino">
                   	<i class="ri-article-fill"></i>
-                  </a>               
+                  </a>
+                @elseif($envio->envEstadoEnvio == 4)
+                  <a href="/comprobanteFirmado/{{$envio->envId}}" target="_blank" class="btn btn-danger btn-sm" id="btnComprobanteFirmado{{$envio->envId}}" data-toggle="tooltip" title="Comprobante de entrega en destino firmado por receptor">
+                    <i class="ri-check-double-line"></i>
+                  </a>
                 @endif
 
 
@@ -154,7 +173,7 @@
 <!-- Modal para ingresar los detalles de entrega en destino, solo se debe mostrar en status 3 -->
 <div id="modalDetallesEntrega" class="modal fade bd-example-modal-lg" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
-    {!!Form::open(['route'=>'envioEntregado','method'=>'POST', 'id' => 'formFinalizarEntrega'])!!}    
+    {!!Form::open(['route'=>'comprobanteFirmado.store','method'=>'POST', 'id' => 'formFinalizarEntrega','files'=>'true'])!!}    
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -181,7 +200,7 @@
         </div>
         <div class="modal-footer">
           <input type="hidden" name="modalDetallesEnvId" id="modalDetallesEnvId">
-          <a href="" class="btn btn-success" id="btnCompletarEntrega">Completar Entrega</a>          
+          <a href="#" class="btn btn-success" id="btnCompletarEntrega">Completar Entrega</a>          
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
       </div>

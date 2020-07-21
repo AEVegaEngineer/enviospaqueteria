@@ -28,6 +28,7 @@ Route::resource('envioinforme','EnvioInformeController');
 Route::resource('listapaquete','ListaPaqueteController');
 Route::resource('comprobante','ComprobanteController');
 Route::resource('comprobanteEntrega','ComprobanteEntregaController');
+Route::resource('comprobanteFirmado','ComprobanteFirmadoController');
 
 Route::resource('persona','PersonaController');
 Route::resource('comercio','ComercioController');
@@ -40,4 +41,4 @@ Route::get('/en-logistica', 'EnvioController@showEnLogistica')->name('showEnLogi
 Route::get('/en-transito', 'EnvioController@showEnTransito')->name('showEnTransito');
 Route::get('/entregado', 'EnvioController@showEntregado')->name('showEntregado');
 Route::post('/envio/comprobanteImpreso', 'EnvioController@comprobanteImpreso')->name('comprobanteImpreso');
-Route::post('/envio/envioEntregado', 'EnvioController@envioEntregado')->name('envioEntregado');
+Route::get('/shopping/comercios-asociados/{id}', 'ShoppingController@comerciosAsociados')->name('comerciosAsociados');
