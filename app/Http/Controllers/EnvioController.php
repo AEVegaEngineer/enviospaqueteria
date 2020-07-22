@@ -44,7 +44,8 @@ class EnvioController extends Controller
                 ->join('comercios', 'shoppings.shopId', '=', 'comercios.comShoppingId')
                 ->join('envios', 'envios.envCreatedBy', '=', 'comercios.comUsuarioId')
                 ->where('shoppings.shopUsuarioId',$userid);
-            $b = Envio::where('envios.envCreatedBy',$userid);
+            $b = Envio::select('envios.*',DB::raw("''"))
+                ->where('envios.envCreatedBy',$userid);
             $envios = $a->union($b)->paginate(15);
         }     
         else if (Auth::user()->privilegio == 1 || Auth::user()->privilegio == 2)
@@ -61,7 +62,7 @@ class EnvioController extends Controller
         $status = 0;
 
         $fechaHoy = Carbon::now()->format('yy/m/d');
-        return $envios;
+        //return $envios;
         return view('envios.index',compact('userdata','envios','status','fechaHoy'));
     }
 

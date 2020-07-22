@@ -47,7 +47,7 @@
         $envEntregadoEn = new DateTime($envio->envEntregadoEn);        
         ?>
         <tr>
-          <td>{{$envio->envCodigo}}</td>
+          <td><a href="/seguimiento/{{$envio->envCodigo}}">{{$envio->envCodigo}}</a></td>
           @if( Auth::user()->privilegio == 3)
           <td>{{$envio->comNombre}}</td>
           @endif 
