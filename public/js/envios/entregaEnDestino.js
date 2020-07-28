@@ -55,12 +55,3 @@ $('#btnCompletarEntrega').click(function(e){
 	  } 
 	});
 });
-/*
-$('[id^=btnImprimirComprobanteEntrega]').click(function(){
-	var url = Servidor+"/envio/comprobanteEntrega";
-	var idenvio = $(this).attr('id').replace("btnImprimirComprobanteEntrega", "");	
-	var parametros = {"idenvio":idenvio};
-	sendJson(url, parametros, null, null);
-	$(this).removeClass('btn-danger').addClass('btn-secondary');
-});
-*/

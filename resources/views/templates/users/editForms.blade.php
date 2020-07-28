@@ -201,7 +201,7 @@
               <input type="hidden" name="id" value="{{ Auth::user()->id }}">
             </div>
           </div>
-        {!!Form::close()!!}
+          {!!Form::close()!!}
         <!--</form>-->
         
       </div>

@@ -1,4 +1,4 @@
-@extends('layouts.dashboardLayout')
+@extends('layouts.innerLayout')
 
 @section('content')
 
@@ -20,10 +20,12 @@
         Lista de 
         @if($status != 0)
           {{$estado[$status-1]}}
+        @else
+          Envíos
         @endif
       </h2>
       <input type="hidden" id="_token" value="{{ csrf_token() }}">
-      <table class="table table-responsive-md" style="font-size: 14px;">
+      <table id="tablaEnvios" class="table table-responsive-md" style="font-size: 14px;">
         <thead>
           <th>Código</th>
           @if( Auth::user()->privilegio == 3)
@@ -33,7 +35,9 @@
           <th>Orígen</th>
           <th>Destino</th>
           <th>Estado</th>
+          @if(Auth::user()->privilegio != 2 || $userdata->comShoppingId == null )
           <th>Costo</th>
+          @endif
           @if($status == 4)
           <th>Fecha de Recibido</th>
           <th>Recibido por</th>     
@@ -63,7 +67,11 @@
           <?php } elseif ($envio->envEstadoEnvio == 4) { ?>
             <td>Entregado en Destino</td>
           <?php } ?>
+
+          @if(Auth::user()->privilegio != 2 || $userdata->comShoppingId == null )
           <td>{{ number_format ( $envio->envCosto , $decimals = 2 , "," , "." ) }}</td>
+          @endif       
+
           @if($status == 4)
           <td>
           @if ($envio->envEntregadoEn != null)
@@ -212,5 +220,7 @@
 
 
 </main><!-- End #main -->
+
+<script src="{{ asset('js/envios/listaEnvios.js') }}"></script>
 
 @endsection

@@ -53,7 +53,7 @@
               @enderror
             </div>
           </div>
-          
+          <!--
           <div class="form-row">
             <div class="col-12">
               <div class="text-center m-5">
@@ -61,7 +61,7 @@
               </div>              
             </div>            
           </div>
-          
+          -->
           
           <div class="form-row">
             <div class="col-12 col-md-2">
@@ -89,7 +89,7 @@
                   </span>
               @enderror
             </div>         
-          
+            @if(Auth::user()->privilegio != 2 || (Auth::user()->privilegio == 2 && $userdata->comShoppingId == null))
             <div class="col-12 col-md-2">
               <div class="info text-right">
                 Costo del Envío
@@ -101,9 +101,10 @@
                       <strong>{{ $message }}</strong>
                   </span>
               @enderror
-            </div>                     
+            </div>
+            @endif
           </div>
-                    
+          <!--        
           <div class="form-row">
             <div class="col-12 col-md-4">
               <div class="info text-right">
