@@ -68,8 +68,8 @@
           <td>
           	<div class="btn-group" role="group" aria-label="Operaciones de Usuarios">
 						  <!--<button type="button" class="btn btn-info btn-sm">Detalles</button>-->
-						  <button type="button" class="btn btn-primary btn-sm">Editar</button>
-						  <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+              <a href="/usuario/{{$usuario->id}}/edit" class="btn btn-primary btn-sm">Editar</a>
+						  <!--<button type="button" class="btn btn-danger btn-sm">Eliminar</button>-->
 						</div>   
           	@if($usuario->privilegio != 4 && $usuario->privilegio != 5)
           		<!--<a href="usuario/{{$usuario->id}}" class="btn btn-info btn-sm">Detalles</a>-->

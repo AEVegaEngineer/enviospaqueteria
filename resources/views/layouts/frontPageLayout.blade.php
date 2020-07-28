@@ -52,11 +52,12 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="#banner-inicio">Inicio</a></li>
+          <li><a href="#pricing">¿Cómo Funciona?</a></li>
           <li><a href="#about">Sobre Nosotros</a></li>
           <li><a href="#services">Servicios</a></li>
           <!--<li><a href="#portfolio">Portfolio</a></li>-->
-          <li><a href="#team">Equipo</a></li>
-          <li><a href="#pricing">Precios</a></li>
+          <!--<li><a href="#team">Equipo</a></li>-->
+          
           <!--
           <li class="drop-down"><a href="">Drop Down</a>
             <ul>
@@ -76,7 +77,7 @@
             </ul>
           </li>
           -->
-          <li><a href="#contact">Contácto</a></li>
+          <!--<li><a href="#contact">Contácto</a></li>-->
           <?php if (Auth::user() !== null){ ?>
           <li class="drop-down"><a href="">Mi Perfil</a>
             <ul>
@@ -87,11 +88,13 @@
           <?php } ?>
 
         </ul>
-      </nav><!-- .nav-menu -->      
+      </nav><!-- .nav-menu -->   
+      <?php if (Auth::user() === null){ ?>   
       <div class="btn-group ml-5">
         <a href="{{ route('register') }}" class="btn btn-success">Registro</a>
         <a href="{{ route('login') }}" class="btn btn-primary">Iniciar Sesión</a>
       </div>
+      <?php } ?>
       
       <!--
       <button type="button" class="get-started-btn" data-toggle="modal" data-target="#loginModal">

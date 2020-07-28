@@ -46,7 +46,7 @@
   <header id="header" class="fixed-top mb-5">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="/">{{ config('app.name', 'Envios Ya') }}</a></h1>
+      <h1 class="logo mr-auto"><a href="/home">{{ config('app.name', 'Envios Ya') }}</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -89,8 +89,8 @@
                     <li><a href="/persona" class="text-decoration-none">Personas</a></li>
                     <li><a href="/comercio" class="text-decoration-none">Comercios</a></li>
                     <li><a href="/comercio" class="text-decoration-none">Shoppings</a></li>
-                    <li><a href="/usuario/empleado" class="text-decoration-none">Empleados</a></li>
-                    <li><a href="/usuario/admin" class="text-decoration-none">Administradores</a></li>
+                    <li><a href="/empleado" class="text-decoration-none">Empleados</a></li>
+                    <li><a href="/admin" class="text-decoration-none">Administradores</a></li>
                   </ul>
                 </li>
               </ul>

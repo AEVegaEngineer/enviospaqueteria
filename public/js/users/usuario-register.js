@@ -9,24 +9,24 @@ jQuery(function($){
         if($('#personaRadio').is(':checked')){
             //quita inputs de comercios y shoppings
             $('#comNombre').remove();
-            $('#comCuil').remove();
+            $('#comCuit').remove();
             $('#comShoppingId').remove();
             $('#shopNombre').remove();
-            $('#shopCuil').remove();
+            $('#shopCuit').remove();
         } else if ($('#comercioRadio').is(':checked')){
             //quita inputs de personas y shoppings
             $('#perNombres').remove();
             $('#perApellidos').remove();
             $('#perDni').remove();
             $('#shopNombre').remove();
-            $('#shopCuil').remove();
+            $('#shopCuit').remove();
         } else if ($('#shoppingRadio').is(':checked')){
             //quita inputs de personas y comercios
             $('#perNombres').remove();
             $('#perApellidos').remove();
             $('#perDni').remove();
             $('#comNombre').remove();
-            $('#comCuil').remove();
+            $('#comCuit').remove();
             $('#comShoppingId').remove();
         } else if ($('#empleadoRadio').is(':checked')){
             //quita inputs de personas, comercios y shopping
@@ -34,20 +34,20 @@ jQuery(function($){
             $('#perApellidos').remove();
             $('#perDni').remove();
             $('#comNombre').remove();
-            $('#comCuil').remove();
+            $('#comCuit').remove();
             $('#comShoppingId').remove();
             $('#shopNombre').remove();
-            $('#shopCuil').remove();
+            $('#shopCuit').remove();
         } else if ($('#adminRadio').is(':checked')){
             //quita inputs de personas, comercios y shopping
             $('#perNombres').remove();
             $('#perApellidos').remove();
             $('#perDni').remove();
             $('#comNombre').remove();
-            $('#comCuil').remove();
+            $('#comCuit').remove();
             $('#comShoppingId').remove();
             $('#shopNombre').remove();
-            $('#shopCuil').remove();
+            $('#shopCuit').remove();
         }
     });
 

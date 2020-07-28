@@ -53,7 +53,7 @@
             @endif
             @if($envio->envEstadoEnvio == 4)
             <div class="progress-bar progress-bar-success" role="progressbar" style="width:25%">
-              Entregado {{$envio->envEstadoEnvio}}
+              Entregado
             </div>
             @endif
           </div>

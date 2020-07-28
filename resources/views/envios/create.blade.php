@@ -53,7 +53,7 @@
               @enderror
             </div>
           </div>
-          <!--
+          
           <div class="form-row">
             <div class="col-12">
               <div class="text-center m-5">
@@ -61,7 +61,7 @@
               </div>              
             </div>            
           </div>
-          -->
+          
           
           <div class="form-row">
             <div class="col-12 col-md-2">
@@ -103,7 +103,7 @@
               @enderror
             </div>                     
           </div>
-          <!--          
+                    
           <div class="form-row">
             <div class="col-12 col-md-4">
               <div class="info text-right">

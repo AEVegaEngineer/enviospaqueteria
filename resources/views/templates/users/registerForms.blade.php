@@ -100,9 +100,9 @@
       </div>
       <div class="col-12 col-md-4">
         <p class="text-center">CUIL del comercio</p>
-        <input id="comCuil" type="number" class="form-control @error('comCuil') is-invalid @enderror" name="comCuil" value="{{ old('comCuil') }}" required autocomplete="comCuil" autofocus>
+        <input id="comCuit" type="number" class="form-control @error('comCuit') is-invalid @enderror" name="comCuit" value="{{ old('comCuit') }}" required autocomplete="comCuit" autofocus>
 
-        @error('comCuil')
+        @error('comCuit')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
@@ -131,9 +131,9 @@
       </div>
       <div class="col-12 col-md-4">
         <p class="text-center">CUIL del shopping</p>
-        <input id="shopCuil" type="number" class="form-control @error('shopCuil') is-invalid @enderror" name="shopCuil" value="{{ old('shopCuil') }}" required autocomplete="shopCuil" autofocus>
+        <input id="shopCuit" type="number" class="form-control @error('shopCuit') is-invalid @enderror" name="shopCuit" value="{{ old('shopCuit') }}" required autocomplete="shopCuit" autofocus>
 
-        @error('shopCuil')
+        @error('shopCuit')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
