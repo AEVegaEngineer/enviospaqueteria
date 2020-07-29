@@ -20,6 +20,7 @@ class CrearTablaDireccionesConRelaciones extends Migration
             $table->String('dirLinea2');
             $table->String('dirCiudad');
             $table->String('dirProvincia');
+            $table->String('dirDepartamento');
             $table->String('dirZip');
             $table->enum('dirOrigenDestino', ['origen', 'destino']);         
             $table->timestamps(); 
@@ -30,6 +31,10 @@ class CrearTablaDireccionesConRelaciones extends Migration
                 ->on('users')
                 ->onUpdate('cascade');
         });
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn(['usuDireccion']);
+        });
+        
     }
 
     /**
@@ -39,6 +44,10 @@ class CrearTablaDireccionesConRelaciones extends Migration
      */
     public function down()
     {
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->String('usuDireccion');
+        });
         Schema::table('direcciones', function (Blueprint $table) {
             $table->dropForeign(['dirUserId']);
         });

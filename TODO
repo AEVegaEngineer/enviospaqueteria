@@ -1,0 +1,17 @@
+(X) Cambiar orígenes y destinos como direcciones de amazon
+Arreglar los perfiles de usuario para mostrar las direcciones
+Buscar porqué para los shoppings se muestra el menu de Contacto
+
+Modificar el reporte de envio para imprimir también el Rotulo del paquete junto con el comprobante de entrega
+
+Rotulo del paquete:
+	Nombre de persona
+	dirección
+	Remitente
+	teléfono
+
+Panel de administración donde se establezcan valores por peso y volumen para calcular costos
+
+Agregar Contrato
+
+Shoppings trabajan con cuenta corriente (Los costos de los envíos de los comercios afiliados se van almacenando en la cuenta corriente, cuando se genera un pago se resta de la deuda)

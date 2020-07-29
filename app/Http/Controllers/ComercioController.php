@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests\ComercioCreateRequest;
 use App\Comercio;
+use App\Direccion;
 use App\User;
 use Auth;
 use Mail;
@@ -55,10 +56,19 @@ class ComercioController extends Controller
             'usuEmail' => $request['usuEmail'],
             'usuActivo' => 1,
             'usuTelefono' => $request['usuTelefono'],
-            'usuDireccion' => $request['usuDireccion'],
             'usuContrasena' => $hashedPass,
             'usuTipoUsuario' => 2,
         ]);        
+
+        $direccionDeOrigen = Direccion::create([
+            'dirLinea1'  => $data['dirLinea1'], 
+            'dirLinea2' => $data['dirLinea2'],
+            'dirCiudad' => 'San Juan',
+            'dirProvincia' => $data['dirProvincia'],
+            'dirZip' => $data['dirZip'],
+            'dirUserId' => $usuarioRegistrado->id,
+            'dirOrigenDestino' => 'origen',
+        ]);
         
         $comercioRegistrado = Comercio::create([
             'comNombre' => $request['comNombre'],

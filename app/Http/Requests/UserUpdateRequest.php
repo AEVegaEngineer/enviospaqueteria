@@ -36,7 +36,10 @@ class UserUpdateRequest extends FormRequest
                 'perDni' => 'required|numeric',
                 'privilegio' => 'required|numeric',
                 'usuTelefono' => 'required|numeric',
-                'usuDireccion' => 'required|string|max:255',
+                'dirDepartamento' => 'required|string|max:100',
+                'dirZip' => 'required|numeric',
+                'dirLinea1' => 'required|string|max:100',
+                'dirLinea2' => 'required|string|max:100',
             ];
         } elseif ($privilegio == 2) {
             //comercio
@@ -48,7 +51,10 @@ class UserUpdateRequest extends FormRequest
                 'comShoppingId' => 'numeric',
                 'privilegio' => 'required|numeric',
                 'usuTelefono' => 'required|numeric',
-                'usuDireccion' => 'required|string|max:255',
+                'dirDepartamento' => 'required|string|max:100',
+                'dirZip' => 'required|numeric',                
+                'dirLinea1' => 'required|string|max:100',
+                'dirLinea2' => 'required|string|max:100',
             ];
         } elseif ($privilegio == 3) {
             //shopping
@@ -59,7 +65,10 @@ class UserUpdateRequest extends FormRequest
                 'shopCuit' => 'required|numeric',
                 'privilegio' => 'required|numeric',
                 'usuTelefono' => 'required|numeric',
-                'usuDireccion' => 'required|string|max:255',
+                'dirDepartamento' => 'required|string|max:100',
+                'dirZip' => 'required|numeric',
+                'dirLinea1' => 'required|string|max:100',
+                'dirLinea2' => 'required|string|max:100',
             ];
         }        
     }

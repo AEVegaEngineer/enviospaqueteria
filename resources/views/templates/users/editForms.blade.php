@@ -177,19 +177,6 @@
                   @enderror
                 </div>
               </div> 
-              <div class="form-group row">
-                <p class="col-md-8 text-md-right">{{ __('Dirección') }}</p>
-
-                <div class="col-md-4">
-                  <input id="usuDireccion" type="text" class="form-control @error('usuDireccion') is-invalid @enderror" name="usuDireccion" value="{{ Auth::user()->usuDireccion }}" required autocomplete="usuDireccion" autofocus>
-
-                  @error('usuDireccion')
-                    <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                    </span>
-                  @enderror
-                </div>
-              </div> 
               <div class="row">
                 <div class="col-12 col-md-4 offset-md-4">
                   <button type="submit" class="btn btn-outline-light btn-block">

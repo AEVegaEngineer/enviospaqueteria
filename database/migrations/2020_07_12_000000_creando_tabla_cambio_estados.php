@@ -43,7 +43,8 @@ class CreandoTablaCambioEstados extends Migration
     public function down()
     {
         Schema::table('cambio_estados', function (Blueprint $table) {
-            $table->dropForeign(['cambEnvioId','cambCreatedBy']);
+            $table->dropForeign(['cambEnvioId']);
+            $table->dropForeign(['cambCreatedBy']);
         });
         Schema::dropIfExists('cambio_estados');
     }

@@ -17,8 +17,7 @@
           <th>Nombre</th>
           <th>CUIT / DNI</th>
           <th>Privilegio</th> 
-          <th>Telefono</th>
-          <th>Direccion</th>            
+          <th>Telefono</th>        
           
           <th width="150px">Operaciones</th>
         </thead>
@@ -63,7 +62,6 @@
           	<td>Administrador</td>
           @endif
           <td>{{$usuario->usuTelefono}}</td>
-          <td>{{$usuario->usuDireccion}}</td>
           
           <td>
           	<div class="btn-group" role="group" aria-label="Operaciones de Usuarios">

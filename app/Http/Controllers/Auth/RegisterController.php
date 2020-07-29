@@ -8,6 +8,7 @@ use App\User;
 use App\Persona;
 use App\Comercio;
 use App\Shopping;
+use App\Direccion;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -75,8 +76,7 @@ class RegisterController extends Controller
                 'perApellidos' => ['required', 'string', 'max:255'],
                 'perDni' => ['required', 'numeric'],
                 'privilegio' => ['required', 'numeric'],
-                'usuTelefono' => ['required', 'numeric'],
-                'usuDireccion' => ['required', 'string', 'max:255'],
+                'usuTelefono' => ['required', 'numeric']
             ]);
         } else if($data['privilegio'] == 2) {
             return Validator::make($data, [
@@ -85,7 +85,6 @@ class RegisterController extends Controller
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
                 'privilegio' => ['required', 'numeric'],
                 'usuTelefono' => ['required', 'numeric'],
-                'usuDireccion' => ['required', 'string', 'max:255'],
                 'comNombre' => ['required', 'string', 'max:255'],
                 'comCuit' => ['required', 'numeric'],
                 'comShoppingId' => ['required', 'numeric'],
@@ -97,7 +96,6 @@ class RegisterController extends Controller
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
                 'privilegio' => ['required', 'numeric'],
                 'usuTelefono' => ['required', 'numeric'],
-                'usuDireccion' => ['required', 'string', 'max:255'],
                 'shopNombre' => ['required', 'string', 'max:255'],
                 'shopCuit' => ['required', 'numeric'],
             ]);
@@ -119,7 +117,17 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'privilegio' => $data['privilegio'],
             'usuTelefono' => $data['usuTelefono'],
-            'usuDireccion' => $data['usuDireccion'],
+        ]);
+
+        $direccionDeOrigen = Direccion::create([
+            'dirLinea1'  => $data['dirLinea1'], 
+            'dirLinea2' => $data['dirLinea2'],
+            'dirCiudad' => 'San Juan',
+            'dirProvincia' => 'San Juan',
+            'dirDepartamento' => $data['dirDepartamento'],
+            'dirZip' => $data['dirZip'],
+            'dirUserId' => $usuario->id,
+            'dirOrigenDestino' => 'origen',
         ]);
         
         if($data['privilegio'] == 1)

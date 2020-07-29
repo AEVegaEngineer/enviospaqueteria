@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\PersonaCreateRequest;
 use App\Persona;
 use App\User;
+use App\Direccion;
 use Auth;
 use Mail;
 use Session;
@@ -66,10 +67,19 @@ class PersonaController extends Controller
             'usuEmail' => $request['usuEmail'],
             'usuActivo' => 1,
             'usuTelefono' => $request['usuTelefono'],
-            'usuDireccion' => $request['usuDireccion'],
             'usuContrasena' => $hashedPass,
             'usuTipoUsuario' => 1,
         ]);        
+
+        $direccionDeOrigen = Direccion::create([
+            'dirLinea1'  => $data['dirLinea1'], 
+            'dirLinea2' => $data['dirLinea2'],
+            'dirCiudad' => 'San Juan',
+            'dirProvincia' => $data['dirProvincia'],
+            'dirZip' => $data['dirZip'],
+            'dirUserId' => $usuarioRegistrado->id,
+            'dirOrigenDestino' => 'origen',
+        ]);
         
         $personaRegistrada = Persona::create([
             'perNombres' => $request['perNombre'],

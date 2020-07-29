@@ -27,9 +27,9 @@ class EliminarDestinatarioEnvio extends Migration
      * @return void
      */
     public function down()
-    {
-        $table->unsignedBigInteger('envDestinatarioId')->nullable()->default(null);
+    {        
         Schema::table('envios', function (Blueprint $table) {
+            $table->unsignedBigInteger('envDestinatarioId')->nullable()->default(null);
             $table->foreign('envDestinatarioId')
                 ->references('id')
                 ->on('users')

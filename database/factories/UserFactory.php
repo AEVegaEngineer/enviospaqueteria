@@ -25,6 +25,6 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
         'privilegio' => rand(1, 5),
         'usuTelefono' => rand(2640000000, 2649999999),
-        'usuDireccion' => $faker->address
+        //'usuDireccion' => $faker->address
     ];
 });

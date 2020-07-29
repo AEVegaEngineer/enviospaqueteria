@@ -9,6 +9,7 @@ use App\User;
 use App\Persona;
 use App\Comercio;
 use App\Shopping;
+use App\Direccion;
 use Auth;
 use Redirect;
 use Hash;
@@ -69,8 +70,16 @@ class UserController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
             'usuTelefono' => $request['usuTelefono'],
-            'usuDireccion' => $request['usuDireccion'],
             'privilegio' => $request['privilegio']            
+        ]);
+        $direccionDeOrigen = Direccion::create([
+            'dirLinea1'  => $data['dirLinea1'], 
+            'dirLinea2' => $data['dirLinea2'],
+            'dirCiudad' => 'San Juan',
+            'dirProvincia' => $data['dirProvincia'],
+            'dirZip' => $data['dirZip'],
+            'dirUserId' => $usuario->id,
+            'dirOrigenDestino' => 'origen',
         ]);
         if($request['privilegio'] == 1){
             //persona

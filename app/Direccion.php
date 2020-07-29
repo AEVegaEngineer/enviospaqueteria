@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Direccion extends Model
 {
+    protected $table = 'direcciones';
    	/**
      * The attributes that are mass assignable.
      *
@@ -16,6 +17,7 @@ class Direccion extends Model
     	'dirLinea2',
     	'dirCiudad',
     	'dirProvincia',
+        'dirDepartamento',
     	'dirZip',
     	'dirUserId',
     	'dirOrigenDestino'

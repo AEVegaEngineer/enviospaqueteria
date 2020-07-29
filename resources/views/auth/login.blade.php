@@ -68,6 +68,11 @@
         @endif
       </div>
     </div>
+    <div class="row mt-4">
+      <div class="col-12 col-md-4 offset-md-4">
+        <p class="text-center">¿No estas registrado aún? Registrate <a href="/register" style="color:cyan;">aquí</a> </p>
+      </div>
+    </div>
     {!!Form::close()!!}
   </div>
 </section>
