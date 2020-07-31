@@ -96,7 +96,10 @@
               </div>
             </div>
             <div class="col-12 col-md-1 form-group">
-              <input type="text" name="envCosto" id="envCosto" class="form-control" placeholder="Costo del Envío" value="100" readonly="" required="" />@error('envCosto')
+              @endif
+              <input  name="envCosto" id="envCosto" class="form-control" placeholder="Costo del Envío" value="100" readonly="" required="" @if(Auth::user()->privilegio != 2 || (Auth::user()->privilegio == 2 && $userdata->comShoppingId == null)) type="text" @else type="hidden" @endif />
+                  @if(Auth::user()->privilegio != 2 || (Auth::user()->privilegio == 2 && $userdata->comShoppingId == null))
+                  @error('envCosto')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
                   </span>

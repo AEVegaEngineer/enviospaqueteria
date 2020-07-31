@@ -28,7 +28,8 @@ class TestUsersSeeder extends Seeder
             'usuDireccion' => 'Dirección'
         ]);
         */
-        factory(App\User::class, 50)->create()->each(function ($user) {
+        /*
+        factory(App\User::class, 10)->create()->each(function ($user) {
 
         	switch ($user->privilegio) {
         		case 1:
@@ -49,5 +50,9 @@ class TestUsersSeeder extends Seeder
         	}
 	        
 	    });
+        */
+        factory(App\Persona::class,5)->make();
+        factory(App\Comercio::class,5)->make();
+        factory(App\Shopping::class,5)->make();
     }
 }

@@ -18,10 +18,10 @@ class SeedeandoPaqueteEstandar extends Migration
             array(
                 'paqId' => 1,
                 'paqDescripcion' => "Paquete de envío estándar",
-                'paqDimensionAlto' => 1.0,
-                'paqDimensionAncho' => 1.0,
-                'paqDimensionLargo' => 1.0,
-                'paqDimensionUnidad' => "Paquete",
+                'paqDimensionAlto' => 50,
+                'paqDimensionAncho' => 50,
+                'paqDimensionLargo' => 50,
+                'paqDimensionUnidad' => "Centímetros",
                 'paqPeso' => 5.0,
                 'paqPesoUnidad' => "Kilos",
             )
