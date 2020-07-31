@@ -32,14 +32,16 @@ class TestUsersSeeder extends Seeder
 
         	switch ($user->privilegio) {
         		case 1:
+                case 4:
+                case 5:
         			$user = factory(App\Persona::class)->make();
         			//$user->posts()->save(factory(App\::class)->make());
         			break;
         		case 2:
-        			$user->posts()->save(factory(App\Comercio::class)->make());
+        			$user = factory(App\Comercio::class)->make();
         			break;
         		case 3:
-        			$user->posts()->save(factory(App\Shopping::class)->make());
+        			$user = factory(App\Shopping::class)->make();
         			break;
         		
         		default:
