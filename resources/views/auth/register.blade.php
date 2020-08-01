@@ -31,14 +31,6 @@
           <label class="btn btn-success">
           <input required="" type="radio" name="privilegio" id="shoppingRadio" autocomplete="off" value="3"> Shopping
           </label>
-          <!--
-          <label class="btn btn-secondary">
-          <input required="" type="radio" name="privilegio" id="empleadoRadio" autocomplete="off" value="4"> Empleado
-          </label>
-          <label class="btn btn-secondary">
-          <input required="" type="radio" name="privilegio" id="adminRadio" autocomplete="off" value="5"> Administrador
-          </label>
-        -->
         </div>
       </div>
     </div>

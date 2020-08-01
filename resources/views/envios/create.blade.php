@@ -20,22 +20,29 @@
     <div class="row mt-5">
       <div class="col-12">
         <form method="POST" action="{{ route('envio.store') }}" role="form" class="php-email-form">
-          @csrf
-          <div class="form-row">
+          @csrf   
+          <div class="row">
             <div class="col-12 col-md-4">
               <div class="info text-right">
                 <i class="icofont-google-map"></i> Indique la dirección de origen del envío
               </div>
             </div>
-            <div class="col-12 col-md-8 form-group">
-              <input type="text" name="envOrigen" class="form-control" id="envOrigen" placeholder="Ej. Perito Moreno (N) con Libertador 1820" data-rule="minlen:10" data-msg="Por favor, ingresá al menos 10 caracteres" required=""/>
-              <div class="validate"></div>
-              @error('envOrigen')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-              @enderror
+            <div class="col-12 col-md-7 offset-md-1">
+              <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">           
+                <label class="btn btn-primary">
+                <input required="" type="radio" name="dirOrigen" id="btnShowOrigenRegistrar" autocomplete="off" value="btnShowOrigenRegistrar"> Ingresar una nueva dirección
+                </label>
+                <label class="btn btn-info">
+                <input required="" type="radio" name="dirOrigen" id="btnShowOrigenSeleccionar" autocomplete="off" value="btnShowOrigenSeleccionar"> Seleccionar mi dirección o una dirección ya ingresada
+                </label>
+              </div>
             </div>
+          </div> 
+          <div id="dirOrigenRegister" class="mt-2 mb-3">
+            @include('templates.envios.dirOrigenRegister')
+          </div> 
+          <div id="dirOrigenSeleccion" class="mt-2 mb-3">
+            @include('templates.envios.dirOrigenSeleccion')
           </div>
           <div class="form-row">
             <div class="col-12 col-md-4">
