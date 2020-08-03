@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
   <meta charset="utf-8">
@@ -58,7 +58,7 @@
         <ul>
           <li class="active"><a href="/home" class="text-decoration-none">Inicio</a></li>
           <?php if(Auth::user()->privilegio != 5){ ?>   
-          <li><a href="/envio/create" class="text-decoration-none">Enviar</a></li> 
+          <li><a href="/direccion" class="text-decoration-none">Enviar</a></li> 
           <?php } ?>        
           <?php if (Auth::user()->privilegio == 3){ ?>
           <li><a href="/shopping/comercios-asociados/{{$userdata->shopId}}" class="text-decoration-none">Comercios Asociados</a></li>

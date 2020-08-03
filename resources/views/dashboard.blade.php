@@ -36,12 +36,12 @@
         	@if (Auth::user()->privilegio == 1)
           	<h3>¡Ya estas listo para comenzar!</h3>
           	<p>No esperes más, hacé clic aquí para comenzar a gestionar tu envío</p>
-            <a class="btn btn-outline-light" href="/envio/create">Comenzar</a>
+            <a class="btn btn-outline-light" href="/direccion">Comenzar</a>
          	@endif
          	@if (Auth::user()->privilegio == 3)
           	<h3>Invitá a registrarse a tus comercios afiliados o realizá envíos ahora!</h3>
           	<p>No esperes más, hacé clic aquí para comenzar a gestionar tu envío</p>
-            <a class="btn btn-outline-light" href="/envio/create">Comenzar</a>
+            <a class="btn btn-outline-light" href="/direccion">Comenzar</a>
          	@endif
           @if (Auth::user()->privilegio == 2)
             @if ($userdata->comShoppingId == null)
@@ -49,11 +49,11 @@
               <p>Establecé aquí tu afiliación con tu shopping huesped</p>
               <a class="btn btn-outline-light" href="/usuario/{{Auth::user()->id}}/edit">Establecer Afiliación</a>
               <p class="pt-5">O podés comenzar ya a gestionar tus envíos</p>
-              <a class="btn btn-outline-light" href="/envio/create">Gestionar Envío</a>
+              <a class="btn btn-outline-light" href="/direccion">Gestionar Envío</a>
             @else
               <h3>¡Ya estas listo para comenzar!</h3>
               <p>No esperes más, hacé clic aquí para comenzar a gestionar tu envío</p>
-              <a class="btn btn-outline-light" href="/envio/create">Comenzar</a>
+              <a class="btn btn-outline-light" href="/direccion">Comenzar</a>
             @endif
           @endif
           @if (isset($envios) && !$envios->isEmpty())
