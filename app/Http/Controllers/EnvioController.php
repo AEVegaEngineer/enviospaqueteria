@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use App\Comercio;
 use App\Persona;
 use App\Shopping;
+use App\Direccion;
 use App\Envio;
 use App\Listapaquete;
 use App\Paquete;
@@ -33,7 +34,7 @@ class EnvioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {        
         $userid = Auth::user()->id;
         $userdata = getUserData();   
         $envios;
@@ -73,8 +74,11 @@ class EnvioController extends Controller
      */
     public function create()
     {
+        $origen = Direccion::where('dirId',$_REQUEST["origen"])->first();
+        $destino = Direccion::where('dirId',$_REQUEST["destino"])->first();
+        
         $userdata = getUserData();
-        return view('envios.create',compact('userdata'));
+        return view('envios.create',compact('userdata','origen','destino'));
     }
 
     /**

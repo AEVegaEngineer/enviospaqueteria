@@ -19,6 +19,15 @@ use DB;
 
 class DireccionController extends Controller
 {
+    /*
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -68,7 +77,9 @@ class DireccionController extends Controller
     public function create()
     {
         $dirOrigenDestino = $_GET["dirOrigenDestino"];
-        return $dirOrigenDestino;
+        $userid = Auth::user()->id;
+        $userdata = getUserData();   
+        return view('direcciones.create',compact('userdata','dirOrigenDestino'));
     }
 
     /**
@@ -79,7 +90,26 @@ class DireccionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userid = Auth::user()->id;
+        $request['dirCiudad'] = 'San Juan';
+        $request['dirProvincia'] = 'San Juan';
+        $request['dirUserId'] = $userid;
+        //return $request;
+        $direccion = Direccion::create([
+            'dirLinea1' => $request['dirLinea1'],
+            'dirLinea2' => $request['dirLinea2'],
+            'dirCiudad' => $request['dirCiudad'],
+            'dirProvincia' => $request['dirProvincia'],
+            'dirDepartamento' => $request['dirDepartamento'],
+            'dirZip' => $request['dirZip'],
+            'dirUserId' => $request['dirUserId'],
+            'dirOrigenDestino' => $request['dirOrigenDestino']
+            ]);
+        if($direccion->id !== null)
+        {
+            return redirect('/direccion')->with('message-success', 'La dirección ha sido registrada exitosamente, ya puede seleccionarla y continuar con su envío.');
+        }
+        return "Ha ocurrido un error, por favor intentelo de nuevo, si este mensaje se repite, contáctenos.";
     }
 
     /**
@@ -101,7 +131,10 @@ class DireccionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $userid = Auth::user()->id;
+        $userdata = getUserData();   
+        $direccion = Direccion::where('dirId',$id)->first();
+        return view('direcciones.edit',compact('userdata','direccion'));        
     }
 
     /**
@@ -113,7 +146,15 @@ class DireccionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        Direccion::where('dirId', '=', $id)
+            ->update([
+                'dirDepartamento' => $request->dirDepartamento,
+                'dirZip' => $request->dirZip,
+                'dirLinea1' => $request->dirLinea1,
+                'dirLinea2' => $request->dirLinea2
+            ]);
+        return redirect('/direccion')->with('message-success', 'La dirección ha sido actualizada exitosamente, ya puede seleccionarla y continuar con su envío.');
     }
 
     /**

@@ -4,25 +4,25 @@
         <p class="text-center">Departamento *</p>
         <select id="dirDepartamento" class="form-control select2 @error('dirDepartamento') is-invalid @enderror" name="dirDepartamento" value="{{ old('dirDepartamento') }}" required autocomplete="dirDepartamento" autofocus style="width:100%;">
           <option selected disabled>Seleccione...</option>
-          <option value="Rawson, Villa Krause"><b>Rawson</b> Villa Krause</option>
-          <option value="Capital, San Juan"><b>Capital</b> San Juan</option>
-          <option value="Chimbas, Villa Paula Albarracín de Constanza"><b>Chimbas</b> Villa Paula Albarracín de Constanza</option>
-          <option value="Rivadavia"><b>Rivadavia</b> Rivadavia</option>
-          <option value="Pocito, Aberastain"><b>Pocito</b> Aberastain</option>
-          <option value="Santa Lucía"><b>Santa Lucía</b> Santa Lucía</option>
-          <option value="Caucete"><b>Caucete</b> Caucete</option>
-          <option value="Albardón, General San Martín"><b>Albardón</b> General San Martín</option>
-          <option value="Sarmiento, Media Agua"><b>Sarmiento</b> Media Agua</option>
-          <option value="Jáchal, San José de Jáchal"><b>Jáchal</b> San José de Jáchal</option>
-          <option value="25 de Mayo, Santa Rosa"><b>25 de Mayo</b> Santa Rosa</option>
-          <option value="San Martín"><b>San Martín</b> San Martín</option>
-          <option value="9 de Julio"><b>9 de Julio</b> 9 de Julio</option>
-          <option value="Iglesia Rodeo"><b>Iglesia Rodeo</b> </option>
-          <option value="Calingasta, Tamberías"><b>Calingasta</b> Tamberías</option>
-          <option value="Angaco, Villa del Salvador"><b>Angaco</b> Villa del Salvador</option>
-          <option value="Valle Fértil, San Agustín"><b>Valle Fértil</b> San Agustín</option>
-          <option value="Ullum, Villa Ibáñez"><b>Ullum</b> Villa Ibáñez</option>
-          <option value="Zonda, Villa Basilio Nievas"><b>Zonda</b> Villa Basilio Nievas</option>
+          <option value="Rawson, Villa Krause">Rawson, Villa Krause</option>
+          <option value="Capital, San Juan">Capital, San Juan</option>
+          <option value="Chimbas, Villa Paula Albarracín de Constanza">Chimbas, Villa Paula Albarracín de Constanza</option>
+          <option value="Rivadavia">Rivadavia</option>
+          <option value="Pocito, Aberastain">Pocito, Aberastain</option>
+          <option value="Santa Lucía">Santa Lucía</option>
+          <option value="Caucete">Caucete</option>
+          <option value="Albardón, General San Martín">Albardón, General San Martín</option>
+          <option value="Sarmiento, Media Agua">Sarmiento, Media Agua</option>
+          <option value="Jáchal, San José de Jáchal">Jáchal, San José de Jáchal</option>
+          <option value="25 de Mayo, Santa Rosa">25 de Mayo, Santa Rosa</option>
+          <option value="San Martín">San Martín</option>
+          <option value="9 de Julio">9 de Julio</option>
+          <option value="Iglesia Rodeo">Iglesia Rodeo </option>
+          <option value="Calingasta, Tamberías">Calingasta, Tamberías</option>
+          <option value="Angaco, Villa del Salvador">Angaco, Villa del Salvador</option>
+          <option value="Valle Fértil, San Agustín">Valle Fértil, San Agustín</option>
+          <option value="Ullum, Villa Ibáñez">Ullum, Villa Ibáñez</option>
+          <option value="Zonda, Villa Basilio Nievas">Zonda, Villa Basilio Nievas</option>
         </select>        
 
         @error('dirDepartamento')
