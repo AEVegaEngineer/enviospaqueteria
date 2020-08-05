@@ -33,7 +33,8 @@
   <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet" type="text/css" />  
 
 
-  
+  <script src="{{ asset('/js/jquery.min.js') }}" ></script>
+  <script src="{{ asset('/js/bootstrap.bundle.min.js') }}" ></script>
   <!-- =======================================================
   * Template Name: OnePage - v2.0.0
   * Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
@@ -150,8 +151,7 @@
   
 
   <!-- Vendor JS Files -->
-  <script src="{{ asset('/js/jquery.min.js') }}" ></script>
-  <script src="{{ asset('/js/bootstrap.bundle.min.js') }}" ></script>
+  
   <script src="{{ asset('/js/select2.min.js') }}" ></script>
   <script src="{{ asset('/js/jquery.easing.min.js') }}" ></script>
   <script src="{{ asset('/js/counterup.min.js') }}" ></script>

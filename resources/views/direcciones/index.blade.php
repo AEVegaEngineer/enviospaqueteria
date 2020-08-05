@@ -68,18 +68,37 @@
       <div class="col-12 offset-md-4 col-md-4">
         <div class="text-center">
           <!--<button type="submit" class="btn btn-lg btn-success btn-block">Actualizar Dirección</button>-->
-          <a onclick="pasarAEnvio()" href="javascript:void(0);" class="btn btn-lg btn-success btn-block">Siguiente</a>
+          <a onclick="pasarAEnvio()" id="btnSiguiente" href="javascript:void(0);" class="btn btn-lg btn-success btn-block">Siguiente</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 <script type="text/javascript">
+
+
+$(document).ready(function() {
+  
+  $('#btnSiguiente').hide();
+  $("input:radio").change(function(){
+    var origen = $("input[name='origen']:checked").val();
+    var destino = $("input[name='destino']:checked").val();
+    var origenChecked = origen?true:false;
+    var destinoChecked = destino?true:false;
+    console.log("origen:"+origen+", "+"destino:"+destino);
+    console.log(origenChecked+", "+destinoChecked);
+    if(origenChecked && destinoChecked)
+      $('#btnSiguiente').fadeIn('fast');
+    else
+      $('#btnSiguiente').fadeOut('fast');
+  });
+
+});
 function pasarAEnvio()
 {  
-  const origen = $("input[name='origen']:checked").val();
-  const destino = $("input[name='destino']:checked").val();
-  location.href = '/envio/create?origen='+origen+"&destino="+destino;
+  var origen = $("input[name='origen']:checked").val();
+  var destino = $("input[name='destino']:checked").val();
+  location.href = '/envio/create?origen='+origen+"&destino="+destino;  
 }
   
 </script>
