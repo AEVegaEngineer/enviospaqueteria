@@ -82,7 +82,7 @@
           @endif
           <td class="p-1 m-0 text-center">          
             <div class="btn-group">
-              <button type="button" id="paqueteDeEnvio{{$envio->envId}}" class="btn btn-info btn-sm" data-toggle="tooltip" title="Paquetes enviados">
+              <button type="button" id="paqueteDeEnvio{{$envio->envId}}" class="btn btn-info btn-sm" data-toggle="tooltip" title="Detalles del envío">
               	<i class="ri-file-list-3-line"></i>
               </button>
               @if( Auth::user()->privilegio == 5 || Auth::user()->privilegio == 4) 
@@ -145,10 +145,38 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Lista de Paquetes</h4>
+        <h4 class="modal-title">Detalle del envío</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>        
       </div>
       <div class="modal-body">
+
+
+        <h5 class="modal-title">Detalles del envío</h5>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body ml-3">
+                <label class="form-check-label" >
+                  <i class="icofont-google-map"></i> Dirección de origen del envío: <span id="dirOrigen"></span> 
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body ml-3">                
+              <label class="form-check-label" >
+                  <i class="icofont-google-map"></i> Dirección de destino del envío: <span id="dirDestino"></span> 
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <h5 class="modal-title">Lista de Paquetes</h3>
         <table class="table table-responsive-md" id="tablaListaPaquetes">
           <thead>            
             <th>Descripción</th>

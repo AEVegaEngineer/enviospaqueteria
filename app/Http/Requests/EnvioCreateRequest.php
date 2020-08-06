@@ -24,8 +24,8 @@ class EnvioCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'envOrigen' => 'required|string|min:10',
-            'envDestino' => 'required|string|min:10',
+            'envOrigen' => 'required|numeric',
+            'envDestino' => 'required|numeric',
             'envCosto' => 'required|numeric|min:1',
             'listCantidadPaq' => 'required|numeric|min:1',
         ];
@@ -35,9 +35,9 @@ class EnvioCreateRequest extends FormRequest
     {
         return [
             'envOrigen.required' => 'La dirección de orígen del envío es requerida',
-            'envOrigen.min' => 'La dirección de orígen del envío es debe tener diez caracteres como mínimo',
+            'envOrigen.numeric' => 'La dirección de orígen del envío debe ser numérico',
             'envDestino.required' => 'La dirección de destino del envío es requerida',
-            'envDestino.min' => 'La dirección de destino del envío es debe tener diez caracteres como mínimo',
+            'envDestino.numeric' => 'La dirección de destino del envío debe ser numérico',
             'envCosto.required' => 'El costo del envío es requerido',
             'envCosto.numeric' => 'El costo del envío debe ser numérico',
             'envCosto.min' => 'El costo del envío es debe tener al menos un caracter',

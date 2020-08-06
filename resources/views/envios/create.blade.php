@@ -32,7 +32,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body ml-3">
-                  <input type="hidden" name="direccionOrigen" value="{{$origen->dirId}}">
+                  <input type="hidden" name="envOrigen" value="{{$origen->dirId}}">
                   <label class="form-check-label" >
                     <i class="icofont-google-map"></i> Dirección de origen del envío:  {{$origen->dirLinea1}}, {{$origen->dirLinea2}}, {{$origen->dirCiudad}}, {{$origen->dirProvincia}}, {{$origen->dirDepartamento}}, {{$origen->dirZip}}
                   </label>        
@@ -46,7 +46,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body ml-3">
-                  <input type="hidden" name="direccionDestino" value="{{$destino->dirId}}">
+                  <input type="hidden" name="envDestino" value="{{$destino->dirId}}">
                   <label class="form-check-label" >
                     <i class="icofont-google-map"></i> Dirección de destino del envío:  {{$destino->dirLinea1}}, {{$destino->dirLinea2}}, {{$destino->dirCiudad}}, {{$destino->dirProvincia}}, {{$destino->dirDepartamento}}, {{$destino->dirZip}}
                   </label>        

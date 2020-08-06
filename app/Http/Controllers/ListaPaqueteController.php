@@ -60,8 +60,7 @@ class ListaPaqueteController extends Controller
     {
         
         $userid = Auth::user()->id;
-        if(Auth::user()->privilegio == 3)
-        {
+        if(Auth::user()->privilegio == 3){
             //shopping
             //envio->comercio/persona->shopping
             $usuarioValidado = Envio::join('comercios', 'comercios.comId', '=', 'envios.envCreatedBy')
@@ -69,9 +68,7 @@ class ListaPaqueteController extends Controller
                 ->where('shoppings.shopId',$userid)
                 ->where('envios.envId',$id)
                 ->first();
-        }
-        else
-        {
+        } else {
             //personas y comercios
             $usuarioValidado = Envio::where('envId',$id)
                 ->where('envCreatedBy',$userid)
@@ -79,8 +76,7 @@ class ListaPaqueteController extends Controller
         }
 
         $usuarioValidado = true;        
-        if($usuarioValidado)
-        {
+        if($usuarioValidado) {
             $listapaquetes = Listapaquete::join('paquetes', 'paquetes.paqId', '=', 'listapaquetes.listPaqueteId')
                 ->where('listapaquetes.listEnvioId',$id)->get();
             return $listapaquetes;
