@@ -3,13 +3,18 @@ $('[id^=paqueteDeEnvio]').click(function(){
   const getPaquetes = Servidor+"/listapaquete/"+idpaquete;
   const getDetalles = Servidor+"/envio/"+idpaquete;
   $('#tablaListaPaquetes').html('');
-  getJson(getPaquetes, null, null, popularTablaListaPaquetes);  
-  getJson(getDetalles, null, null, popularModalDetalles);
-  function popularModalDetalles(detalles){
-  	console.log(detalles);
-  }
+  $('#dirOrigen').text('');
+  $('#dirDestino').text('');
+  getJson(getPaquetes, null, null, popularModalDetalles);  
   //{{$origen->dirLinea1}}, {{$origen->dirLinea2}}, {{$origen->dirCiudad}}, {{$origen->dirProvincia}}, {{$origen->dirDepartamento}}, {{$origen->dirZip}}
-  function popularTablaListaPaquetes(listapaquete){
+  function popularModalDetalles(data){
+  	$.each(data[0], function( index, direccion ) {
+  		if(direccion.dirOrigenDestino == 'origen')
+  			$('#dirOrigen').text(direccion.dirLinea1+", "+direccion.dirLinea2+", "+direccion.dirCiudad+", "+direccion.dirProvincia+", "+direccion.dirDepartamento+", "+direccion.dirZip);
+  		else
+  			$('#dirDestino').text(direccion.dirLinea1+", "+direccion.dirLinea2+", "+direccion.dirCiudad+", "+direccion.dirProvincia+", "+direccion.dirDepartamento+", "+direccion.dirZip);
+  	});
+  	
     $('#tablaListaPaquetes').append(
         '<thead>'+          
           '<th>Descripción</th>'+
@@ -23,7 +28,7 @@ $('[id^=paqueteDeEnvio]').click(function(){
     var divisorPeso = 1;
     var totalVolumen = 0;
     var totalPeso = 0;
-    $.each(listapaquete, function( index, paquete ) {
+    $.each(data[1], function( index, paquete ) {
       
       $('#tablaListaPaquetes').append(
         '<tr>'+

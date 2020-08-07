@@ -32,8 +32,6 @@
           <th>Comercio</th>
           @endif
           <th>Fecha de Registro</th>
-          <th>Orígen</th>
-          <th>Destino</th>
           <th>Estado</th>
           @if(Auth::user()->privilegio != 2 || $userdata->comShoppingId == null )
           <th>Costo</th>
@@ -56,8 +54,6 @@
           <td>{{$envio->comNombre}}</td>
           @endif 
           <td>{{$created_at->format('d-m-Y H:i:s')}}</td>
-          <td>{{$envio->envOrigen}}</td>
-          <td>{{$envio->envDestino}}</td>
           <?php if($envio->envEstadoEnvio == 1) { ?>
             <td>En Espera</td>
           <?php } elseif ($envio->envEstadoEnvio == 2) { ?>
@@ -177,7 +173,7 @@
 
 
         <h5 class="modal-title">Lista de Paquetes</h3>
-        <table class="table table-responsive-md" id="tablaListaPaquetes">
+        <table class="table table-responsive" id="tablaListaPaquetes">
           <thead>            
             <th>Descripción</th>
             <th>Cantidad</th>

@@ -1,7 +1,6 @@
 (X) Cambiar orígenes y destinos como direcciones de amazon
 
-Modificar el reporte de envio para imprimir también el Rotulo del paquete junto con el comprobante de entrega
-
+(X) Modificar el reporte de envio para imprimir también el Rotulo del paquete junto con el comprobante de entrega
 Rotulo del paquete:
 	Nombre de persona
 	dirección
@@ -16,3 +15,4 @@ Shoppings trabajan con cuenta corriente (Los costos de los envíos de los comerc
 
 Arreglar los perfiles de usuario para mostrar las direcciones
 Buscar porqué para los shoppings se muestra el menu de Contacto
+Arreglar las unidades cubicas en reporte

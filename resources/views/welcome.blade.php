@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="text-center">
-      <a href="/register" class="btn-get-started scrollto text-decoration-none">Obtené tu cotización ahora!</a>
+      <a href="/contrato" class="btn-get-started scrollto text-decoration-none">Obtené tu cotización ahora!</a>
     </div>    
   </div>
 </section>
@@ -187,7 +187,7 @@
       <div class="text-center">
         <h3>¡El mejor servicio al mas bajo precio!</h3>
         <p> ¡No esperés más y comenzá a enviar ya!</p>
-        <a class="cta-btn" href="/register">Registráte</a>
+        <a class="cta-btn" href="/contrato">Registráte</a>
       </div>
     </div>
   </section>

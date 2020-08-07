@@ -10,6 +10,7 @@ use App\Persona;
 use App\Comercio;
 use App\Shopping;
 use App\Listapaquete;
+use App\Direccion;
 use Storage;
 
 class ComprobanteController extends Controller
@@ -78,7 +79,12 @@ class ComprobanteController extends Controller
             default:
                 break;
         }
-        $pdf = PDF::loadView('comprobante.envio2', compact('envio','datosRemitente','listapaquetes'));  
+        $origen = Direccion::join('envios','envios.envOrigen','=','direcciones.dirId')
+            ->where('dirOrigenDestino','origen')->first();
+        $destino = Direccion::join('envios','envios.envDestino','=','direcciones.dirId')
+            ->where('dirOrigenDestino','destino')->first();
+        
+        $pdf = PDF::loadView('comprobante.envio2', compact('envio','datosRemitente','listapaquetes','origen','destino'));  
         
         $fecha_envio = Carbon::createFromFormat('Y-m-d H:i:s', $envio->created_at);
         /*

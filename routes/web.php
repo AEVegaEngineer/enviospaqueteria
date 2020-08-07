@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/contrato', function () {
+    return view('contrato.index');
+})->name('contrato');
 
 Auth::routes();
 

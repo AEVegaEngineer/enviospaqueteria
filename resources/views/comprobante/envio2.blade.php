@@ -34,8 +34,9 @@
         </div>
         <table class="table" style="font-size: 12px;">
             <tr>
-                <td><b>Origen:</b> {{$envio->envOrigen}}</td> 
-                <td><b>Destino:</b> {{$envio->envDestino}}</td>
+
+                <td><b>Origen:</b> {{$origen->dirLinea1}}, {{$origen->dirLinea2}}, {{$origen->dirCiudad}}, {{$origen->dirProvincia}}, {{$origen->dirDepartamento}}, {{$origen->dirZip}}</td> 
+                <td><b>Destino:</b> {{$destino->dirLinea1}}, {{$destino->dirLinea2}}, {{$destino->dirCiudad}}, {{$destino->dirProvincia}}, {{$destino->dirDepartamento}}, {{$destino->dirZip}}</td>
             </tr>
         </table>
         <!--<p><b>Origen:</b> {{$envio->envOrigen}}</p>
@@ -101,9 +102,9 @@
             </div>
         </div>
         <div style="margin:0; padding: 0;">
-            <div style="width: 48%;  text-align: left;margin:0; padding: 0; display: inline-block;"><b>Origen:</b> {{$envio->envOrigen}} 
+            <div style="width: 48%;  text-align: left;margin:0; padding: 0; display: inline-block;"><b>Origen:</b> {{$origen->dirLinea1}}, {{$origen->dirLinea2}}, {{$origen->dirCiudad}}, {{$origen->dirProvincia}}, {{$origen->dirDepartamento}}, {{$origen->dirZip}}
             </div>
-            <div style="width: 48%;  text-align: left;margin:0; padding: 0; display: inline-block;"><b>Destino:</b> {{$envio->envDestino}}
+            <div style="width: 48%;  text-align: left;margin:0; padding: 0; display: inline-block;"><b>Destino:</b> {{$destino->dirLinea1}}, {{$destino->dirLinea2}}, {{$destino->dirCiudad}}, {{$destino->dirProvincia}}, {{$destino->dirDepartamento}}, {{$destino->dirZip}}
             </div>
         </div>
 

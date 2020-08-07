@@ -78,7 +78,12 @@ class ComprobanteEntregaController extends Controller
             default:
                 break;
         }
-        $pdf = PDF::loadView('comprobante.entrega', compact('envio','datosRemitente','listapaquetes'));  
+        $origen = Direccion::join('envios','envios.envOrigen','=','direcciones.dirId')
+            ->where('dirOrigenDestino','origen');
+        $destino = Direccion::join('envios','envios.envDestino','=','direcciones.dirId')
+            ->where('dirOrigenDestino','destino');
+        
+        $pdf = PDF::loadView('comprobante.entrega', compact('envio','datosRemitente','listapaquetes','origen','destino'));  
         
         $fecha_envio = Carbon::createFromFormat('Y-m-d H:i:s', $envio->created_at);         
         $pdf->save(storage_path('comprobanteEntrega/comprobante-entrega-'.$id.'.pdf'));

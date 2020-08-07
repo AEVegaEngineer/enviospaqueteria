@@ -91,7 +91,7 @@
       </nav><!-- .nav-menu -->   
       <?php if (Auth::user() === null){ ?>   
       <div class="btn-group ml-5">
-        <a href="{{ route('register') }}" class="btn btn-success">Registro</a>
+        <a href="{{ route('contrato') }}" class="btn btn-success">Registro</a>
         <a href="{{ route('login') }}" class="btn btn-primary">Iniciar Sesión</a>
       </div>
       <?php } ?>
@@ -203,7 +203,7 @@
   <script src="{{ asset('/js/aos.js') }}" ></script>
   <script src="{{ asset('/js/main.js') }}"></script>
   <script src="{{ asset('/js/front.js') }}"></script>
-  <script src="{{ asset('/js/login-register.js') }}"></script>
+  <script src="{{ asset('/js/login-contrato.js') }}"></script>
 
   <!--
   <script src="assets/vendor/jquery/jquery.min.js"></script>

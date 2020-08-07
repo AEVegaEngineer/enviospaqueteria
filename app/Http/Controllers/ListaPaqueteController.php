@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Listapaquete;
 use App\Paquete;
 use App\Envio;
+use App\Direccion;
 use Auth;
 
 class ListaPaqueteController extends Controller
@@ -79,7 +80,22 @@ class ListaPaqueteController extends Controller
         if($usuarioValidado) {
             $listapaquetes = Listapaquete::join('paquetes', 'paquetes.paqId', '=', 'listapaquetes.listPaqueteId')
                 ->where('listapaquetes.listEnvioId',$id)->get();
-            return $listapaquetes;
+
+            // direcciones del envío
+
+            $dirOrigen = Direccion::join('envios', 'envios.envOrigen', '=', 'direcciones.dirId')
+                ->select(['direcciones.*'])
+                ->where('envios.envid',$id);
+            $direcciones = Direccion::join('envios', 'envios.envDestino', '=', 'direcciones.dirId')
+                ->select(['direcciones.*'])
+                ->where('envios.envid',$id)
+                ->union($dirOrigen)
+                ->get();
+            $data = [];
+            array_push($data, $direcciones);
+            array_push($data, $listapaquetes);
+            
+            return $data;
         }
         return null;
         

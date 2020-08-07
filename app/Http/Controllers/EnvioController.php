@@ -191,7 +191,7 @@ class EnvioController extends Controller
      */
     public function show($id)
     {
-        return "yes";
+        
     }
 
     /**
