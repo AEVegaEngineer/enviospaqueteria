@@ -33,6 +33,7 @@ Route::resource('listapaquete','ListaPaqueteController');
 Route::resource('comprobante','ComprobanteController');
 Route::resource('comprobanteEntrega','ComprobanteEntregaController');
 Route::resource('comprobanteFirmado','ComprobanteFirmadoController');
+Route::resource('cuentacorriente','CuentaCorrienteController');
 
 Route::resource('persona','PersonaController');
 Route::resource('comercio','ComercioController');

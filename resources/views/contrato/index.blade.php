@@ -1,6 +1,6 @@
-@extends('layouts.frontPageLayout')
+@extends('layouts.authLayout')
 
-@section('contenidoFront')
+@section('content')
 
 <!-- ======= Alertas ======= -->
 @include('alerts.alerts')
@@ -27,6 +27,10 @@
             <p>Suspendisse potenti. Aliquam nisi lectus, dictum eu elementum et, porta vitae mauris. Vivamus ac quam vitae risus consectetur volutpat id nec nibh. In suscipit nec leo in tincidunt. Donec semper convallis vestibulum. Mauris efficitur felis justo, vel lacinia neque bibendum in. Nunc ultricies faucibus augue ut luctus. Aenean eu sem maximus, tempor nulla non, semper ante. Integer luctus laoreet volutpat. Aenean sit amet condimentum ante. Nullam blandit massa sit amet faucibus commodo. Pellentesque ultrices sagittis consectetur. Nullam ultrices congue orci vel porta. Duis elementum posuere odio, non malesuada nulla mattis sed. Nullam augue arcu, bibendum tempus sem iaculis, efficitur ultrices massa. In molestie ut quam id pretium.</p>
             <p>Phasellus egestas diam velit, a condimentum arcu mollis sed. Mauris vel euismod risus. Fusce et ex quis ipsum suscipit efficitur. Aenean porttitor, nisl in tincidunt tincidunt, elit ipsum condimentum purus, id vehicula urna libero at leo. Sed ac aliquet ex, ut pulvinar diam. Sed a porta erat. Proin et nisi rutrum, tincidunt justo id, feugiat orci. Mauris blandit at elit tristique venenatis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque semper facilisis dictum.</p>
             <p><b>Al hacer click en el siguiente vínculo accederá a la página de registro y aceptará todos los términos y condiciones aquí descritos</b></p>
+
+          </div>
+          <div class="col-12 col-md-4 offset-md-4">
+            <a href="/register" class="btn btn-primary btn-lg btn-block">Acepto el contrato</a>
           </div>
         </div>
         

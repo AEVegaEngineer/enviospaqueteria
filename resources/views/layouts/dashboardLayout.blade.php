@@ -79,6 +79,9 @@
                 </li>
             </ul>
           </li>    
+          <?php if(Auth::user()->privilegio == 5 || Auth::user()->privilegio == 4 || Auth::user()->privilegio == 3){ ?>   
+            <li><a href="/cuentacorriente" class="text-decoration-none">Cuentas Corrientes</a></li>
+          <?php } ?>
           <?php if(Auth::user()->privilegio != 5){ ?>       
             <li><a href="#" class="text-decoration-none">Contácto</a></li>
           <?php } ?>
