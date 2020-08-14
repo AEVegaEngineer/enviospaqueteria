@@ -34,6 +34,7 @@ Route::resource('comprobante','ComprobanteController');
 Route::resource('comprobanteEntrega','ComprobanteEntregaController');
 Route::resource('comprobanteFirmado','ComprobanteFirmadoController');
 Route::resource('cuentacorriente','CuentaCorrienteController');
+Route::post('/cuentacorriente/obtener', 'CuentaCorrienteController@obtener')->name('obtener');
 
 Route::resource('persona','PersonaController');
 Route::resource('comercio','ComercioController');

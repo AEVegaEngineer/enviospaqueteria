@@ -23,14 +23,26 @@
       @endif
     </div>
     <div class="row">
-      <div class="col-12 col-md-4 offset-md-4">
+      <div class="col-12 col-md-4">
+        <label for="desde">Desde</label>
+        <input type="date" name="desde" id="desde" class="form-control">
+      </div>
+      <div class="col-12 col-md-4">
+        <label for="hasta">Hasta</label>
+        <input type="date" name="hasta" id="hasta" class="form-control">
+      </div>
+      <div class="col-12 col-md-4">
+        <label for="shopId">Seleccione un shopping</label>
         {!! Form::select('shopId', $shoppings, null, ['class' => 'form-control','required' => 'required', 'id'=>'shopId']) !!}
       </div>
+      <input type="hidden" id="_token" value="{{ csrf_token() }}">
     </div>
 
     <div class="row mt-5">
       <div class="col-12">
-        
+        <table id="tablaCuentaCorriente" class="table table-responsive-md" style="font-size: 14px;">
+          
+        </table>
       </div>
 
     </div>
@@ -45,18 +57,6 @@
 <script type="text/javascript">
   const priv = <?php echo $priv; ?>;
   const userid = <?php echo $userid; ?>;
-  $('select#shopId option:first').attr('disabled', true); 
-  if (priv == 3){
-    llenarTablaCtaCorriente(userid)
-  }
-
-  function llenarTablaCtaCorriente(id){
-    id = id || null; // parámetro opcional
-    if(id)
-      alert("llenar tablas para shopping "+id);
-  }
-  $('#shopId').change(function(){
-    alert("changed")
-  });
 </script>
+<script src="{{ asset('js/cuentacorriente/listaCuentaCorriente.js') }}"></script>
 @endsection

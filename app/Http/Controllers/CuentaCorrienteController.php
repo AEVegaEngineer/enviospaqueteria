@@ -13,6 +13,7 @@ use App\Envio;
 use App\Listapaquete;
 use App\Paquete;
 use App\CambioEstado;
+use App\User;
 use Auth;
 use DB;
 
@@ -38,6 +39,7 @@ class CuentaCorrienteController extends Controller
         $userdata = getUserData();
         $shoppings = Shopping::pluck('shopNombre', 'shopId');
         $shoppings->prepend('Seleccionar...', 0);
+
         return view('cuentacorriente.index',compact('userdata','shoppings'));
     }
 
@@ -71,36 +73,6 @@ class CuentaCorrienteController extends Controller
     public function show($id)
     {
         
-        $userid = Auth::user()->id;
-        $userdata = getUserData();   
-        $envios;
-        if(Auth::user()->privilegio == 3)
-        {
-            //shopping
-            $a = Shopping::select('envios.*','comercios.comNombre')
-                ->join('comercios', 'shoppings.shopId', '=', 'comercios.comShoppingId')
-                ->join('envios', 'envios.envCreatedBy', '=', 'comercios.comUsuarioId')
-                ->where('shoppings.shopUsuarioId',$userid);
-            $b = Envio::select('envios.*',DB::raw("''"))
-                ->where('envios.envCreatedBy',$userid);
-            $envios = $a->union($b)->get();
-        }     
-        else if (Auth::user()->privilegio == 1 || Auth::user()->privilegio == 2)
-        {
-            //persona o comercio
-            $envios = Envio::where('envCreatedBy',$userid)->orderBy('created_at', 'desc')
-                ->get(); 
-        }
-        else if(Auth::user()->privilegio == 5)
-        {
-            $envios = Envio::orderBy('created_at', 'desc')
-                ->get();
-        }
-        $status = 0;
-
-        $fechaHoy = Carbon::now()->format('yy/m/d');
-        //return $envios;
-        return view('cuentacorriente.show',compact('userdata','envios','status','fechaHoy'));
     }
 
     /**
@@ -135,5 +107,40 @@ class CuentaCorrienteController extends Controller
     public function destroy($id)
     {
         //
+    }
+    /**
+     * Obtener cuentas corrientes
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function obtener(Request $request)
+    {
+
+        $usuario = User::where('id',$request["userid"])->first();
+        switch ($usuario->privilegio) {
+            case 4:
+            case 5:
+                $desde = new Carbon($request["desde"]);
+                $hasta = new Carbon($request["hasta"]);
+                $result = Envio::whereBetween('created_at', [$desde->format('Y-m-d')." 00:00:00", $hasta->format('Y-m-d')." 23:59:59"])
+                    ->where('envEstadoEnvio',4)
+                    ->get();
+                return $result;
+                /*return Envio::where('created_at','>',$request["desde"])
+                            ->where('created_at','<',$request["hasta"])
+                            ->get();
+                            */
+                //$request["desde"] $request["hasta"];
+                break;
+            case 3:
+                return "es shopping";
+                break;
+            default:
+                return "error";
+                break;
+        }
+        //return $request;
+        //$envios = Envio::
     }
 }
