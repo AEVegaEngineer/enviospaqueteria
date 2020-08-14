@@ -39,34 +39,6 @@ class ArreglandoRelacionesUsersTipousers extends Migration
             )
         );
 
-        DB::table('estadosenvios')->insert(
-            array(
-                'estId'=>1,
-                'estDescripcion' => "En Espera",
-                'estCreatedBy' => 1
-            )
-        );
-        DB::table('estadosenvios')->insert(
-            array(
-                'estId'=>2,
-                'estDescripcion' => "Entregado a Logística",
-                'estCreatedBy' => 1
-            )
-        );
-        DB::table('estadosenvios')->insert(
-            array(
-                'estId'=>3,
-                'estDescripcion' => "En Tránsito a Destino",
-                'estCreatedBy' => 1
-            )
-        );
-        DB::table('estadosenvios')->insert(
-            array(
-                'estId'=>4,
-                'estDescripcion' => "Entregado en Destino",
-                'estCreatedBy' => 1
-            )
-        );
 
     }
 
