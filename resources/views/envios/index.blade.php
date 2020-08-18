@@ -94,11 +94,12 @@
                 @endif
 
               	<!-- Botones para comprobantes de envios a entregar en destino -->
-              	@if($envio->envEstadoEnvio == 3) 
+                <!--if($envio->envEstadoEnvio == 3) 
                   <a href="/comprobanteEntrega/{{$envio->envId}}" target="_blank" class="btn btn-danger btn-sm" id="btnImprimirComprobanteEntrega{{$envio->envId}}" data-toggle="tooltip" title="Comprobante de entrega en destino">
                   	<i class="ri-article-fill"></i>
                   </a>
-                @elseif($envio->envEstadoEnvio == 4)
+                -->
+                @if($envio->envEstadoEnvio == 4)
                   <a href="/comprobanteFirmado/{{$envio->envId}}" target="_blank" class="btn btn-danger btn-sm" id="btnComprobanteFirmado{{$envio->envId}}" data-toggle="tooltip" title="Comprobante de entrega en destino firmado por receptor">
                     <i class="ri-check-double-line"></i>
                   </a>
@@ -147,7 +148,7 @@
       <div class="modal-body">
 
 
-        <h5 class="modal-title">Detalles del envío</h5>
+        <h5 class="modal-title">Direcciones del envío</h5>
         <div class="row">
           <div class="col-12">
             <div class="card">

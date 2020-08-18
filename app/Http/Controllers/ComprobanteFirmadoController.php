@@ -72,7 +72,7 @@ class ComprobanteFirmadoController extends Controller
         */
         //return $request;
         $envId = $request->modalDetallesEnvId;
-        $nombre = 'comprobante_firmado_envio_'.$envId.$file->getClientOriginalExtension();
+        $nombre = 'comprobante_firmado_envio_'.$envId.'.'.$file->getClientOriginalExtension();
         Envio::where('envId', '=', $envId)
             ->update([
                 'envEstadoEnvio' => 4,

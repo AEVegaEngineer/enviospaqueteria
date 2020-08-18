@@ -56,8 +56,7 @@ function sendJson(url, parametros, loadingScrn, callback){
       'X-CSRF-TOKEN': $('#_token').val()      
     },
     beforeSend: function () {
-      if(loadingScrn != null)
-        $('#preloaderConsultas').delay(100).fadeIn('fast');
+      $('#preloaderConsultas').delay(100).fadeIn('fast');
     },
     success: function (response)
     {
@@ -85,4 +84,8 @@ function sendJson(url, parametros, loadingScrn, callback){
       //console.log("Servidor no responde");
     }
   });
+}
+function formatearFecha(fecha){
+  var date = new Date(fecha);
+  return ( ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' +((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + date.getFullYear());
 }

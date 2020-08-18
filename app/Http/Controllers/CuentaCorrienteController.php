@@ -123,15 +123,12 @@ class CuentaCorrienteController extends Controller
             case 5:
                 $desde = new Carbon($request["desde"]);
                 $hasta = new Carbon($request["hasta"]);
-                $result = Envio::whereBetween('created_at', [$desde->format('Y-m-d')." 00:00:00", $hasta->format('Y-m-d')." 23:59:59"])
-                    ->where('envEstadoEnvio',4)
+                $result = Envio::select(['envios.*','comercios.comNombre'])
+                    ->join('comercios','comercios.comUsuarioId','=','envios.envCreatedBy')
+                    ->whereBetween('envios.created_at', [$desde->format('Y-m-d')." 00:00:00", $hasta->format('Y-m-d')." 23:59:59"])
+                    ->where('envios.envEstadoEnvio',4)
                     ->get();
                 return $result;
-                /*return Envio::where('created_at','>',$request["desde"])
-                            ->where('created_at','<',$request["hasta"])
-                            ->get();
-                            */
-                //$request["desde"] $request["hasta"];
                 break;
             case 3:
                 return "es shopping";

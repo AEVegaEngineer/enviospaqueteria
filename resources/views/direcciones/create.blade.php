@@ -13,7 +13,7 @@
       <div class="col-12 col-md-6 offset-md-3">
         @include('alerts.alerts')
       </div>      
-      <h2>Registro de envíos</h2>
+      <h2>Registro de Direcciones</h2>
       <p>Por favor ingresa los datos de la dirección de {{$dirOrigenDestino}}</p>
     </div>
 
@@ -30,7 +30,7 @@
           <div class="row mt-3">
             <div class="col-12 offset-md-4 col-md-4">
               <div class="text-center">
-                <button type="submit" class="btn btn-lg btn-success btn-block">Registrar Envío</button>
+                <button type="submit" class="btn btn-lg btn-success btn-block">Registrar Dirección</button>
               </div>
             </div>
           </div>
