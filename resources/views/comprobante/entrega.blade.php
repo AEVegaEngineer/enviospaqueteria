@@ -45,7 +45,7 @@
             </tr>
             @foreach($listapaquetes as $paquete)
             <?php 
-            if($paquete->paqPesoUnidad == "Kilos" || $paquete->paqPesoUnidad == "Kilogramos") 
+            if($paquete->paqPesoUnidad == "Kilogramos" || $paquete->paqPesoUnidad == "Kilogramos") 
                 $paquete->paqPesoUnidad = "Kg";
             else if($paquete->paqPesoUnidad == "Gramos")
                 $paquete->paqPesoUnidad = "Gr";

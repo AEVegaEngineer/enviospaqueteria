@@ -86,7 +86,7 @@
               </div>
             </div>
             <div class="col-12 col-md-1 form-group">
-              <input type="number" name="listCantidadPaq" id="listCantidadPaq" class="form-control" placeholder="Cantidad" value="1" required="" min="1" />@error('listCantidadPaq')
+              <input type="number" name="listCantidadPaq" id="listCantidadPaq" class="form-control" placeholder="Cantidad" value="0" required="" min="1" />@error('listCantidadPaq')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
                   </span>
@@ -100,7 +100,10 @@
             </div>
             <div class="col-12 col-md-1 form-group">
               @endif
-              <input  name="envCosto" id="envCosto" class="form-control" placeholder="Costo del Envío" value="100" readonly="" required="" @if(Auth::user()->privilegio != 2 || (Auth::user()->privilegio == 2 && $userdata->comShoppingId == null)) type="text" @else type="hidden" @endif />
+              <script type="text/javascript">
+                var carCosto = <?php echo $carCosto; ?>;
+              </script>
+              <input  name="envCosto" id="envCosto" class="form-control" placeholder="Costo del Envío" value="0" readonly="" required="" @if(Auth::user()->privilegio != 2 || (Auth::user()->privilegio == 2 && $userdata->comShoppingId == null)) type="text" @else type="hidden" @endif />
                   @if(Auth::user()->privilegio != 2 || (Auth::user()->privilegio == 2 && $userdata->comShoppingId == null))
                   @error('envCosto')
                   <span class="invalid-feedback" role="alert">

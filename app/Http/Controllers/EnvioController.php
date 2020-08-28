@@ -14,6 +14,7 @@ use App\Envio;
 use App\Listapaquete;
 use App\Paquete;
 use App\CambioEstado;
+use App\Cardexcosto;
 use Auth;
 use DB;
 
@@ -76,9 +77,15 @@ class EnvioController extends Controller
     {
         $origen = Direccion::where('dirId',$_REQUEST["origen"])->first();
         $destino = Direccion::where('dirId',$_REQUEST["destino"])->first();
-        
+        $costo = Cardexcosto::latest()->first();
+        $paquete = Paquete::first();
         $userdata = getUserData();
-        return view('envios.create',compact('userdata','origen','destino'));
+        $volumen = $paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo;
+        $peso = $paquete->paqPeso;
+        $costoPorVolumen = $costo->carCostoVolumen * $volumen;
+        $costoPorPeso = $costo->carCostoKilogramo * $peso;
+        $carCosto = ($costoPorVolumen > $costoPorPeso ? $costoPorVolumen : $costoPorPeso);
+        return view('envios.create',compact('userdata','origen','destino','carCosto'));
     }
 
     /**
@@ -102,7 +109,7 @@ class EnvioController extends Controller
             'paqDimensionLargo' => 1.0,
             'paqDimensionUnidad' => "Paquete",
             'paqPeso' => 5.0,
-            'paqPesoUnidad' => "Kilos",
+            'paqPesoUnidad' => "Kilogramos",
         ]);
         */
         $userid = Auth::user()->id;
