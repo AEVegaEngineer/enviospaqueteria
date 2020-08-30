@@ -168,6 +168,8 @@
   <script src="{{ asset('js/sweetalert.min.js') }}"></script>
   <!-- Script solo usado en lista de envios -->
   <script src="{{ asset('js/utils/getJson.js') }}"></script>
+  <!--Script solo usado en lista de cuentas corrientes -->
+  <script src="{{ asset('js/cuentacorriente/listaCuentaCorriente.js') }}"></script>
   <!-- Script solo usado en lista de usuarios -->
   <script src="{{ asset('js/users/detalleUsuarios.js') }}"></script>
   <!-- Script solo usado registros de usuarios por el admin -->

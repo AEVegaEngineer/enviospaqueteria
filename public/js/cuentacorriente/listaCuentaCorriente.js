@@ -1,26 +1,24 @@
 
 $('select#shopId option:first').attr('disabled', true); 
-if (priv == 3){
-  consultarCtaCte()
-}
 
-
-function consultarCtaCte(){
-  const getCuentaCorriente = Servidor+"/cuentacorriente/obtener";
-  //console.log(getCuentaCorriente);
+function consultarCtaCte(useridConsultar){
+  const getCuentaCorriente = "/cuentacorriente/obtener";
   const params = {
-    "userid":userid,
+    "userid":useridConsultar,
     "desde":$('#desde').val(),
     "hasta":$('#hasta').val()
   }
+  console.log(params)
   const data = sendJson(getCuentaCorriente, params, null, llenarTablaCuentaCorriente); 
   
   
 }
 function llenarTablaCuentaCorriente(data)
 {
-  var costoTotal = 0.0;
+  console.log("data");
   console.log(data);
+  var costoTotal = 0.0;
+
   $('#tablaCuentaCorriente').html('');
   $('#tablaCuentaCorriente').append(
     '<thead>'+          
@@ -49,21 +47,52 @@ function llenarTablaCuentaCorriente(data)
       '<td>$ '+costoTotal.toFixed(2)+'</td>'+
       '<td></td>'+
     '</thead>');
-  $('#tablaCuentaCorriente').DataTable();
+  //si la tabla ya existe la reconstruye
+  rebuildTables('tablaCuentaCorriente');  
+  $('#tablaCuentaCorriente').DataTable({
+    "bPaginate": false,
+    "bLengthChange": false,
+    "bInfo": false,
+    "bAutoWidth": false,
+    "bFilter": false,
+    "bFilter": false,
+    "language": {
+          "lengthMenu": "Mostrando _MENU_ lineas por lista",
+          "zeroRecords": "No se han encontrado datos",
+          "info": "Mostrando página _PAGE_ de _PAGES_",
+          "infoEmpty": "No hay datos disponibles",
+          "infoFiltered": "(filtrado de _MAX_ datos totales)",
+          "paginate": {
+            "previous": "Anterior",
+            "next": "Siguiente",
+          }
+      }
+  });
 }
-$(document).ready(function() {
-  
-  $('#shopId, #desde, #hasta').change(function(){
+
+$('#shopId, #desde, #hasta').change(function(){
+  if( priv == 4 || priv == 5)
+  {    
+    useridConsultar = $('#shopId').children("option:selected").val();
     if($('#desde').val() != "" && $('#hasta').val() != "" && $('#shopId').children("option:selected").val() != "0")
     {
-      console.log("condiciones cumplidas");
-      if (priv == 4 || priv == 5 ){
-        consultarCtaCte();
+
+      if (priv == 3 || priv == 4 || priv == 5 ){
+        consultarCtaCte(useridConsultar);
       }
     }
-    
-  });
+  }  
+  else
+  {
+    if($('#desde').val() != "" && $('#hasta').val() != "")
+    {
+      if (priv == 3 || priv == 4 || priv == 5 ){
+        consultarCtaCte(userid);
+      }
+    }
+  }
 });
+
 
 
 

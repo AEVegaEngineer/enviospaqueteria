@@ -1,4 +1,4 @@
-var Servidor = "http://localhost:8000";
+var Servidor = "/";
 $('[id^=btnEntregar]').click(function(){
   var idenvio = $(this).attr('id').replace("btnEntregar", "");
   $('#modalDetallesEnvId').val(idenvio);

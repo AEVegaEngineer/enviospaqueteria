@@ -49,7 +49,8 @@ class AjustesController extends Controller
             'carCostoKilogramo' => $request['carCostoKilogramo'],
             'carCostoVolumen' => $request['carCostoVolumen']
         ]);
-        return "se ha creado exitosamente";
+        //return "se ha creado exitosamente";
+        return redirect('/ajustes')->with('message-success', 'El ajuste se ha realizado exitosamente');
 
     }
 

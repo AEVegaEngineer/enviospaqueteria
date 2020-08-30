@@ -1,4 +1,4 @@
-var Servidor = "http://localhost:8000/";
+var Servidor = "/";
 
 
 
@@ -88,4 +88,18 @@ function sendJson(url, parametros, loadingScrn, callback){
 function formatearFecha(fecha){
   var date = new Date(fecha);
   return ( ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' +((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + date.getFullYear());
+}
+function refreshTables(tablaid)
+{       
+  if ($.fn.DataTable.isDataTable( '#'+tablaid ) ) {
+    $('#'+tablaid).dataTable().fnAdjustColumnSizing();
+  }  
+}
+function rebuildTables(tablaid)
+{        
+  if ($.fn.DataTable.isDataTable( '#'+tablaid ) ) {
+    var table = $('#'+tablaid).DataTable();
+    table.clear().draw();
+    $("#"+tablaid).dataTable().fnDestroy();
+  }
 }

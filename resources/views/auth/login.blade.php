@@ -14,9 +14,13 @@
 <section id="cta" class="cta">
   <div class="container" data-aos="zoom-in">
     <div class="row">
-      <div class="col-12">
-        <h3 class="text-center">Inicio de Sesión</h3>
+      <div class="col-12 col-md-4 offset-md-4 text-center">
         @include('alerts.alerts')
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <h3 class="text-center">Inicio de Sesión</h3>        
       </div>
     </div>
     @csrf

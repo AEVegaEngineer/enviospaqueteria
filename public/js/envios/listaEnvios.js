@@ -64,6 +64,24 @@ $('[id^=paqueteDeEnvio]').click(function(){
   
 });
 $(document).ready( function () {
-    $('#tablaEnvios').DataTable();
+    $('#tablaEnvios').DataTable({
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bInfo": false,
+      "bAutoWidth": false,
+      "bFilter": false,
+      "bFilter": false,
+      "language": {
+            "lengthMenu": "Mostrando _MENU_ lineas por lista",
+            "zeroRecords": "No se han encontrado datos",
+            "info": "Mostrando página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay datos disponibles",
+            "infoFiltered": "(filtrado de _MAX_ datos totales)",
+            "paginate": {
+              "previous": "Anterior",
+              "next": "Siguiente",
+            }
+        }
+    });
 
 } );

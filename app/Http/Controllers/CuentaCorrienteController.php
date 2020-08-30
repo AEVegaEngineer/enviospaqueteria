@@ -72,7 +72,16 @@ class CuentaCorrienteController extends Controller
      */
     public function show($id)
     {
-        
+        /*
+         $result = Envio::select(['envios.*','comercios.comNombre'])
+            ->join('comercios','comercios.comUsuarioId','=','envios.envCreatedBy')
+            ->join('shoppings','shoppings.shopId','=','comercios.comShoppingId')
+            ->whereBetween('envios.created_at', ["2020-08-01 00:00:00", "2020-08-31 23:59:59"])
+            ->where('envios.envEstadoEnvio',4)
+            ->where('shoppings.shopUsuarioId',3)
+            ->get();
+        return $result;
+        */
     }
 
     /**
@@ -115,14 +124,14 @@ class CuentaCorrienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function obtener(Request $request)
-    {
-
+    {        
         $usuario = User::where('id',$request["userid"])->first();
+        $desde = new Carbon($request["desde"]);
+        $hasta = new Carbon($request["hasta"]);
+        //return $usuario;
         switch ($usuario->privilegio) {
             case 4:
-            case 5:
-                $desde = new Carbon($request["desde"]);
-                $hasta = new Carbon($request["hasta"]);
+            case 5:           
                 $result = Envio::select(['envios.*','comercios.comNombre'])
                     ->join('comercios','comercios.comUsuarioId','=','envios.envCreatedBy')
                     ->whereBetween('envios.created_at', [$desde->format('Y-m-d')." 00:00:00", $hasta->format('Y-m-d')." 23:59:59"])
@@ -131,7 +140,15 @@ class CuentaCorrienteController extends Controller
                 return $result;
                 break;
             case 3:
-                return "es shopping";
+                //envio.createdBy un comercios.comUsuarioId que tenga comShoppingId = $usuario
+                $result = Envio::select(['envios.*','comercios.comNombre'])
+                    ->join('comercios','comercios.comUsuarioId','=','envios.envCreatedBy')
+                    ->join('shoppings','shoppings.shopId','=','comercios.comShoppingId')
+                    ->whereBetween('envios.created_at', [$desde->format('Y-m-d')." 00:00:00", $hasta->format('Y-m-d')." 23:59:59"])
+                    ->where('envios.envEstadoEnvio',4)
+                    ->where('shoppings.shopUsuarioId',$usuario->id)
+                    ->get();
+                return $result;
                 break;
             default:
                 return "error";

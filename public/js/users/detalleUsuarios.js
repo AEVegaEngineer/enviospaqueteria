@@ -1,4 +1,4 @@
-var Servidor = "http://localhost:8000/";
+var Servidor = "/";
 
 $('[id^=detalleUsuario]').click(function(){
   var idUsuario = $(this).attr('id').replace("detalleUsuario", "");

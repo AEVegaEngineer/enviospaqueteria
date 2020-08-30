@@ -18,7 +18,7 @@
       $priv = Auth::user()->privilegio; 
       $userid = Auth::user()->id;
       ?>
-      @if( $priv == 5 || $priv == 4 || $priv == 3 )
+      @if( $priv == 5 || $priv == 4)
       <p>Seleccione un Shopping para ver su cuenta corriente</p>
       @endif
     </div>
@@ -31,10 +31,14 @@
         <label for="hasta">Hasta</label>
         <input type="date" name="hasta" id="hasta" class="form-control">
       </div>
+      @if( $priv == 5 || $priv == 4)
+      
       <div class="col-12 col-md-4">
         <label for="shopId">Seleccione un shopping</label>
         {!! Form::select('shopId', $shoppings, null, ['class' => 'form-control','required' => 'required', 'id'=>'shopId']) !!}
       </div>
+
+      @endif
       <input type="hidden" id="_token" value="{{ csrf_token() }}">
     </div>
 
@@ -57,6 +61,7 @@
 <script type="text/javascript">
   const priv = <?php echo $priv; ?>;
   const userid = <?php echo $userid; ?>;
+
 </script>
-<script src="{{ asset('js/cuentacorriente/listaCuentaCorriente.js') }}"></script>
+
 @endsection

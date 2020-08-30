@@ -2,8 +2,7 @@
 
 @section('content')
 
-<!-- ======= Alertas ======= -->
-@include('alerts.alerts')
+
 
 <div class="mt-5"></div>
 
@@ -20,7 +19,9 @@
               <h3 class="mb-5 mt-3">
                 Ajustes del Sistema
               </h3>
-              <p>Introduzca los costos usando punto como decimal y sin signo dolar</p>
+              <!-- ======= Alertas ======= -->
+              @include('alerts.alerts')
+              <p>Introduzca los costos sin signo dolar, P.EJ: 500,00</p>
               @csrf
               <div class="form-group row">
                 <div class="col-12 col-md-4 offset-md-2">
