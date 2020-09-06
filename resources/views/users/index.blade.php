@@ -33,9 +33,9 @@
           @elseif($usuario->privilegio == 3)
           	<td>{{$usuario->shopNombre}}</td>
           @elseif($usuario->privilegio == 4)
-          	<td></td>
+          	<td>{{$usuario->perNombres}} {{$usuario->perApellidos}}</td>
           @elseif($usuario->privilegio == 5)
-          	<td></td>
+          	<td>{{$usuario->perNombres}} {{$usuario->perApellidos}}</td>
           @endif
           <!-- CUIT o DNI -->
           @if($usuario->privilegio == 1)
@@ -45,9 +45,9 @@
           @elseif($usuario->privilegio == 3)
           	<td>{{$usuario->shopCuit}}</td>
           @elseif($usuario->privilegio == 4)
-          	<td></td>
+          	<td>{{$usuario->perDni}}</td>
           @elseif($usuario->privilegio == 5)
-          	<td></td>
+          	<td>{{$usuario->perDni}}</td>
           @endif
           <!-- Privilegio de Usuario -->
           @if($usuario->privilegio == 1)

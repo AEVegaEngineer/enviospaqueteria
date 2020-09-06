@@ -70,6 +70,16 @@ class UserUpdateRequest extends FormRequest
                 'dirLinea1' => 'required|string|max:100',
                 'dirLinea2' => 'required|string|max:100',
             ];
-        }        
+        }elseif ($privilegio == 4 || $privilegio == 5) {
+            //shopping
+            return [            
+                'email' => 'required|string|max:100|unique:users,email,'.$id,
+                'password' => 'nullable|string|min:8',
+                'perNombres' => 'required|string|max:100',                
+                'perApellidos' => 'required|string|max:100',                
+                'perDni' => 'required|numeric',
+                'usuTelefono' => 'required|numeric',             
+            ];
+        }       
     }
 }

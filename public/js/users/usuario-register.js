@@ -29,20 +29,14 @@ jQuery(function($){
             $('#comCuit').remove();
             $('#comShoppingId').remove();
         } else if ($('#empleadoRadio').is(':checked')){
-            //quita inputs de personas, comercios y shopping
-            $('#perNombres').remove();
-            $('#perApellidos').remove();
-            $('#perDni').remove();
+            //quita inputs de comercios y shopping            
             $('#comNombre').remove();
             $('#comCuit').remove();
             $('#comShoppingId').remove();
             $('#shopNombre').remove();
             $('#shopCuit').remove();
         } else if ($('#adminRadio').is(':checked')){
-            //quita inputs de personas, comercios y shopping
-            $('#perNombres').remove();
-            $('#perApellidos').remove();
-            $('#perDni').remove();
+            //quita inputs de comercios y shopping            
             $('#comNombre').remove();
             $('#comCuit').remove();
             $('#comShoppingId').remove();
@@ -58,7 +52,7 @@ jQuery(function($){
         } else if($(".rowComercio").is(":visible")){
             $(".rowComercio").slideToggle();
             $(".rowPersona").slideToggle();
-        } else {
+        } else if(!$(".rowPersona").is(":visible")){
             $(".rowPersona").slideToggle();
         }
     });
@@ -85,21 +79,25 @@ jQuery(function($){
         } 
     });
     $('#empleadoRadio').click(function(){
-        if($(".rowPersona").is(":visible")){
+        if($(".rowShopping").is(":visible")){
             $(".rowPersona").slideToggle();
+            $(".rowShopping").slideToggle();
         } else if($(".rowComercio").is(":visible")){
             $(".rowComercio").slideToggle();
-        } else if($(".rowShopping").is(":visible")){
-            $(".rowShopping").slideToggle();
+            $(".rowPersona").slideToggle();
+        } else if(!$(".rowPersona").is(":visible")){
+            $(".rowPersona").slideToggle();
         }
     });
     $('#adminRadio').click(function(){
-        if($(".rowPersona").is(":visible")){
+        if($(".rowShopping").is(":visible")){
             $(".rowPersona").slideToggle();
+            $(".rowShopping").slideToggle();
         } else if($(".rowComercio").is(":visible")){
             $(".rowComercio").slideToggle();
-        } else if($(".rowShopping").is(":visible")){
-            $(".rowShopping").slideToggle();
+            $(".rowPersona").slideToggle();
+        } else if(!$(".rowPersona").is(":visible")){
+            $(".rowPersona").slideToggle();
         }
     });
 });

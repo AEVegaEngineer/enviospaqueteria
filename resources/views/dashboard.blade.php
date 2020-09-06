@@ -4,11 +4,12 @@
 
 
 <div class="mt-5"></div>
-@if (Auth::user()->privilegio == 5)
+@if (Auth::user()->privilegio == 5 || Auth::user()->privilegio == 4)
 
   <section id="cta" class="cta">
     <div class="container" data-aos="zoom-in">
       <div class="text-center">
+        @include('alerts.alerts')
         <h3>Bienvenido al Panel Administrativo del Sistema de Envíos</h3>
         @if (isset($enviosEnEspera))
           <p>Se han detectado envíos para los que no se han impreso sus comprobantes y siguen en espera</p>

@@ -19,6 +19,9 @@
                 @if (Auth::user()->privilegio == 3)
                   Shopping
                 @endif
+                @if (Auth::user()->privilegio == 4)
+                  Empleado
+                @endif
                 @if (Auth::user()->privilegio == 5)
                   Administrador
                 @endif
@@ -39,7 +42,7 @@
 
               
                 
-              @if (Auth::user()->privilegio == 1)
+              @if (Auth::user()->privilegio == 1 || Auth::user()->privilegio == 4 || Auth::user()->privilegio == 5)
                 <!--persona-->
                 <div class="form-group row">
                     <p class="col-md-8 text-md-right">{{ __('Nombres') }}</p>

@@ -73,15 +73,16 @@ class UserController extends Controller
             'privilegio' => $request['privilegio']            
         ]);
         $direccionDeOrigen = Direccion::create([
-            'dirLinea1'  => $data['dirLinea1'], 
-            'dirLinea2' => $data['dirLinea2'],
+            'dirLinea1'  => $request['dirLinea1'], 
+            'dirLinea2' => $request['dirLinea2'],
             'dirCiudad' => 'San Juan',
-            'dirProvincia' => $data['dirProvincia'],
-            'dirZip' => $data['dirZip'],
+            'dirDepartamento' => $request['dirDepartamento'], 
+            'dirProvincia' => 'San Juan',
+            'dirZip' => $request['dirZip'],
             'dirUserId' => $usuario->id,
             'dirOrigenDestino' => 'origen',
         ]);
-        if($request['privilegio'] == 1){
+        if($request['privilegio'] == 1 || $request['privilegio'] == 4 || $request['privilegio'] == 5){
             //persona
             Persona::create([            
                 'perNombres' => $request['perNombres'],
@@ -157,6 +158,12 @@ class UserController extends Controller
                 ->where('users.id',$userid)
                 ->first();
         }
+        else if($privs == 4 || $privs == 5)
+        {
+            $userdata = User::Join('personas', 'users.id', '=', 'personas.perUsuarioId')
+                ->where('users.id',$userid)
+                ->first();
+        }
         //return $user;
         return view('users.edit',compact('userdata','comShoppingIds'));
     }
@@ -179,8 +186,7 @@ class UserController extends Controller
         $user->update(
         	[
         		'email' => $request->email,
-        		'usuTelefono' => $request->usuTelefono,
-        		'usuDireccion' => $request->usuDireccion,        		
+        		'usuTelefono' => $request->usuTelefono,      		
         	]
         );
         if($request->privilegio == 1)
@@ -216,6 +222,26 @@ class UserController extends Controller
         		]
         	);
         	$successMessage = "Datos del shopping actualizados exitosamente";
+        } else if ($request->privilegio == 4) {      
+            //datos personales del empleado
+            Persona::where('perUsuarioId',$id)->update(
+                [
+                    'perNombres' => $request->perNombres,
+                    'perApellidos' => $request->perApellidos,
+                    'perDni' => $request->perDni,
+                ]
+            );      
+            $successMessage = "Datos del empleado actualizados exitosamente";
+        } else if ($request->privilegio == 5) {   
+            //datos personales del administrador
+            Persona::where('perUsuarioId',$id)->update(
+                [
+                    'perNombres' => $request->perNombres,
+                    'perApellidos' => $request->perApellidos,
+                    'perDni' => $request->perDni,
+                ]
+            );         
+            $successMessage = "Datos del administrador actualizados exitosamente";
         }
         
         return redirect('/home')->with('message-success',$successMessage);
