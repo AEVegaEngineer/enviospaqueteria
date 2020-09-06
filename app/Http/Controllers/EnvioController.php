@@ -56,7 +56,7 @@ class EnvioController extends Controller
             $envios = Envio::where('envCreatedBy',$userid)->orderBy('created_at', 'desc')
                 ->paginate(15); 
         }
-        else if(Auth::user()->privilegio == 5)
+        else if(Auth::user()->privilegio == 5 || Auth::user()->privilegio == 4)
         {
             $envios = Envio::orderBy('created_at', 'desc')
                 ->paginate(15);

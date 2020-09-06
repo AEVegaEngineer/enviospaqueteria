@@ -42,7 +42,7 @@
           <td>          
             <div class="btn-group">
               <button type="button" id="paqueteDeEnvio{{$envio->envId}}" class="btn btn-info btn-sm">Ver Paquetes</button>
-              @if(Auth::user()->privilegio == 5)
+              @if(Auth::user()->privilegio == 5 || Auth::user()->privilegio == 4)
                 <a href="/comprobante/{{$envio->envId}}" target="_blank" class="btn btn-warning btn-sm">Ver Comprobante</a>
               @endif
             </div>
