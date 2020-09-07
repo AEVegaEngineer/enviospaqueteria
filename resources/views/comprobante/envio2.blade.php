@@ -70,8 +70,8 @@
             	<td>{{$paquete->listCantidadPaq}}</td>
                 <td>{{$paquete->paqPeso}} {{$paquete->paqPesoUnidad}}</td>
                 <td>{{$paquete->paqPeso * $paquete->listCantidadPaq}} {{$paquete->paqPesoUnidad}}</td>
-                <td>{{$paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo / 1000}} {{$paquete->paqDimensionUnidad}}&sup3;</td>
-                <td>{{$paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo / 1000 * $paquete->listCantidadPaq}} {{$paquete->paqDimensionUnidad}}&sup3;</td>
+                <td>{{number_format($paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo, 2, ',', '.')}} {{$paquete->paqDimensionUnidad}}&sup3;</td>
+                <td>{{number_format($paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo  * $paquete->listCantidadPaq, 2, ',', '.')}} {{$paquete->paqDimensionUnidad}}&sup3;</td>
             </tr>
             @endforeach        
         </table>
@@ -135,8 +135,8 @@
                 <td>{{$paquete->listCantidadPaq}}</td>
                 <td>{{$paquete->paqPeso}} {{$paquete->paqPesoUnidad}}</td>
                 <td>{{$paquete->paqPeso * $paquete->listCantidadPaq}} {{$paquete->paqPesoUnidad}}</td>
-                <td>{{$paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo / 1000}} {{$paquete->paqDimensionUnidad}}&sup3;</td>
-                <td>{{$paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo / 1000 * $paquete->listCantidadPaq}} {{$paquete->paqDimensionUnidad}}&sup3;</td>
+                <td>{{number_format($paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo, 2, ',', '.')}} {{$paquete->paqDimensionUnidad}}&sup3;</td>
+                <td>{{number_format($paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo  * $paquete->listCantidadPaq, 2, ',', '.')}}&sup3;</td>
             </tr>
             @endforeach        
         </table>
@@ -151,7 +151,7 @@
             <div style="width: 50%; display: inline-block; text-align: center;">__________________________</div>
         </div>
         
-
+        <div style="page-break-before: always;"></div>
         <!-- ETIQUETAS DE PAQUETES -->
 
         
@@ -169,9 +169,7 @@
             if($paquete->paqDimensionUnidad == "Metros")
                 $paquete->paqDimensionUnidad = "M";
             ?>
-            <div style="margin-top: 10px;">
-                <p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
-            </div>
+            
             
             <table class="table"  style="padding-left: 10px; font-size: 12px;">
                 <tr>
@@ -208,7 +206,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <b>Volumen:</b> {{$paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo / 1000}} {{$paquete->paqDimensionUnidad}}&sup3;
+                        <b>Volumen:</b> {{number_format($paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo, 2, ',', '.')}} {{$paquete->paqDimensionUnidad}}&sup3;
                     </td>
                     <td>
                         <b>Peso:</b> {{$paquete->paqPeso}}
@@ -217,7 +215,9 @@
                     <td></td>
                 </tr>
             </table>            
-            
+            <div style="margin-top: 10px;">
+                <p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
+            </div>
         <?php } ?>
         
         @endforeach      
