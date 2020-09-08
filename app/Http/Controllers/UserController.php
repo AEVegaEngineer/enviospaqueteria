@@ -137,34 +137,30 @@ class UserController extends Controller
     {
         $userid = Auth::user()->id;
         $privs = Auth::user()->privilegio;
+        if($privs != 5)
+            return abort(404);
         $userdata = null;
         $comShoppingIds = Shopping::pluck('shopNombre', 'shopId');
         $comShoppingIds->prepend('No', 0);
-        if($privs == 1)
+        if($privs == 1 || $privs == 4 || $privs == 5)
         {
             $userdata = User::Join('personas', 'users.id', '=', 'personas.perUsuarioId')
-                ->where('users.id',$userid)
+                ->where('users.id',$id)
                 ->first();
         }
         else if($privs == 2)
         {
             $userdata = User::Join('comercios', 'users.id', '=', 'comercios.comUsuarioId')
-                ->where('users.id',$userid)
+                ->where('users.id',$id)
                 ->first();
         }
         else if($privs == 3)
         {
             $userdata = User::Join('shoppings', 'users.id', '=', 'shoppings.shopUsuarioId')
-                ->where('users.id',$userid)
+                ->where('users.id',$id)
                 ->first();
         }
-        else if($privs == 4 || $privs == 5)
-        {
-            $userdata = User::Join('personas', 'users.id', '=', 'personas.perUsuarioId')
-                ->where('users.id',$userid)
-                ->first();
-        }
-        //return $user;
+        //return $userdata;
         return view('users.edit',compact('userdata','comShoppingIds'));
     }
 

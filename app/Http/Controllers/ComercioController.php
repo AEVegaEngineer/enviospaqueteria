@@ -35,6 +35,7 @@ class ComercioController extends Controller
         $userdata = getUserData();
 
         $usuarios = User::where('privilegio',2)
+            ->leftjoin('comercios','users.id','=','comercios.comUsuarioId')
             ->orderBy('users.created_at', 'desc')            
             ->paginate(15);
         //return $usuarios;

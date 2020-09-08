@@ -25,7 +25,8 @@ class EmpleadoController extends Controller
     {
         $userdata = getUserData();
         $usuarios = User::where('privilegio',4)
-            ->orderBy('users.created_at', 'desc')            
+            ->orderBy('users.created_at', 'desc')  
+            ->leftjoin('personas','users.id','=','personas.perUsuarioId')          
             ->paginate(15);
         //return $usuarios;
         return view('users.index', compact('usuarios','userdata'));

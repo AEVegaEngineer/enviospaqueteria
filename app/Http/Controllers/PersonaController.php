@@ -35,6 +35,7 @@ class PersonaController extends Controller
         $userdata = getUserData();
 
         $usuarios = User::where('privilegio',1)
+            ->leftjoin('personas','users.id','=','personas.perUsuarioId')
             ->orderBy('users.created_at', 'desc')            
             ->paginate(15);
         //return $usuarios;

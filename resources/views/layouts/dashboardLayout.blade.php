@@ -93,7 +93,7 @@
                     <li><a href="/usuario" class="text-decoration-none">Todos</a></li>
                     <li><a href="/persona" class="text-decoration-none">Personas</a></li>
                     <li><a href="/comercio" class="text-decoration-none">Comercios</a></li>
-                    <li><a href="/comercio" class="text-decoration-none">Shoppings</a></li>
+                    <li><a href="/shopping" class="text-decoration-none">Shoppings</a></li>
                     <li><a href="/empleado" class="text-decoration-none">Empleados</a></li>
                     <li><a href="/admin" class="text-decoration-none">Administradores</a></li>
                   </ul>

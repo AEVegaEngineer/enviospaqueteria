@@ -42,7 +42,7 @@
               <div class="form-group row">
                 <div class="col-12 col-md-4 offset-md-2">
                   <p class="text-md-right">
-                    Costo de envío por volumen
+                    Costo de envío por volumen (metro cúbico)
                   </p>
                 </div>               
                 <div class="col-md-4">
@@ -66,8 +66,8 @@
                 <div class="col-12">
                   <table class="table table-responsive-md table-dark">
                     <thead>
-                      <th>Costo por Peso</th>
-                      <th>Costo por Volumen</th>
+                      <th>Costo por Peso (1 Kg)</th>
+                      <th>Costo por Volumen (1 m&sup3;)</th>
                       <th>Fecha de Ajuste</th>
                     </thead>
                     <?php $count = 0 ?>
@@ -77,8 +77,9 @@
                     <?php } else { ?>
                     <tr>
                     <?php } ?>
-                      <td>$ {{$cardex->carCostoKilogramo}}</td>
-                      <td>$ {{$cardex->carCostoVolumen}}</td>
+
+                      <td>$ {{number_format($cardex->carCostoKilogramo, 2, ',', '.')}}</td>
+                      <td>$ {{number_format($cardex->carCostoVolumen, 2, ',', '.')}}</td>
                       <?php $created_at = new DateTime($cardex->created_at) ?>
                       <td>{{$created_at->format('d-m-Y H:i:s')}}</td>
                     </tr>

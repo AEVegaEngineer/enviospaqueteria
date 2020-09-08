@@ -25,6 +25,7 @@ class AdminController extends Controller
     {
         $userdata = getUserData();
         $usuarios = User::where('privilegio',5)
+            ->leftjoin('personas','users.id','=','personas.perUsuarioId')
             ->orderBy('users.created_at', 'desc')            
             ->paginate(15);
         //return $usuarios;
