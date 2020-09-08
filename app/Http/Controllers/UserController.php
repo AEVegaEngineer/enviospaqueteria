@@ -137,8 +137,9 @@ class UserController extends Controller
     {
         $userid = Auth::user()->id;
         $privs = Auth::user()->privilegio;
-        if($privs != 5)
+        if($privs != 5 && $id != $userid)
             return abort(404);
+        
         $userdata = null;
         $comShoppingIds = Shopping::pluck('shopNombre', 'shopId');
         $comShoppingIds->prepend('No', 0);
