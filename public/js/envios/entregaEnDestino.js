@@ -30,7 +30,7 @@ $('[id^=btnStatusUpdate]').click(function(e){
 	});
 });
 $('[id^=btnImprimirComprobante]').click(function(){
-	var url = Servidor+"/envio/comprobanteImpreso";
+	var url = "/envio/comprobanteImpreso";
 	var idenvio = $(this).attr('id').replace("btnImprimirComprobante", "");	
 	var parametros = {"idenvio":idenvio};
 	sendJson(url, parametros, null, null);

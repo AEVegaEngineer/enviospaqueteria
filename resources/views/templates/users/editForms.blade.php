@@ -30,7 +30,7 @@
               <div class="form-group row">
                 <p class="col-md-8 text-md-right">{{ __('Correo Electrónico') }}</p>                  
                 <div class="col-md-4">
-                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Auth::user()->email }}" required autocomplete="email" readonly="">
+                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $userdata->email }}" required autocomplete="email" readonly="">
 
                   @error('email')
                     <span class="invalid-feedback" role="alert">

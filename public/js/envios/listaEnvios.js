@@ -1,7 +1,7 @@
 $('[id^=paqueteDeEnvio]').click(function(){
   const idpaquete = $(this).attr('id').replace("paqueteDeEnvio", "");
-  const getPaquetes = Servidor+"/listapaquete/"+idpaquete;
-  const getDetalles = Servidor+"/envio/"+idpaquete;
+  const getPaquetes = "/listapaquete/"+idpaquete;
+  const getDetalles = "/envio/"+idpaquete;
   $('#tablaListaPaquetes').html('');
   $('#dirOrigen').text('');
   $('#dirDestino').text('');

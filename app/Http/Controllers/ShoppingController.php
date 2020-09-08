@@ -35,6 +35,7 @@ class ShoppingController extends Controller
         $userdata = getUserData();
 
         $usuarios = User::where('privilegio',3)
+            ->leftjoin('shoppings','users.id','=','shoppings.shopUsuarioId')
             ->orderBy('users.created_at', 'desc')            
             ->paginate(15);
         //return $usuarios;
