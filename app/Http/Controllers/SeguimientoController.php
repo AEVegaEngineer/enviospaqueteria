@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Envio;
 use App\Listapaquete;
 use App\Comercio;
+use App\Persona;
+use App\Shopping;
 
 class SeguimientoController extends Controller
 {
