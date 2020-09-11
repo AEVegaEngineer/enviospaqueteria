@@ -12,8 +12,7 @@ use App\Shopping;
 use App\Direccion;
 use Auth;
 use Redirect;
-use Hash;
-
+use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     /**
@@ -143,25 +142,34 @@ class UserController extends Controller
         $userdata = null;
         $comShoppingIds = Shopping::pluck('shopNombre', 'shopId');
         $comShoppingIds->prepend('No', 0);
+        $mindir = Direccion::join('users','users.id','=','direcciones.dirUserId')
+            ->where('users.id',$id)
+            ->min('dirId');
         if($privs == 1 || $privs == 4 || $privs == 5)
         {
             $userdata = User::Join('personas', 'users.id', '=', 'personas.perUsuarioId')
+                ->join('direcciones','direcciones.dirUserId','=','users.id')
                 ->where('users.id',$id)
+                ->where('direcciones.dirId',$mindir)
+                //->orderBy('direcciones.dirId','asc')
                 ->first();
         }
         else if($privs == 2)
         {
             $userdata = User::Join('comercios', 'users.id', '=', 'comercios.comUsuarioId')
+                ->join('direcciones','direcciones.dirUserId','=','users.id')
                 ->where('users.id',$id)
+                ->min('dirId')
                 ->first();
         }
         else if($privs == 3)
         {
             $userdata = User::Join('shoppings', 'users.id', '=', 'shoppings.shopUsuarioId')
+                ->join('direcciones','direcciones.dirUserId','=','users.id')
                 ->where('users.id',$id)
+                ->min('dirId')
                 ->first();
         }
-        //return $userdata;
         return view('users.edit',compact('userdata','comShoppingIds'));
     }
 
@@ -178,14 +186,53 @@ class UserController extends Controller
     	$user = User::find($id);
     	$successMessage;
         // si no se recibe password, setea la misma password que ya tiene
-        if($request->password == null)        	
-        	$request->password = $user->password;
-        $user->update(
-        	[
-        		'email' => $request->email,
-        		'usuTelefono' => $request->usuTelefono,      		
-        	]
-        );
+        /*
+        if($request->password_new == null)        	
+        	$request->password_new = $user->password;
+            */
+
+        if (!Hash::check($request->password_old, $user->password)) {
+            return Redirect::back()->withErrors(['La contraseña anterior no coincide']);
+        } 
+        if($request->password_new == "")
+        {     
+            $user->update(
+                [
+                    'email' => $request->email,
+                    'usuTelefono' => $request->usuTelefono,        
+                ]
+            );      
+        } else {
+            $user->update(
+                [
+                    'email' => $request->email,
+                    'usuTelefono' => $request->usuTelefono, 
+                    'password' => Hash::make($request->password_new)        
+                ]
+            );
+        }
+        //actualizando la dirección
+        
+        $mindir = Direccion::join('users','users.id','=','direcciones.dirUserId')
+            ->where('users.id',$id)
+            ->min('dirId');
+        $dirDepartamento;
+        if($request->dirDepartamento == 0)
+            $dirDepartamento = Direccion::select(['dirDepartamento'])->where('dirId',$mindir)->first()->dirDepartamento;
+        else
+            $dirDepartamento = $request->dirDepartamento;        
+         
+        Direccion::where('dirId',$mindir)->update([
+            'dirLinea1' => $request->dirLinea1, 
+            'dirLinea2' => $request->dirLinea2, 
+            'dirCiudad' => 'San Juan',
+            'dirProvincia' => 'San Juan',
+            'dirDepartamento' => $dirDepartamento, 
+            'dirZip' => $request->dirZip, 
+            'dirUserId' => $id, 
+            'dirOrigenDestino' => 'origen'
+        ]);
+
         if($request->privilegio == 1)
         {
         	//persona
@@ -239,7 +286,7 @@ class UserController extends Controller
                 ]
             );         
             $successMessage = "Datos del administrador actualizados exitosamente";
-        }
+        }        
         
         return redirect('/home')->with('message-success',$successMessage);
     }
