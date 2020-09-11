@@ -172,7 +172,7 @@
   <!-- Script solo usado en lista de usuarios -->
   <script src="{{ asset('js/users/detalleUsuarios.js') }}"></script>
   <!-- Script solo usado registros de usuarios por el admin -->
-  <script src="{{ asset('js/users/usuario-register.js') }}"></script>
+  <!--<script src="{{ asset('js/users/usuario-register.js') }}"></script>-->
   <!-- Script solo usado al entregar envíos en destino -->
   <script src="{{ asset('js/envios/entregaEnDestino.js') }}"></script>
   

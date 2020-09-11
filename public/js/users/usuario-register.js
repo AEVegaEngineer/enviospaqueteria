@@ -1,5 +1,5 @@
 jQuery(function($){
-    
+    console.log("usuario-register");
     $(".rowPersona").hide();
     $(".rowComercio").hide();
     $(".rowShopping").hide();

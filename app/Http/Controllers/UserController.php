@@ -134,9 +134,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $userid = Auth::user()->id;
-        $privs = Auth::user()->privilegio;
-        if($privs != 5 && $id != $userid)
+        $userid = Auth::user()->id; 
+        $privilegio_updater = Auth::user()->privilegio;
+        $privs = User::select(['privilegio'])->where('id',$id)->first()->privilegio;
+        if(($privilegio_updater != 4 && $privilegio_updater != 5)|| Auth::user()->id != $id)
             return abort(404);
         
         $userdata = null;
@@ -151,15 +152,14 @@ class UserController extends Controller
                 ->join('direcciones','direcciones.dirUserId','=','users.id')
                 ->where('users.id',$id)
                 ->where('direcciones.dirId',$mindir)
-                //->orderBy('direcciones.dirId','asc')
                 ->first();
         }
         else if($privs == 2)
         {
             $userdata = User::Join('comercios', 'users.id', '=', 'comercios.comUsuarioId')
-                ->join('direcciones','direcciones.dirUserId','=','users.id')
+                //->join('direcciones','direcciones.dirUserId','=','users.id')
                 ->where('users.id',$id)
-                ->min('dirId')
+                //->where('direcciones.dirId',$mindir)
                 ->first();
         }
         else if($privs == 3)
@@ -167,9 +167,10 @@ class UserController extends Controller
             $userdata = User::Join('shoppings', 'users.id', '=', 'shoppings.shopUsuarioId')
                 ->join('direcciones','direcciones.dirUserId','=','users.id')
                 ->where('users.id',$id)
-                ->min('dirId')
+                ->where('direcciones.dirId',$mindir)
                 ->first();
         }
+        
         return view('users.edit',compact('userdata','comShoppingIds'));
     }
 

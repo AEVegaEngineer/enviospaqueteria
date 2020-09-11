@@ -230,4 +230,5 @@
 <script type="text/javascript">
   $('.select2').select2();
 </script>
+<script src="{{ asset('js/users/usuario-register.js') }}"></script>
 <!-- End Cta Section -->

@@ -263,7 +263,7 @@
 
               <div class="row mt-4">
                 <div class="col-12 col-md-4 offset-md-4">
-                  <button type="submit" class="btn btn-outline-light btn-block">
+                  <button type="submit" id="btnRegistrar" class="btn btn-outline-light btn-block">
                     {{ __('Actualizar') }}
                   </button>
                 </div>
@@ -282,4 +282,5 @@
 <!-- End Cta Section -->
 <script type="text/javascript">
   $('.select2').select2();
+  console.log("editForms")
 </script>
