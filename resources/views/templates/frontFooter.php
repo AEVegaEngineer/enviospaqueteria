@@ -4,18 +4,18 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-3 col-md-6 footer-contact">
+          <div class="col-lg-4 col-md-6 footer-contact">
             <h3>Envios</h3>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
+              Av. José Ignacio de la Rosa con Tucuman <br>
+              San Juan, Capital<br>
+              Argentina <br><br>
               <strong>Teléfono:</strong> +1 5589 55488 55<br>
               <strong>Email:</strong> info@ejemplo.com<br>
             </p>
           </div>
           
-          <div class="col-lg-4 col-md-6 footer-newsletter">
+          <div class="col-lg-3 col-md-6 footer-newsletter">
             <h4>¡Ponete en contácto con nosotros!</h4>
             <p>Con gusto resolveremos cualquier duda sobre nuestros servicios</p>            
           </div>

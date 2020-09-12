@@ -84,11 +84,11 @@
               @if( Auth::user()->privilegio == 5 || Auth::user()->privilegio == 4) 
               	<!-- Botones para comprobantes de envios retirados de origen -->
                 @if($envio->envComprobanteImpreso == 0) 
-                  <a href="/comprobante/{{$envio->envId}}" target="_blank" class="btn btn-danger btn-sm" id="btnImprimirComprobante{{$envio->envId}}" data-toggle="tooltip" title="Comprobante de retiro en origen NO impreso">
+                  <a href="/comprobante/{{$envio->envId}}" target="_blank" class="btn btn-danger btn-sm" id="btnImprimirComprobante{{$envio->envId}}" data-toggle="tooltip" title="Comprobantes NO impresos">
                   	<i class="ri-checkbox-blank-fill"></i>
                   </a>                 
                 @else                
-                  <a href="/comprobante/{{$envio->envId}}" target="_blank" class="btn btn-secondary btn-sm" id="btnImprimirComprobante{{$envio->envId}}" data-toggle="tooltip" title="Comprobante de retiro en origen impreso">
+                  <a href="/comprobante/{{$envio->envId}}" target="_blank" class="btn btn-secondary btn-sm" id="btnImprimirComprobante{{$envio->envId}}" data-toggle="tooltip" title="Comprobantes impresos">
                   	<i class="ri-checkbox-fill"></i>
                   </a>                
                 @endif

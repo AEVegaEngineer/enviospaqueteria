@@ -44,7 +44,7 @@ class HomeController extends Controller
         $enviosEnEspera = null;
         if($priv == 5)
         {
-            $enviosEnEspera = Envio::where('envComprobanteImpreso',0)->first();
+            $enviosEnEspera = Envio::where('envEstadoEnvio',1)->first();
         }
         //return $enviosEnEspera;
         $envios = Envio::orderBy('envId', 'desc')->where('envCreatedBy',$userid)->paginate(15);

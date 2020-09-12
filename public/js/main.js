@@ -14,7 +14,7 @@ $('#preloaderConsultas').hide();
     console.log("Cargó!")
     if ($('#preloader').length) {
       $('#preloader').delay(100).fadeOut('slow', function() {
-        $(this).remove();
+        $(this).hide();
       });
     }
   });
