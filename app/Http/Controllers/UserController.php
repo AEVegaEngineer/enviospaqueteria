@@ -137,8 +137,11 @@ class UserController extends Controller
         $userid = Auth::user()->id; 
         $privilegio_updater = Auth::user()->privilegio;
         $privs = User::select(['privilegio'])->where('id',$id)->first()->privilegio;
-        if(($privilegio_updater != 4 && $privilegio_updater != 5)|| Auth::user()->id != $id)
-            return abort(404);
+        /*
+        solo permitir acceso a administradores para editar usuarios o que los usuarios se editen a si mismos
+        */
+        if(($privilegio_updater == 1 || $privilegio_updater == 2 || $privilegio_updater == 3) && Auth::user()->id != $id)
+            abort(404);
         
         $userdata = null;
         $comShoppingIds = Shopping::pluck('shopNombre', 'shopId');
@@ -157,9 +160,9 @@ class UserController extends Controller
         else if($privs == 2)
         {
             $userdata = User::Join('comercios', 'users.id', '=', 'comercios.comUsuarioId')
-                //->join('direcciones','direcciones.dirUserId','=','users.id')
+                ->join('direcciones','direcciones.dirUserId','=','users.id')
                 ->where('users.id',$id)
-                //->where('direcciones.dirId',$mindir)
+                ->where('direcciones.dirId',$mindir)
                 ->first();
         }
         else if($privs == 3)

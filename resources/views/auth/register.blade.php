@@ -102,8 +102,8 @@
         @enderror
       </div>
       <div class="col-12 col-md-4">
-        <p class="text-center">CUIL del comercio *</p>
-        <input id="comCuit" type="number" class="form-control @error('comCuit') is-invalid @enderror" name="comCuit" value="{{ old('comCuit') }}" required autocomplete="comCuit" autofocus>
+        <p class="text-center">CUIT del comercio *</p>
+        <input id="comCuit" type="text" class="form-control @error('comCuit') is-invalid @enderror" name="comCuit" value="{{ old('comCuit') }}" required autocomplete="comCuit" autofocus>
 
         @error('comCuil')
             <span class="invalid-feedback" role="alert">
@@ -133,8 +133,8 @@
         @enderror
       </div>
       <div class="col-12 col-md-4">
-        <p class="text-center">CUIL del shopping *</p>
-        <input id="shopCuit" type="number" class="form-control @error('shopCuit') is-invalid @enderror" name="shopCuit" value="{{ old('shopCuit') }}" required autocomplete="shopCuit" autofocus>
+        <p class="text-center">CUIT del shopping *</p>
+        <input id="shopCuit" type="text" class="form-control @error('shopCuit') is-invalid @enderror" name="shopCuit" value="{{ old('shopCuit') }}" required autocomplete="shopCuit" autofocus>
 
         @error('shopCuit')
             <span class="invalid-feedback" role="alert">
@@ -266,4 +266,26 @@
 
 </main><!-- End #main -->
 <script src="{{ asset('js/utils/getDepartamento.js') }}"></script>
+<script src="{{ asset('js/inputmask.min.js') }}"></script>
+<script type="text/javascript">
+  /* input masks */
+  var shopCuit = document.getElementById("shopCuit");
+  var comCuit = document.getElementById("comCuit");
+  var im = new Inputmask("99-99999999-9");
+  im.mask(shopCuit);
+  im.mask(comCuit);
+  $( "#btnRegistrar" ).prop( "disabled", true );
+  $("#dirDepartamento"). change(function(){
+    console.log("se ejecuto");
+    var seleccionado = $('#dirDepartamento').children("option:selected").val();
+    if( seleccionado == "Seleccione...") {   
+      $( "#btnRegistrar" ).prop( "disabled", true );
+      console.log("nope");
+    } else {
+      $( "#btnRegistrar" ).prop( "disabled", false );
+      console.log("yep");
+    }
+  });
+</script>
+
 @endsection

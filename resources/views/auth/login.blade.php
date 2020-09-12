@@ -1,8 +1,3 @@
-
-
-
-
-
 @extends('layouts.authLayout')
 
 @section('content')
@@ -62,7 +57,7 @@
     
     <div class="row mt-4">
       <div class="col-12 col-md-4 offset-md-4">
-        <button type="submit" id="btnRegistrar" class="btn btn-outline-light btn-block">
+        <button type="submit" id="btnRegistrar" class="btn btn-outline-light btn-block" onclick="this.disabled=true;this.value='Iniciando sesión...'; this.form.submit();">
           {{ __('Iniciar Sesión') }}
         </button>
         @if (Route::has('password.request'))
@@ -83,5 +78,4 @@
 <!-- End Cta Section -->
 
 </main><!-- End #main -->
-
 @endsection

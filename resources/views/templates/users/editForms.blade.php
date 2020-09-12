@@ -31,25 +31,7 @@
                   Administrador
                 @endif
               </h3>
-              @csrf
-              
-
-              
-                
-              
-              
-              
-
-              
-
-
-
-
-
-
-
-
-
+              @csrf              
               <div class="row mt-3">
                 <div class="col-12 col-md-4">
                   <p class="text-center">Correo Electrónico</p>
@@ -124,7 +106,7 @@
                   @enderror
                 </div>
                 <div class="col-12 col-md-4">
-                  <p class="text-center">CUIL del comercio</p>
+                  <p class="text-center">CUIT del comercio</p>
                   <input id="comCuit" type="text" class="form-control @error('comCuit') is-invalid @enderror" name="comCuit" value="{{ $userdata->comCuit }}" required autocomplete="comCuit" autofocus>
 
                   @error('comCuit')
@@ -182,7 +164,7 @@
                 </div>
                 <div class="col-12 col-md-4">
                   <p class="text-center">Departamento </p>
-                  <select id="dirDepartamento" class="form-control select2 @error('dirDepartamento') is-invalid @enderror" name="dirDepartamento" value="{{ old('dirDepartamento') }}" required autocomplete="dirDepartamento" autofocus style="width:100%; height: 100%;">
+                  <select id="dirDepartamento" class="form-control select2 @error('dirDepartamento') is-invalid @enderror" name="dirDepartamento" value="{{ old('dirDepartamento') }}" autocomplete="dirDepartamento" autofocus style="width:100%; height: 100%;">
                     <option selected disabled value="0">Seleccione...</option>
                     <option value="Rawson, Villa Krause"><b>Rawson</b> Villa Krause</option>
                     <option value="Capital, San Juan"><b>Capital</b> San Juan</option>
@@ -247,20 +229,6 @@
                 </div>
               </div>
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
               <div class="row mt-4">
                 <div class="col-12 col-md-4 offset-md-4">
                   <button type="submit" id="btnRegistrar" class="btn btn-outline-light btn-block">
@@ -280,7 +248,15 @@
   </div>
 </section>
 <!-- End Cta Section -->
+<script src="{{ asset('js/inputmask.min.js') }}"></script>
 <script type="text/javascript">
   $('.select2').select2();
   console.log("editForms")
+
+  /* input masks */
+  var shopCuit = document.getElementById("shopCuit");
+  var comCuit = document.getElementById("comCuit");
+  var im = new Inputmask("99-99999999-9");
+  im.mask(shopCuit);
+  im.mask(comCuit);
 </script>
