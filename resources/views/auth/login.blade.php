@@ -57,7 +57,7 @@
     
     <div class="row mt-4">
       <div class="col-12 col-md-4 offset-md-4">
-        <button type="submit" id="btnRegistrar" class="btn btn-outline-light btn-block" onclick="this.disabled=true;this.value='Iniciando sesión...'; this.form.submit();">
+        <button type="submit" id="btnRegistrar" class="btn btn-outline-light btn-block" onclick="this.disabled=true;this.value='Iniciando sesión...'; this.form.submit();mostrarPreloader();">
           {{ __('Iniciar Sesión') }}
         </button>
         @if (Route::has('password.request'))
@@ -78,4 +78,10 @@
 <!-- End Cta Section -->
 
 </main><!-- End #main -->
+
+<script type="text/javascript">
+  function mostrarPreloader() {
+    $('#preloader').fadeIn('fast')    
+  }  
+</script>
 @endsection
