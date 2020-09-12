@@ -1,4 +1,5 @@
 $('[id^=paqueteDeEnvio]').click(function(){
+  $(this).prop('tooltipText', 'Comprobantes impresos');
   const idpaquete = $(this).attr('id').replace("paqueteDeEnvio", "");
   const getPaquetes = "/listapaquete/"+idpaquete;
   const getDetalles = "/envio/"+idpaquete;
@@ -64,24 +65,23 @@ $('[id^=paqueteDeEnvio]').click(function(){
   
 });
 $(document).ready( function () {
-    $('#tablaEnvios').DataTable({
-      "bPaginate": false,
-      "bLengthChange": false,
-      "bInfo": false,
-      "bAutoWidth": false,
-      "bFilter": false,
-      "bFilter": false,
-      "language": {
-            "lengthMenu": "Mostrando _MENU_ lineas por lista",
-            "zeroRecords": "No se han encontrado datos",
-            "info": "Mostrando página _PAGE_ de _PAGES_",
-            "infoEmpty": "No hay datos disponibles",
-            "infoFiltered": "(filtrado de _MAX_ datos totales)",
-            "paginate": {
-              "previous": "Anterior",
-              "next": "Siguiente",
-            }
-        }
-    });
-
+  $('#tablaEnvios').DataTable({
+    "bPaginate": false,
+    "bLengthChange": false,
+    "bInfo": false,
+    "bAutoWidth": false,
+    "bFilter": false,
+    "bFilter": false,
+    "language": {
+          "lengthMenu": "Mostrando _MENU_ lineas por lista",
+          "zeroRecords": "No se han encontrado datos",
+          "info": "Mostrando página _PAGE_ de _PAGES_",
+          "infoEmpty": "No hay datos disponibles",
+          "infoFiltered": "(filtrado de _MAX_ datos totales)",
+          "paginate": {
+            "previous": "Anterior",
+            "next": "Siguiente",
+          }
+      }
+  });
 } );
