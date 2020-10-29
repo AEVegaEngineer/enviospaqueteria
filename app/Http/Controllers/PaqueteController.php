@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PaqueteCreateRequest;
+use App\Paquete;
 
 class PaqueteController extends Controller
 {
@@ -22,7 +24,8 @@ class PaqueteController extends Controller
      */
     public function index()
     {
-        //
+        $paquetes = Paquete::orderBy('created_at', 'desc')->paginate(15);
+        return view('paquetes.index',compact('paquetes'));
     }
 
     /**
@@ -41,9 +44,19 @@ class PaqueteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PaqueteCreateRequest $request)
     {
-        //
+        $paqueteCreado = Paquete::create([
+            'paqDescripcion' => $request['paqDescripcion'],
+            'paqDimensionAlto' => $request['paqDimensionAlto'],
+            'paqDimensionAncho' => $request['paqDimensionAncho'],
+            'paqDimensionLargo' => $request['paqDimensionLargo'],
+            'paqDimensionUnidad' => $request['paqDimensionUnidad'],
+            'paqPeso' => $request['paqPeso'],
+            'paqPesoUnidad' => $request['paqPesoUnidad']
+        ]);
+        //return "se ha creado exitosamente";
+        return redirect('/paquete')->with('message-success', 'El paquete se ha registrado exitosamente');
     }
 
     /**
@@ -65,7 +78,8 @@ class PaqueteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $paquete = Paquete::where('paqId',$id)->first();
+        return view('paquetes.edit',compact('paquete'));
     }
 
     /**
@@ -75,9 +89,18 @@ class PaqueteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PaqueteCreateRequest $request, $id)
     {
-        //
+        Paquete::where('paqId', '=', $id)->update([
+            'paqDescripcion' => $request['paqDescripcion'],
+            'paqDimensionAlto' => $request['paqDimensionAlto'],
+            'paqDimensionAncho' => $request['paqDimensionAncho'],
+            'paqDimensionLargo' => $request['paqDimensionLargo'],
+            'paqDimensionUnidad' => $request['paqDimensionUnidad'],
+            'paqPeso' => $request['paqPeso'],
+            'paqPesoUnidad' => $request['paqPesoUnidad']
+        ]);
+        return redirect('/paquete')->with('message-success', 'El paquete se ha actualizado exitosamente');
     }
 
     /**
@@ -88,6 +111,7 @@ class PaqueteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Paquete::where('paqId',$id)->delete();
+        return redirect('/paquete')->with('message-success', 'El paquete se ha eliminado exitosamente');
     }
 }

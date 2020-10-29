@@ -107,8 +107,11 @@
             -->
           <?php } ?>    
           <?php if( Auth::user()->privilegio == 5 ){ ?>
-            <li>
-              <a href="/ajustes" class="text-decoration-none">Ajustes</a>
+            <li class="drop-down"><a href="#" class="text-decoration-none">Ajustes</a>
+              <ul>
+                <li><a href="/ajustes" class="text-decoration-none">Ajuste de Costos de Envío</a></li>
+                <li><a href="/paquetes" class="text-decoration-none">Definición de Paquetes y Dimensiones</a></li>
+              </ul>
             </li>
           <?php } ?>
           <?php if (Auth::user() !== null){ ?>          
