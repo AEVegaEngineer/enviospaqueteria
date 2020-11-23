@@ -1,7 +1,11 @@
-@extends('layouts.dashboardLayout')
+@extends('layouts.innerLayout')
 
 @section('content')
-
+<script type="text/javascript">
+  var paquetes = JSON.parse('<?php echo $paquetes; ?>');
+  var costoPeso = <?php echo $costoPeso; ?>;
+  var costoVolumen = <?php echo $costoVolumen; ?>;
+</script>
 
 <!-- Sección de registro de envios -->
   
@@ -14,7 +18,7 @@
         @include('alerts.alerts')
       </div>      
       <h2>Registro de envíos</h2>
-      <p>Ingrese los datos del envío</p>
+      <p>Ingrese los datos del envío, los costos del envío se calcularán según el mayor entre el costo por dimensión y el costo por peso para cada paquete, luego se totalizarán todos los costos.</p>
     </div>
 
     <div class="row mt-5">
@@ -69,11 +73,12 @@
           <div class="form-row mt-3">
             <div class="col-12 col-md-2">
               <div class="info text-right">
-                Descripción del Paquete
+                Seleccione un paquete
               </div>
             </div>
             <div class="col-12 col-md-4 form-group">
-              <input type="text" name="paqDescripcion" id="paqDescripcion" class="form-control" placeholder="Descripción del paquete" data-rule="minlen:10" data-msg="Por favor, ingresá al menos 10 caracteres" value="Paquete de envío estándar" readonly="" required="" />
+              {!! Form::select('paqDescripcion', $paqDescripciones, $userdata->paqDescripcion, ['class' => 'form-control select2','required' => 'required','id'=>'paqDescripcion']) !!}
+              <!--<input type="text" name="paqDescripcion" id="paqDescripcion" class="form-control" placeholder="Descripción del paquete" data-rule="minlen:10" data-msg="Por favor, ingresá al menos 10 caracteres" value="Paquete de envío estándar" readonly="" required="" />-->
               @error('paqDescripcion')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -82,109 +87,62 @@
             </div> 
             <div class="col-12 col-md-2">
               <div class="info text-right">
-                Cantidad de Paquetes
+                Cantidad de paquetes
               </div>
             </div>
             <div class="col-12 col-md-1 form-group">
-              <input type="number" name="listCantidadPaq" id="listCantidadPaq" class="form-control" placeholder="Cantidad" value="0" required="" min="1" />@error('listCantidadPaq')
+              <input type="number" name="listCantidadPaq" id="listCantidadPaq" class="form-control" placeholder="Cantidad" value="1" required="" min="1" />@error('listCantidadPaq')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
                   </span>
               @enderror
-            </div>         
-            @if(Auth::user()->privilegio != 2 || (Auth::user()->privilegio == 2 && $userdata->comShoppingId == null))
-            <div class="col-12 col-md-2">
-              <div class="info text-right">
-                Costo del Envío
-              </div>
-            </div>
-            <div class="col-12 col-md-1 form-group">
-              @endif
-              <script type="text/javascript">
-                var carCosto = <?php echo $carCosto; ?>;
-              </script>
-              <input  name="envCosto" id="envCosto" class="form-control" placeholder="Costo del Envío" value="0" readonly="" required="" @if(Auth::user()->privilegio != 2 || (Auth::user()->privilegio == 2 && $userdata->comShoppingId == null)) type="text" @else type="hidden" @endif />
-                  @if(Auth::user()->privilegio != 2 || (Auth::user()->privilegio == 2 && $userdata->comShoppingId == null))
-                  @error('envCosto')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-              @enderror
-            </div>
-            @endif
+            </div>    
           </div>
-          <!--        
-          <div class="form-row">
+          <div class="row mt-3">
+            <div class="col-12 col-md-6">
+              <p class="text-center">Volumen</p>
+              <h3 class="text-center" id="lblVolumen">0,00</h3>
+            </div>
+            <div class="col-12 col-md-6">
+              <p class="text-center">Peso</p>
+              <h3 class="text-center" id="lblPeso">0,00</h3>
+            </div>            
+          </div>
+          <div class="row mt-3">
             <div class="col-12 col-md-4">
-              <div class="info text-right">
-                Alto
+              <p class="text-center">Costo calculado en base al</p>
+              <h3 class="text-center" id="lblBaseCalculo"></h3>
+            </div>
+            <div class="col-12 col-md-4">
+              <p class="text-center">Costo por Kg.</p>
+              <h3 class="text-center" id="lblCostoPeso">0,00</h3>
+            </div>
+            <div class="col-12 col-md-4">
+              <p class="text-center">Costo por m&sup3;</p>
+              <h3 class="text-center" id="lblCostoVolumen">0,00</h3>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 offset-md-4 col-md-4">
+              <div class="text-center">
+                <button type="button" class="btn btn-lg btn-primary btn-block" id="btnAgregarPaquete">Agregar Paquete a Lista de Envío</button>
               </div>
             </div>
-            <div class="col-12 col-md-8 form-group">
-              <input type="text" name="paqDescripcion" id="paqDescripcion" class="form-control" placeholder="Descripción del paquete" data-rule="minlen:10" data-msg="Por favor, ingresá al menos 10 caracteres" value="Paquete de envío estándar" />              
-            </div>        
+          </div>
+          <div class="row mt-3">
+            <table id="tablaListaPaquetes" class="table table-responsive-md table-light">
+              <thead>
+                <th>Descripción del paquete</th>
+                <th>Cantidad</th>
+                <th>Costo</th>
+                <th>Opciones</th>
+              </thead>              
+            </table>
           </div>
           
-
-          <div class="row">
-            <div class="col-md-12">
-              <table class="table table-responsive-md">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">Descripción del paquete</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          -->
-          <!--
-          <div class="form-row">
-            </div>
-            <div class="col-md-4 form-group">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-              <div class="validate"></div>
-            </div>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-            <div class="validate"></div>
-          </div>
-          <div class="form-group">
-            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-            <div class="validate"></div>
-          </div>
-          
-          <div class="mb-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your message has been sent. Thank you!</div>
-          </div>
-          -->
-          <div class="row">
+          <input  name="envListaPaquetes" id="envListaPaquetes" type="hidden"/>
+          <input  name="envCosto" id="envCosto" type="hidden"/>
+          <div class="row mt-5">
             <div class="col-12 offset-md-4 col-md-4">
               <div class="text-center">
                 <button type="submit" class="btn btn-lg btn-success btn-block">Registrar Envío</button>
@@ -205,5 +163,8 @@
 
 
 </main><!-- End #main -->
+<script src="{{ asset('/js/utils/tableHandler.js') }}"></script>
+<script src="{{ asset('/js/envios/createTableHandler.js') }}"></script>
+<script src="{{ asset('/js/envios/create.js') }}"></script>
 
 @endsection

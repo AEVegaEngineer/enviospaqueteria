@@ -29,11 +29,13 @@
   <link href="{{ asset('css/remixicon.css') }}" rel="stylesheet" type="text/css" />  
   <link href="{{ asset('css/estilosPersonalizados.css') }}" rel="stylesheet" type="text/css" />  
    <link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />  
+   <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet" type="text/css" />  
 
   <script src="{{ asset('/js/jquery.min.js') }}" ></script>
   <script src="{{ asset('/js/bootstrap.bundle.min.js') }}" ></script>
   <!-- Script utilizado en todas las tablas -->
   <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('/js/select2.min.js') }}" ></script>
 
   
   <!-- =======================================================
@@ -107,8 +109,11 @@
             -->
           <?php } ?>    
           <?php if( Auth::user()->privilegio == 5 ){ ?>
-            <li>
-              <a href="/ajustes" class="text-decoration-none">Ajustes</a>
+            <li class="drop-down"><a href="#" class="text-decoration-none">Ajustes</a>
+              <ul>
+                <li><a href="/ajustes" class="text-decoration-none">Ajuste de Costos de Envío</a></li>
+                <li><a href="/paquete" class="text-decoration-none">Definición de Paquetes y Dimensiones</a></li>
+              </ul>
             </li>
           <?php } ?>
           <?php if (Auth::user() !== null){ ?>          
@@ -164,7 +169,7 @@
   <script src="{{ asset('/js/isotope.pkgd.min.js') }}" ></script>
   <script src="{{ asset('/js/aos.js') }}" ></script>
   <script src="{{ asset('/js/main.js') }}"></script>
-  <script src="{{ asset('/js/envios/create.js') }}"></script>
+  
   <script src="{{ asset('js/sweetalert.min.js') }}"></script>
   <!-- Script solo usado en lista de envios -->
   <script src="{{ asset('js/utils/getJson.js') }}"></script>

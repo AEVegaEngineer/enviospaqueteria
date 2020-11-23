@@ -11,8 +11,9 @@ class Paquete extends Model
      *
      * @var array
      */
-    protected $fillable = [    	
-    	'paqDescripcion', 
+    protected $fillable = [ 
+       	
+    	'paqDescripcion',
     	'paqDimensionAlto', 
     	'paqDimensionAncho', 
     	'paqDimensionLargo', 

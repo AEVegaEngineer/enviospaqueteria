@@ -63,5 +63,6 @@
   const userid = <?php echo $userid; ?>;
 
 </script>
+<script src="{{ asset('/js/jquery.dataTables.min.js') }}"></script>
 
 @endsection

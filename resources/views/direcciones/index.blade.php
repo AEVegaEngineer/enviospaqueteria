@@ -1,4 +1,4 @@
-@extends('layouts.dashboardLayout')
+@extends('layouts.innerLayout')
 
 @section('content')
 

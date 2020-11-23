@@ -43,6 +43,8 @@ Route::resource('admin','AdminController');
 Route::resource('empleado','EmpleadoController');
 Route::resource('seguimiento','SeguimientoController');
 Route::resource('ajustes','AjustesController');
+Route::resource('paquete','PaqueteController');
+
 
 Route::get('/en-espera', 'EnvioController@showEnEspera')->name('showEnEspera');
 Route::get('/en-logistica', 'EnvioController@showEnLogistica')->name('showEnLogistica');

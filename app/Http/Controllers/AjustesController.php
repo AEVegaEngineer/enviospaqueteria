@@ -51,7 +51,6 @@ class AjustesController extends Controller
         ]);
         //return "se ha creado exitosamente";
         return redirect('/ajustes')->with('message-success', 'El ajuste se ha realizado exitosamente');
-
     }
 
     /**

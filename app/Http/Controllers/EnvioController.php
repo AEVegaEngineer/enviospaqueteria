@@ -77,15 +77,22 @@ class EnvioController extends Controller
     {
         $origen = Direccion::where('dirId',$_REQUEST["origen"])->first();
         $destino = Direccion::where('dirId',$_REQUEST["destino"])->first();
-        $costo = Cardexcosto::latest()->first();
-        $paquete = Paquete::first();
+        $costoVolumen = Cardexcosto::latest()->first()->carCostoVolumen;
+        $costoPeso = Cardexcosto::latest()->first()->carCostoKilogramo;
+        $paquetes = Paquete::get();
         $userdata = getUserData();
+        $paqDescripciones = Paquete::pluck('paqDescripcion', 'paqId');
+        $paqDescripciones->prepend('Seleccione...', 0);
+        //return $paquetes;
+        return view('envios.create',compact('userdata','origen','destino','costoVolumen','costoPeso','paqDescripciones','paquetes'));
+        /*
         $volumen = $paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo;
         $peso = $paquete->paqPeso;
         $costoPorVolumen = $costo->carCostoVolumen * $volumen;
         $costoPorPeso = $costo->carCostoKilogramo * $peso;
         $carCosto = ($costoPorVolumen > $costoPorPeso ? $costoPorVolumen : $costoPorPeso);
-        return view('envios.create',compact('userdata','origen','destino','carCosto'));
+        */
+        //return view('envios.create',compact('userdata','origen','destino','carCosto'));
     }
 
     /**
@@ -112,6 +119,7 @@ class EnvioController extends Controller
             'paqPesoUnidad' => "Kilogramos",
         ]);
         */
+        //return json_decode($request["envListaPaquetes"],true)[0]["paqId"];
         $userid = Auth::user()->id;
         
         //return $ListapaqueteRegistrada->id;
@@ -129,12 +137,16 @@ class EnvioController extends Controller
             'cambEstado' => 1,
             'cambCreatedBy' => $userid,
         ]);
-        $ListapaqueteRegistrada = Listapaquete::create([
-            'listPaqueteId' => 1,
-            'listCantidadPaq' => $request['listCantidadPaq'],
-            'listEnvioId' => $EnvioRegistrado->id,
-        ]);
+        $listaPaqs = json_decode($request["envListaPaquetes"],true);
+        foreach ($listaPaqs as $paq) {
+            $ListapaqueteRegistrada = Listapaquete::create([
+                'listPaqueteId' => $paq["paqId"],
+                'listCantidadPaq' => $paq["paqCant"],
+                'listEnvioId' => $EnvioRegistrado->id,
+            ]);
+        }
         return redirect('/envio')->with('message-success', 'El envío ha sido registrado exitosamente');
+        
     }
     /**
      * Display the specified resource.
