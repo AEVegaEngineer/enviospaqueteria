@@ -43,9 +43,6 @@
         <p><b>Destino:</b> {{$envio->envDestino}}</p>-->
        	<h3>Paquetes a enviar: </h3>
         <table class="table" style="font-size: 12px;">
-            
-            @foreach($listapaquetes as $paquete)
-                
             <tr>
                 <td><b>Descripción</b></td> 
                 <td><b>Cantidad</b></td>  
@@ -54,32 +51,45 @@
                 <td><b>Volumen Unitario</b></td> 
                 <td><b>Volumen Total</b></td>        
             </tr>
+            @foreach($listapaquetes as $paquete)                
+            
             <?php 
-            if($paquete->paqPesoUnidad == "Kilogramos" || $paquete->paqPesoUnidad == "Kilogramos") 
-                $paquete->paqPesoUnidad = "Kg";
-            else if($paquete->paqPesoUnidad == "Gramos")
-                $paquete->paqPesoUnidad = "Gr";
-
-            if($paquete->paqDimensionUnidad == "Centímetros")
-                $paquete->paqDimensionUnidad = "Cm";
-            if($paquete->paqDimensionUnidad == "Metros")
-                $paquete->paqDimensionUnidad = "M";
+                $dimensionMetricaUnitaria = 0.0;
+                $dimensionMetricaTotal = 0.0;
+                $dimensiones = $paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo;
+                switch($paquete->paqDimensionUnidad){
+                    case 'cm':
+                      $dimensionMetricaUnitaria = $dimensiones / 1000000;                      
+                      break;
+                    case 'm':
+                      $dimensionMetricaUnitaria = $dimensiones;
+                      break;
+                    case 'mm':
+                      $dimensionMetricaUnitaria = $dimensiones / 1000000000;
+                      break;
+                    case 'in':
+                      $dimensionMetricaUnitaria = $dimensiones / 61024;
+                      break;
+                    default:
+                      $dimensionMetricaUnitaria = 0;
+                      break;
+                }
+                $dimensionMetricaTotal = $dimensionMetricaUnitaria * $paquete->listCantidadPaq;
             ?>
             <tr>
             	<td>{{$paquete->paqDescripcion}}</td>
             	<td>{{$paquete->listCantidadPaq}}</td>
                 <td>{{$paquete->paqPeso}} {{$paquete->paqPesoUnidad}}</td>
                 <td>{{$paquete->paqPeso * $paquete->listCantidadPaq}} {{$paquete->paqPesoUnidad}}</td>
-                <td>{{number_format($paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo, 2, ',', '.')}} {{$paquete->paqDimensionUnidad}}&sup3;</td>
-                <td>{{number_format($paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo  * $paquete->listCantidadPaq, 2, ',', '.')}} {{$paquete->paqDimensionUnidad}}&sup3;</td>
+                <td>{{number_format($dimensionMetricaUnitaria, 2, ',', '.')}} m&sup3;</td>
+                <td>{{number_format($dimensionMetricaTotal, 2, ',', '.')}} m&sup3;</td>
             </tr>
             @endforeach        
-        </table>
+        </table>        
         
-        
-        <div style="margin-top: 10px;">
-            <p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
-        </div>
+        <div style="page-break-before: always;"></div>
+
+
         <img src="img/clients/client-5.png" alt="logo de la empresa" style="display: inline-block; width: 200px;">
         <h3  style="display: inline-block; vertical-align: middle; margin-left: 25px; width: 500px">
         Constancia de Entrega Nº {{$envio->envId}}</h3>
@@ -120,23 +130,35 @@
             </tr>
             @foreach($listapaquetes as $paquete)
             <?php 
-            if($paquete->paqPesoUnidad == "Kilogramos" || $paquete->paqPesoUnidad == "Kilogramos") 
-                $paquete->paqPesoUnidad = "Kg";
-            else if($paquete->paqPesoUnidad == "Gramos")
-                $paquete->paqPesoUnidad = "Gr";
-
-            if($paquete->paqDimensionUnidad == "Centímetros")
-                $paquete->paqDimensionUnidad = "Cm";
-            if($paquete->paqDimensionUnidad == "Metros")
-                $paquete->paqDimensionUnidad = "M";
+                $dimensionMetricaUnitaria = 0.0;
+                $dimensionMetricaTotal = 0.0;
+                $dimensiones = $paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo;
+                switch($paquete->paqDimensionUnidad){
+                    case 'cm':
+                      $dimensionMetricaUnitaria = $dimensiones / 1000000;                      
+                      break;
+                    case 'm':
+                      $dimensionMetricaUnitaria = $dimensiones;
+                      break;
+                    case 'mm':
+                      $dimensionMetricaUnitaria = $dimensiones / 1000000000;
+                      break;
+                    case 'in':
+                      $dimensionMetricaUnitaria = $dimensiones / 61024;
+                      break;
+                    default:
+                      $dimensionMetricaUnitaria = 0;
+                      break;
+                }
+                $dimensionMetricaTotal = $dimensionMetricaUnitaria * $paquete->listCantidadPaq;
             ?>
             <tr>
                 <td>{{$paquete->paqDescripcion}}</td>
                 <td>{{$paquete->listCantidadPaq}}</td>
                 <td>{{$paquete->paqPeso}} {{$paquete->paqPesoUnidad}}</td>
                 <td>{{$paquete->paqPeso * $paquete->listCantidadPaq}} {{$paquete->paqPesoUnidad}}</td>
-                <td>{{number_format($paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo, 2, ',', '.')}} {{$paquete->paqDimensionUnidad}}&sup3;</td>
-                <td>{{number_format($paquete->paqDimensionAlto * $paquete->paqDimensionAncho * $paquete->paqDimensionLargo  * $paquete->listCantidadPaq, 2, ',', '.')}}&sup3;</td>
+                <td>{{number_format($dimensionMetricaUnitaria, 2, ',', '.')}} m&sup3;</td>
+                <td>{{number_format($dimensionMetricaTotal, 2, ',', '.')}} m&sup3;</td>
             </tr>
             @endforeach        
         </table>

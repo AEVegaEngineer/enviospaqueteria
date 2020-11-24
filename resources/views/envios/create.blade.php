@@ -23,7 +23,7 @@
 
     <div class="row mt-5">
       <div class="col-12">
-        <form method="POST" action="{{ route('envio.store') }}" role="form" class="php-email-form">
+        <form method="POST" action="{{ route('envio.store') }}" id="formListaPaquetes" role="form" class="php-email-form">
           @csrf   
           <div class="row">
             <div class="col-12 col-md-4">
@@ -106,8 +106,9 @@
             <div class="col-12 col-md-6">
               <p class="text-center">Peso</p>
               <h3 class="text-center" id="lblPeso">0,00</h3>
-            </div>            
+            </div>  
           </div>
+          <?php if (Auth::user()->privilegio != 2 || (Auth::user()->privilegio == 2 && $userdata->comShoppingId == null)){ ?>
           <div class="row mt-3">
             <div class="col-12 col-md-4">
               <p class="text-center">Costo calculado en base al</p>
@@ -122,6 +123,7 @@
               <h3 class="text-center" id="lblCostoVolumen">0,00</h3>
             </div>
           </div>
+          <?php } ?>  
           <div class="row mt-3">
             <div class="col-12 offset-md-4 col-md-4">
               <div class="text-center">
@@ -145,7 +147,8 @@
           <div class="row mt-5">
             <div class="col-12 offset-md-4 col-md-4">
               <div class="text-center">
-                <button type="submit" class="btn btn-lg btn-success btn-block">Registrar Envío</button>
+                <!--<button type="submit" class="btn btn-lg btn-success btn-block">Registrar Envío</button>-->
+                <button type="button" class="btn btn-lg btn-success btn-block" id="registrarEnvio">Registrar Envío</button>
               </div>
             </div>
           </div>
@@ -165,6 +168,7 @@
 </main><!-- End #main -->
 <script src="{{ asset('/js/utils/tableHandler.js') }}"></script>
 <script src="{{ asset('/js/envios/createTableHandler.js') }}"></script>
+<script src="{{ asset('js/utils/dimensionesYPesosHandlers.js') }}"></script>
 <script src="{{ asset('/js/envios/create.js') }}"></script>
 
 @endsection

@@ -92,7 +92,8 @@
                   @enderror
                 </div>
               </div>
-              @elseif (Auth::user()->privilegio == 2)
+              @endif
+              @if (Auth::user()->privilegio == 2)
               <!--comercio-->
               <div class="row mt-3 rowComercio ">
                 <div class="col-12 col-md-4">
@@ -126,7 +127,8 @@
                   @enderror
                 </div>
               </div>
-              @elseif (Auth::user()->privilegio == 3)
+              @endif
+              @if (Auth::user()->privilegio == 3)
                 <!--shopping-->
                 <div class="row mt-3 rowShopping ">
                   <div class="col-12 col-md-4 offset-md-2">

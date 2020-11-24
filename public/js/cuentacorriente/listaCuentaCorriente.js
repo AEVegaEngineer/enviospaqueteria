@@ -41,13 +41,14 @@ function llenarTablaCuentaCorriente(data)
   });
   $('#tablaCuentaCorriente').append(
     '<thead>'+          
-      '<td>Total</td>'+
+      '<td><b>Total</b></td>'+
       '<td></td>'+
       '<td></td>'+
-      '<td>$ '+costoTotal.toFixed(2)+'</td>'+
+      '<td><b>$ '+costoTotal.toFixed(2)+'</b></td>'+
       '<td></td>'+
     '</thead>');
   //si la tabla ya existe la reconstruye
+  /*
   rebuildTables('tablaCuentaCorriente');  
   $('#tablaCuentaCorriente').DataTable({
     "bPaginate": false,
@@ -68,6 +69,7 @@ function llenarTablaCuentaCorriente(data)
           }
       }
   });
+  */
 }
 
 $('#shopId, #desde, #hasta').change(function(){

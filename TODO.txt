@@ -1,0 +1,5 @@
+12+4
+( ) Los costos no deben ser visibles en comercios afiliados a un super
+( ) Arreglar los totales de volumen y peso en detalles de envio y comprobantes
+( ) Las listas de cuentas corrientes no estan totalizando bien
+( ) Probar si en diferentes tabs se puede abrir distintas cuentas en el mismo navegador

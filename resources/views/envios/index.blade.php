@@ -53,7 +53,7 @@
           @if( Auth::user()->privilegio == 3)
           <td>{{$envio->comNombre}}</td>
           @endif 
-          <td>{{$created_at->format('d-m-Y H:i:s')}}</td>
+          <td>{{$created_at->format('Y-m-d H:i:s')}}</td>
           <?php if($envio->envEstadoEnvio == 1) { ?>
             <td>En Espera</td>
           <?php } elseif ($envio->envEstadoEnvio == 2) { ?>
@@ -172,23 +172,15 @@
           </div>
         </div>
 
-
-        <h5 class="modal-title">Lista de Paquetes</h3>
-        <table class="table table-responsive" id="tablaListaPaquetes">
-          <thead>            
-            <th>Descripción</th>
-            <th>Cantidad</th>
-            <th>Alto</th>
-            <th>Ancho</th>
-            <th>Largo</th>
-            <th>Peso</th>
-          </thead>
-          
-        </table>
+        <div class="row">
+          <div class="col-12">
+            <h5 class="modal-title">Lista de Paquetes</h5>
+            <table class="table" id="tablaListaPaquetes"></table>
+          </div>
+        </div>
         <div class="row">
         	<div class="col-12 col-md-5 offset-md-1">
         		<span><b>Volumen Total: </b></span><span id="spanVolumenTotal"></span>
-
         	</div>
         	<div class="col-12 col-md-5">
         		<span><b>Peso Total: </b></span><span id="spanPesoTotal"></span>
@@ -245,7 +237,9 @@
 
 
 </main><!-- End #main -->
-
+<script src="{{ asset('js/utils/moment.min.js') }}"></script>
+<script src="{{ asset('js/utils/datetime-moment.js') }}"></script>
+<script src="{{ asset('js/utils/dimensionesYPesosHandlers.js') }}"></script>
 <script src="{{ asset('js/envios/listaEnvios.js') }}"></script>
 
 @endsection

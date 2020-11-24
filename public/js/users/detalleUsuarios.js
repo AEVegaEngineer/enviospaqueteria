@@ -13,7 +13,7 @@ $('[id^=detalleUsuario]').click(function(){
 });
 
 function getJson(url, parametros, loadingScrn, callback){
-  console.log("llamando a "+url);
+  //console.log("llamando a "+url);
   $.ajax({
     async: true,
     crossDomain: true,

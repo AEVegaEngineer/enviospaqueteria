@@ -1,11 +1,6 @@
-function dimensionFormat(x) {
-  return Number.parseFloat(x).toFixed(4);
-}
-function peso(x) {
-  return Number.parseFloat(x).toFixed(2);
-}
-function financial(x){
-	return x.toFixed(2).replace(".",",").replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+
+function mostrarPreloader() {
+  $('#preloader').fadeIn('fast')    
 }
 function calcularCostos(ps,cant){
 	const dimensiones = ps.paqDimensionAlto * ps.paqDimensionAncho * ps.paqDimensionLargo;
@@ -64,6 +59,8 @@ function calcularCostos(ps,cant){
 var listaPaquetes = [];
 var mayorCosto = 0;
 $(document).ready(function() {
+
+	$('#registrarEnvio').hide();
 	//console.log("envio/create");
 	$('#paqDescripcion').select2();
 	console.log("paquetes");
@@ -93,7 +90,17 @@ $(document).ready(function() {
 	});
 	
 	$('#btnAgregarPaquete').click(function(){
+
 		if( $('#paqDescripcion').val() == 0 ) return;
+
+		//validación, si el artículo ya está ingresado no se puede volver a ingresar en la lista
+		if( listaPaquetes.find(paquete => paquete.paqId == $('#paqDescripcion').val()) )
+		{
+			swal("Ha ocurrido un error!", "El paquete ya se encuentra en la lista de envío", "error");
+			return;
+		}
+
+		$('#registrarEnvio').fadeIn('fast');
 		const ps = paquetes.find(paquete => paquete.paqId == $('#paqDescripcion').val());
 		
 		listaPaquetes.push({
@@ -109,7 +116,14 @@ $(document).ready(function() {
 
 	//const data = sendJson(getCuentaCorriente, params, null, llenarTablaCuentaCorriente); 
 
-
+	$('#registrarEnvio').click(function(){
+		if(Array.isArray(listaPaquetes) && listaPaquetes.length){
+			mostrarPreloader();
+			$('#formListaPaquetes').submit();
+		} else {
+			swal("Ha ocurrido un error!", "No puedes registrar un envío sin paquetes. Agrega paquetes para registrar el envío.", "error");
+		}
+	});
 
 
 	// ubicar en otro archivo

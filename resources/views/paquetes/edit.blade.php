@@ -40,7 +40,11 @@
                   </p>
                   <select class="form-control" id="paqDimensionUnidad" name="paqDimensionUnidad">
                     <option value="mm">Milímetros(mm)</option>
+<<<<<<< HEAD
                     <option value="in">Pulgada(in)</option>
+=======
+                    <option value="''">Pulgada('')</option>
+>>>>>>> d0c273c88e011cfb5a7833f933fe0dc519071673
                     <option value="cm">Centímetros(cm)</option>
                     <option value="m">Metros(m)</option>
                   </select>
