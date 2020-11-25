@@ -14,7 +14,9 @@
   <div class="row m-2">    
     <div class="col-12 col-md-12">
 
-      
+      <script type="text/javascript">
+        const estado = <?php echo $status; ?>;
+      </script>
       <h2 class="form-signin-heading text-center" style="display: inline-block; margin-right: 50px;">
         <?php $estado = ["Envío en Espera","Envío Entregado a Logística","Envío en Tránsito a Destino","Envío Entregado en Destino"]; ?>
         Lista de 
@@ -70,9 +72,9 @@
 
           @if($status == 4)
           <td>
-          @if ($envio->envEntregadoEn != null)
-          {{$envEntregadoEn->format('d-m-Y H:i:s')}}
-          @endif
+            @if ($envio->envEntregadoEn != null)
+            {{$envEntregadoEn->format('d-m-Y H:i:s')}}
+            @endif
           </td>
           <td>{{$envio->envEntregadoA}}</td>
           @endif
@@ -130,7 +132,6 @@
         </tr>
         @endforeach
       </table>
-      {!!$envios->render()!!} 
     </div>
   </div>  
 </section>
@@ -240,6 +241,7 @@
 <script src="{{ asset('js/utils/moment.min.js') }}"></script>
 <script src="{{ asset('js/utils/datetime-moment.js') }}"></script>
 <script src="{{ asset('js/utils/dimensionesYPesosHandlers.js') }}"></script>
+<script src="{{ asset('js/utils/numeric-comma-datatable.js') }}"></script>
 <script src="{{ asset('js/envios/listaEnvios.js') }}"></script>
 
 @endsection

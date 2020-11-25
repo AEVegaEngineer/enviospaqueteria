@@ -100,13 +100,13 @@
           </div>
           <div class="row mt-3">
             <div class="col-12 col-md-6">
-              <p class="text-center">Volumen</p>
-              <h3 class="text-center" id="lblVolumen">0,00</h3>
-            </div>
-            <div class="col-12 col-md-6">
               <p class="text-center">Peso</p>
               <h3 class="text-center" id="lblPeso">0,00</h3>
-            </div>  
+            </div> 
+            <div class="col-12 col-md-6">
+              <p class="text-center">Volumen</p>
+              <h3 class="text-center" id="lblVolumen">0,00</h3>
+            </div>             
           </div>
           <?php if (Auth::user()->privilegio != 2 || (Auth::user()->privilegio == 2 && $userdata->comShoppingId == null)){ ?>
           <div class="row mt-3">

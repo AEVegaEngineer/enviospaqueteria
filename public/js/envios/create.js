@@ -4,7 +4,8 @@ function mostrarPreloader() {
 }
 function calcularCostos(ps,cant){
 	const dimensiones = ps.paqDimensionAlto * ps.paqDimensionAncho * ps.paqDimensionLargo;
-	let dimensionesMetricas = 0.0;
+	const dimensionesMetricas = obtenerDimensionesMetricas(dimensiones, ps.paqDimensionUnidad);
+	/*
 	switch(ps.paqDimensionUnidad){
 		case 'cm':
 			dimensionesMetricas = dimensiones / 1000000;
@@ -22,11 +23,13 @@ function calcularCostos(ps,cant){
 			dimensionesMetricas = 0;
 			break;
 	}
+	*/
 
 	$('#lblVolumen').html(dimensionFormat(dimensionesMetricas * cant).toString()+' m&#179;');
-	var costoPorDimension = dimensionesMetricas * costoVolumen * cant;
+	const costoPorDimension = dimensionesMetricas * costoVolumen * cant;
 	$('#lblPeso').html(peso(ps.paqPeso * cant).toString()+" "+ps.paqPesoUnidad);		
 
+	/*
 	let costoPorKilo = 0.0;
 	switch(ps.paqPesoUnidad){
 		case 'mg':
@@ -51,6 +54,11 @@ function calcularCostos(ps,cant){
 			costoPorKilo = 0;
 			break;
 	}
+	*/
+	const pesoEnKg = obtenerPesoEnKg(ps.paqPeso, ps.paqPesoUnidad);
+	//console.log(pesoEnKg);
+	const costoPorKilo = pesoEnKg * costoPeso * cant;
+	//console.log(costoPorKilo);
 	$('#lblCostoVolumen').text("$ "+financial(costoPorDimension));
 	$('#lblCostoPeso').text("$ "+financial(costoPorKilo));
 	mayorCosto = (costoPorDimension > costoPorKilo) ? costoPorDimension : costoPorKilo;

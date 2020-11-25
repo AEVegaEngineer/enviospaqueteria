@@ -20,12 +20,8 @@ $('[id^=btnStatusUpdate]').click(function(e){
 	})
 	.then((willDelete) => {
 	  if (willDelete) {
-	    swal("Envio Actualizado!", {
-	      icon: "success",
-	    });
-	    setTimeout(function () {
-	    	formId.submit();
-	  	},500);
+	    $('#preloader').fadeIn('fast');
+	    formId.submit();
 	  } 
 	});
 });

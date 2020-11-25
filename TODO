@@ -29,11 +29,13 @@ Arreglar las unidades cubicas en reporte
 (X) Las listas de cuentas corrientes no estan totalizando bien
 (X) Arreglar los totales de volumen y peso en detalles de envio y comprobantes
 (X) Los costos no deben ser visibles en comercios afiliados a un super
-( ) Las listas de envíos estan paginando con php, por lo que no están ordenando apropiadamente por fecha usando datatable
-( ) Probar si en diferentes tabs se puede abrir distintas cuentas en el mismo navegador
+(X) Probar si en diferentes tabs se puede abrir distintas cuentas en el mismo navegador
+(X) Las listas de envíos estan paginando con php, por lo que no están ordenando apropiadamente por fecha usando datatable
+(X) poner loader al hacer click en OK del swal al momento de cambiar de estado un envío
 ( ) quitar los estados de las listas de envios excepto de la lista de todos los tipos
-( ) poner loader al hacer click en OK del swal al momento de cambiar de estado un envío
 2:54
 +10
 +3
++2
++4
 +2

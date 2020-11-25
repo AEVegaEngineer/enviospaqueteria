@@ -116,15 +116,16 @@ $('[id^=paqueteDeEnvio]').click(function(){
 });
 
 $(document).ready( function () {
+  //console.log(estado);
   $.fn.dataTable.moment('dd-MM-YYYY HH:mm:ss');
   $('#tablaEnvios').DataTable({
-    "bPaginate": false,
-    "bLengthChange": false,
+    "bPaginate": true,
+    "bLengthChange": true,
     "bInfo": false,
     "bAutoWidth": false,
-    "bFilter": false,
-    "bFilter": false,
+    "bFilter": true,
     "language": {
+      "search": "Buscar:",
       "lengthMenu": "Mostrando _MENU_ lineas por lista",
       "zeroRecords": "No se han encontrado datos",
       "info": "Mostrando página _PAGE_ de _PAGES_",
@@ -135,17 +136,27 @@ $(document).ready( function () {
         "next": "Siguiente",
       }
     },
-    "columnDefs": [
-      {
-        targets: [1],
-        data: "date",
-        render: function(data, type, full, meta){
-          if(type === "display"){
-            data = moment(data.replace(" ","T")).format("DD-MM-YYYY hh:mm:ss"); 
-          }
-          return data;
+    "columnDefs": (estado == 4) ? 
+    [{
+      targets: [1],
+      data: "date",
+      render: function(data, type, full, meta){
+        if(type === "display"){
+          data = moment(data.replace(" ","T")).format("DD-MM-YYYY hh:mm:ss"); 
         }
-      } 
-    ]
+        return data;
+      }
+    }]    
+    : 
+    [{
+      targets: [1],
+      data: "date",
+      render: function(data, type, full, meta){
+        if(type === "display"){
+          data = moment(data.replace(" ","T")).format("DD-MM-YYYY hh:mm:ss"); 
+        }
+        return data;
+      }
+    }]
   });
-} );
+});

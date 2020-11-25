@@ -48,18 +48,18 @@ class EnvioController extends Controller
                 ->where('shoppings.shopUsuarioId',$userid);
             $b = Envio::select('envios.*',DB::raw("''"))
                 ->where('envios.envCreatedBy',$userid);
-            $envios = $a->union($b)->paginate(15);
+            $envios = $a->union($b)->get();
         }     
         else if (Auth::user()->privilegio == 1 || Auth::user()->privilegio == 2)
         {
             //persona o comercio
             $envios = Envio::where('envCreatedBy',$userid)->orderBy('created_at', 'desc')
-                ->paginate(15); 
+                ->get(); 
         }
         else if(Auth::user()->privilegio == 5 || Auth::user()->privilegio == 4)
         {
             $envios = Envio::orderBy('created_at', 'desc')
-                ->paginate(15);
+                ->get();
         }
         $status = 0;
 
@@ -275,20 +275,20 @@ function envioXStatus($status)
         $b = Envio::select('envios.*',DB::raw("''"))
             ->where('envios.envCreatedBy',$userid);
 
-        $envios = $a->union($b)->paginate(15);
+        $envios = $a->union($b)->get();
     }     
     else if (Auth::user()->privilegio == 1 || Auth::user()->privilegio == 2)
     {
         //persona o comercio
         $envios = Envio::where('envCreatedBy',$userid)->orderBy('created_at', 'desc')
             ->where('envEstadoEnvio',$status)
-            ->paginate(15); 
+            ->get(); 
     }
     else if(Auth::user()->privilegio == 4 || Auth::user()->privilegio == 5)
     {
         $envios = Envio::orderBy('created_at', 'desc')
             ->where('envEstadoEnvio',$status)
-            ->paginate(15);
+            ->get();
     }
 
     $fechaHoy = Carbon::now()->format('yy/m/d');
